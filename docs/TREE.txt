@@ -1,0 +1,117 @@
+audit-taxonomy/
+│
+├── README.md
+├── AUDIT-MENU.md                       # Master index (~2,200 audits)
+├── CONTRIBUTING.md
+├── CHANGELOG.md
+├── LICENSE
+│
+├── schema/
+│   ├── AUDIT-TEMPLATE.yaml             # Full template (OAuth2 example)
+│   ├── AUDIT-TEMPLATE-BLANK.yaml       # Blank slate for generation
+│   ├── AUDIT-TEMPLATE-DESIGN.md        # Design philosophy
+│   └── examples/
+│       ├── README.md                   # Pattern selection guide
+│       ├── 01-bus-factor-audit.yaml    # Organizational pattern
+│       ├── 02-container-resource-limits-audit.yaml  # Infrastructure pattern
+│       └── 03-runbook-completeness-audit.yaml       # Documentation pattern
+│
+├── categories/                         # Category overview docs (43 files)
+│   ├── 01-security-trust.md
+│   ├── 02-performance-efficiency.md
+│   ├── ...
+│   └── 43-metaverse-immersive.md
+│
+├── audits/                             # Individual audit files (~2,200)
+│   ├── 01-security-trust/
+│   │   ├── authentication/
+│   │   │   ├── oauth2-implementation.yaml
+│   │   │   ├── session-management.yaml
+│   │   │   └── ...
+│   │   ├── authorization/
+│   │   ├── cryptography/
+│   │   └── ...
+│   ├── 02-performance-efficiency/
+│   │   ├── latency/
+│   │   ├── throughput/
+│   │   └── ...
+│   ├── ...
+│   └── 43-metaverse-immersive/
+│       ├── spatial-computing/
+│       └── ...
+│
+├── industry-overlays/                  # Modular industry extensions
+│   ├── README.md
+│   ├── overlay-template.yaml
+│   ├── defense-intelligence/
+│   │   ├── overlay.yaml
+│   │   └── security-extensions.yaml
+│   ├── healthcare/
+│   │   ├── overlay.yaml
+│   │   ├── hipaa-security.yaml
+│   │   └── phi-handling.yaml
+│   ├── finance-banking/
+│   ├── automotive/
+│   ├── aviation-aerospace/
+│   └── ... (18 industries total)
+│
+├── bundles/                            # Pre-composed audit sets
+│   ├── README.md
+│   ├── profiles/
+│   │   ├── quick.yaml                  # ~15 audits, 15 min
+│   │   ├── security.yaml               # ~40 audits
+│   │   ├── production.yaml             # ~60 audits
+│   │   └── full.yaml                   # All audits
+│   ├── domains/
+│   │   ├── authentication-security.yaml
+│   │   ├── kubernetes-hardening.yaml
+│   │   └── ...
+│   ├── compliance/
+│   │   ├── soc2-type2.yaml
+│   │   ├── hipaa.yaml
+│   │   └── ...
+│   └── lifecycle/
+│       ├── pre-production.yaml
+│       └── post-incident.yaml
+│
+├── knowledge-cache/                    # Offline knowledge sources
+│   ├── README.md
+│   ├── manifest.yaml
+│   ├── refresh.sh
+│   ├── specifications/
+│   │   ├── rfc/
+│   │   ├── nist/
+│   │   └── owasp/
+│   ├── guides/
+│   └── vulnerabilities/
+│
+├── tooling/                            # Scripts, rules, utilities
+│   ├── README.md
+│   ├── semgrep-rules/
+│   │   ├── security/
+│   │   └── quality/
+│   ├── scripts/
+│   │   ├── python/
+│   │   └── bash/
+│   └── queries/
+│       ├── prometheus/
+│       └── sql/
+│
+├── validation/                         # Schema validation & linting
+│   ├── audit-schema.json
+│   ├── bundle-schema.json
+│   ├── lint-audit.py
+│   ├── validate-all.sh
+│   └── tests/
+│
+└── docs/                               # Extended documentation
+    ├── getting-started.md
+    ├── architecture.md
+    ├── agent-integration.md
+    ├── offline-usage.md
+    ├── guides/
+    │   ├── writing-audits.md
+    │   └── creating-bundles.md
+    └── adr/
+        ├── 001-yaml-over-json.md
+        └── ...
