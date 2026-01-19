@@ -117,6 +117,16 @@ knowledge_sources:
       type: "book"
       reference: "Martin Kleppmann - Chapter on Messaging"
 
+    - id: "building-microservices"
+      title: "Building Microservices"
+      type: "book"
+      reference: "Sam Newman - 2nd Edition"
+
+    - id: "ddd-evans"
+      title: "Domain-Driven Design"
+      type: "book"
+      reference: "Eric Evans"
+
 tooling:
   static_analysis:
     - tool: "Structure101"

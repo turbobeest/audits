@@ -101,6 +101,11 @@ discovery:
 
 knowledge_sources:
   specifications:
+    - id: "wcag-21"
+      name: "WCAG 2.1 Quick Reference"
+      url: "https://www.w3.org/WAI/WCAG21/quickref/"
+      offline_cache: true
+      priority: "recommended"
     - id: "wcag21-315"
       name: "WCAG 2.1 Success Criterion 3.1.5 Reading Level"
       url: "https://www.w3.org/WAI/WCAG21/Understanding/reading-level.html"

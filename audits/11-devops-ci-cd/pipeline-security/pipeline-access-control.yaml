@@ -107,6 +107,21 @@ knowledge_sources:
       url: "https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final"
       offline_cache: true
       priority: "required"
+    - id: "nsa-cicd-security"
+      name: "NSA/CISA: Defending CI/CD Environments"
+      url: "https://media.defense.gov/2023/Jun/28/2003249466/-1/-1/0/CSI_DEFENDING_CI_CD_ENVIRONMENTS.PDF"
+      offline_cache: true
+      priority: "required"
+    - id: "nsa-supply-chain"
+      name: "NSA: Securing the Software Supply Chain"
+      url: "https://media.defense.gov/2022/Sep/01/2003068942/-1/-1/0/ESF_SECURING_THE_SOFTWARE_SUPPLY_CHAIN_DEVELOPERS.PDF"
+      offline_cache: true
+      priority: "required"
+    - id: "nist-800-218"
+      name: "NIST SP 800-218: SSDF"
+      url: "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-218.pdf"
+      offline_cache: true
+      priority: "required"
 
 tooling:
   infrastructure_tools:

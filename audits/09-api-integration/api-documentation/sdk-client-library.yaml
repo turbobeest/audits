@@ -83,6 +83,13 @@ discovery:
       purpose: "OpenAPI generator config"
 
 knowledge_sources:
+  specifications:
+    - id: "openapi-spec"
+      name: "OpenAPI Specification"
+      url: "https://spec.openapis.org/oas/latest.html"
+      offline_cache: true
+      priority: "required"
+
   guides:
     - id: "sdk-design"
       name: "SDK Design Best Practices"

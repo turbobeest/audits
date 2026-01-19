@@ -89,12 +89,18 @@ discovery:
       purpose: "Docker Compose build caching"
 
 knowledge_sources:
+  specifications:
+    - id: "nsa-cicd-security"
+      name: "NSA/CISA: Defending CI/CD Environments"
+      url: "https://media.defense.gov/2023/Jun/28/2003249466/-1/-1/0/CSI_DEFENDING_CI_CD_ENVIRONMENTS.PDF"
+      offline_cache: true
+      priority: "required"
+
   guides:
     - id: "github-actions-cache"
       name: "GitHub Actions Caching Guide"
       url: "https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows"
       offline_cache: true
-
     - id: "docker-buildkit"
       name: "Docker BuildKit Caching"
       url: "https://docs.docker.com/build/cache/"

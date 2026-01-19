@@ -93,10 +93,17 @@ knowledge_sources:
       name: "The Twelve-Factor App - Processes"
       url: "https://12factor.net/processes"
       offline_cache: true
-
     - id: "aws-stateless"
       name: "AWS Well-Architected - Stateless Design"
       url: "https://docs.aws.amazon.com/whitepapers/latest/serverless-architectures-lambda/statelessness-and-scalability.html"
+      offline_cache: true
+    - id: "release-it"
+      name: "Michael Nygard - Release It!"
+      url: "https://pragprog.com/titles/mnee2/release-it-second-edition/"
+      offline_cache: true
+    - id: "sre-book"
+      name: "Site Reliability Engineering"
+      url: "https://sre.google/sre-book/table-of-contents/"
       offline_cache: true
 
 tooling:

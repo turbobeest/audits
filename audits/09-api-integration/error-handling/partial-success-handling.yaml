@@ -94,6 +94,11 @@ knowledge_sources:
       url: "https://datatracker.ietf.org/doc/html/rfc4918#section-13"
       offline_cache: true
       priority: "required"
+    - id: "owasp-api-security"
+      name: "OWASP API Security Top 10"
+      url: "https://owasp.org/API-Security/"
+      offline_cache: true
+      priority: "recommended"
 
   guides:
     - id: "batch-api-design"

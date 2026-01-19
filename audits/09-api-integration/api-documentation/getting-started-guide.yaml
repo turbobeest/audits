@@ -80,6 +80,13 @@ discovery:
       purpose: "Repository readme"
 
 knowledge_sources:
+  specifications:
+    - id: "openapi-spec"
+      name: "OpenAPI Specification"
+      url: "https://spec.openapis.org/oas/latest.html"
+      offline_cache: true
+      priority: "recommended"
+
   guides:
     - id: "developer-onboarding"
       name: "Developer Onboarding Best Practices"

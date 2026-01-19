@@ -91,6 +91,23 @@ discovery:
       purpose: "OpenAPI specifications"
 
 knowledge_sources:
+  specifications:
+    - id: "json-api"
+      name: "JSON:API Specification"
+      url: "https://jsonapi.org/format/"
+      offline_cache: true
+      priority: "recommended"
+    - id: "openapi-spec"
+      name: "OpenAPI Specification"
+      url: "https://spec.openapis.org/oas/latest.html"
+      offline_cache: true
+      priority: "recommended"
+    - id: "owasp-api-security"
+      name: "OWASP API Security Top 10"
+      url: "https://owasp.org/API-Security/"
+      offline_cache: true
+      priority: "recommended"
+
   guides:
     - id: "api-design-patterns"
       name: "API Design Patterns"
@@ -100,13 +117,6 @@ knowledge_sources:
       name: "RESTful Web Services Cookbook"
       url: "https://www.oreilly.com/library/view/restful-web-services/9780596809140/"
       offline_cache: false
-
-  specifications:
-    - id: "json-api"
-      name: "JSON:API Specification"
-      url: "https://jsonapi.org/format/"
-      offline_cache: true
-      priority: "recommended"
 
 tooling:
   static_analysis:

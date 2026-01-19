@@ -107,6 +107,13 @@ discovery:
       purpose: "Assess policy accessibility"
 
 knowledge_sources:
+  specifications:
+    - id: "nist-800-37"
+      name: "NIST SP 800-37 Rev 2: RMF"
+      url: "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-37r2.pdf"
+      offline_cache: true
+      priority: "recommended"
+
   guides:
     - id: "policy-writing"
       name: "Policy Writing Best Practices"

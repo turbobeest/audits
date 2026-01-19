@@ -119,6 +119,11 @@ discovery:
 
 knowledge_sources:
   specifications:
+    - id: "wcag-22"
+      name: "WCAG 2.2 Specification"
+      url: "https://www.w3.org/TR/WCAG22/"
+      offline_cache: true
+      priority: "recommended"
     - id: "wcag-1.4.12"
       name: "WCAG 2.2 SC 1.4.12: Text Spacing"
       url: "https://www.w3.org/WAI/WCAG22/Understanding/text-spacing.html"

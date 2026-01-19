@@ -112,6 +112,11 @@ discovery:
 
 knowledge_sources:
   specifications:
+    - id: "wcag-22"
+      name: "WCAG 2.2 Specification"
+      url: "https://www.w3.org/TR/WCAG22/"
+      offline_cache: true
+      priority: "recommended"
     - id: "coga-memory"
       name: "COGA: Support Memory"
       url: "https://www.w3.org/TR/coga-usable/#support-memory"

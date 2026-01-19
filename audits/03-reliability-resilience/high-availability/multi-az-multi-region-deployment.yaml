@@ -92,6 +92,14 @@ knowledge_sources:
       name: "AWS Disaster Recovery Whitepaper"
       url: "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/"
       offline_cache: true
+    - id: "release-it"
+      name: "Michael Nygard - Release It!"
+      url: "https://pragprog.com/titles/mnee2/release-it-second-edition/"
+      offline_cache: true
+    - id: "sre-book"
+      name: "Site Reliability Engineering"
+      url: "https://sre.google/sre-book/table-of-contents/"
+      offline_cache: true
 
 tooling:
   infrastructure_tools:

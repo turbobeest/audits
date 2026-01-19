@@ -116,6 +116,11 @@ knowledge_sources:
       type: "book"
       reference: "Chris Richardson"
 
+    - id: "ddd-evans"
+      title: "Domain-Driven Design"
+      type: "book"
+      reference: "Eric Evans"
+
 tooling:
   static_analysis:
     - tool: "Structure101"

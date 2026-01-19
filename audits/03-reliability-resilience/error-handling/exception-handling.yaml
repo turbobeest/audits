@@ -140,10 +140,13 @@ knowledge_sources:
       name: "Effective Java - Exception Handling"
       url: "https://www.oracle.com/java/technologies/effective-java.html"
       offline_cache: true
-
     - id: "python-errors"
       name: "Python Exception Handling Best Practices"
       url: "https://docs.python.org/3/tutorial/errors.html"
+      offline_cache: true
+    - id: "release-it"
+      name: "Michael Nygard - Release It!"
+      url: "https://pragprog.com/titles/mnee2/release-it-second-edition/"
       offline_cache: true
 
   learning_resources:

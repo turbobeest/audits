@@ -131,6 +131,14 @@ knowledge_sources:
       name: "Patroni HA PostgreSQL"
       url: "https://patroni.readthedocs.io/en/latest/"
       offline_cache: true
+    - id: "release-it"
+      name: "Michael Nygard - Release It!"
+      url: "https://pragprog.com/titles/mnee2/release-it-second-edition/"
+      offline_cache: true
+    - id: "sre-book"
+      name: "Site Reliability Engineering"
+      url: "https://sre.google/sre-book/table-of-contents/"
+      offline_cache: true
 
   learning_resources:
     - id: "database-reliability"

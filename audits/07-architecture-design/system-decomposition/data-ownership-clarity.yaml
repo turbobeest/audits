@@ -122,6 +122,11 @@ knowledge_sources:
       type: "book"
       reference: "Martin Kleppmann"
 
+    - id: "building-microservices"
+      title: "Building Microservices"
+      type: "book"
+      reference: "Sam Newman - 2nd Edition"
+
 tooling:
   static_analysis:
     - tool: "SchemaSpy"

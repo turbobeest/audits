@@ -91,6 +91,25 @@ discovery:
       purpose: "Application-level header configuration"
 
 knowledge_sources:
+  specifications:
+    - id: "owasp-top-10"
+      name: "OWASP Top 10 Web Application Security Risks"
+      url: "https://owasp.org/www-project-top-ten/"
+      offline_cache: true
+      priority: "required"
+
+    - id: "owasp-asvs"
+      name: "OWASP Application Security Verification Standard"
+      url: "https://owasp.org/www-project-application-security-verification-standard/"
+      offline_cache: true
+      priority: "required"
+
+    - id: "cisa-known-exploited"
+      name: "CISA Known Exploited Vulnerabilities Catalog"
+      url: "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+      offline_cache: false
+      priority: "required"
+
   guides:
     - id: "owasp-secure-headers"
       name: "OWASP Secure Headers Project"

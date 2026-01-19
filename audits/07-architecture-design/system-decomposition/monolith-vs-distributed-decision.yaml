@@ -129,6 +129,11 @@ knowledge_sources:
       type: "book"
       reference: "Sam Newman - 2nd Edition"
 
+    - id: "ddd-evans"
+      title: "Domain-Driven Design"
+      type: "book"
+      reference: "Eric Evans"
+
 tooling:
   static_analysis:
     - tool: "Structure101"

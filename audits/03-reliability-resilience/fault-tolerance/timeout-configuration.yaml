@@ -129,6 +129,14 @@ knowledge_sources:
       name: "PostgreSQL Timeout Settings"
       url: "https://www.postgresql.org/docs/current/runtime-config-client.html"
       offline_cache: true
+    - id: "release-it"
+      name: "Michael Nygard - Release It!"
+      url: "https://pragprog.com/titles/mnee2/release-it-second-edition/"
+      offline_cache: true
+    - id: "sre-book"
+      name: "Site Reliability Engineering"
+      url: "https://sre.google/sre-book/table-of-contents/"
+      offline_cache: true
 
   learning_resources:
     - id: "release-it"

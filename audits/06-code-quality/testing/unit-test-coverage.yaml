@@ -118,6 +118,16 @@ knowledge_sources:
       url: "https://pytest-cov.readthedocs.io/"
       offline_cache: true
 
+    - id: "xunit-patterns"
+      name: "xUnit Test Patterns: Refactoring Test Code"
+      url: "https://www.amazon.com/xUnit-Test-Patterns-Refactoring-Code/dp/0131495054"
+      offline_cache: false
+
+    - id: "working-effectively-legacy"
+      name: "Working Effectively with Legacy Code"
+      url: "https://www.oreilly.com/library/view/working-effectively-with/0131177052/"
+      offline_cache: false
+
   learning_resources:
     - id: "testing-book"
       title: "Unit Testing Principles, Practices, and Patterns"

@@ -107,6 +107,21 @@ knowledge_sources:
       url: "https://www.oreilly.com/library/view/clean-code/9780136083238/"
       offline_cache: true
 
+    - id: "ddd-evans"
+      name: "Domain-Driven Design Reference"
+      url: "https://www.domainlanguage.com/ddd/reference/"
+      offline_cache: true
+
+    - id: "clean-architecture"
+      name: "Clean Architecture"
+      url: "https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html"
+      offline_cache: true
+
+    - id: "pragmatic-programmer"
+      name: "Pragmatic Programmer Tips"
+      url: "https://pragprog.com/tips/"
+      offline_cache: true
+
   learning_resources:
     - id: "oo-metrics"
       title: "Object-Oriented Design Quality Metrics"

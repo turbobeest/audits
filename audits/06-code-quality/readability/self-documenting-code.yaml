@@ -92,6 +92,11 @@ knowledge_sources:
       url: "https://www.oreilly.com/library/view/the-art-of/9781449318482/"
       offline_cache: true
 
+    - id: "pragmatic-programmer"
+      name: "The Pragmatic Programmer"
+      url: "https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/"
+      offline_cache: false
+
   learning_resources:
     - id: "clean-code-book"
       title: "Clean Code: A Handbook of Agile Software Craftsmanship"

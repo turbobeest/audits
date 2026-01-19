@@ -109,6 +109,11 @@ discovery:
 
 knowledge_sources:
   specifications:
+    - id: "wcag-21"
+      name: "WCAG 2.1 Quick Reference"
+      url: "https://www.w3.org/WAI/WCAG21/quickref/"
+      offline_cache: true
+      priority: "recommended"
     - id: "wcag21-126"
       name: "WCAG 2.1 Success Criterion 1.2.6 Sign Language (Prerecorded)"
       url: "https://www.w3.org/WAI/WCAG21/Understanding/sign-language-prerecorded.html"

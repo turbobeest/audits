@@ -88,12 +88,18 @@ discovery:
       threshold: "<10 minutes for most projects"
 
 knowledge_sources:
+  specifications:
+    - id: "nsa-cicd-security"
+      name: "NSA/CISA: Defending CI/CD Environments"
+      url: "https://media.defense.gov/2023/Jun/28/2003249466/-1/-1/0/CSI_DEFENDING_CI_CD_ENVIRONMENTS.PDF"
+      offline_cache: true
+      priority: "required"
+
   guides:
     - id: "dora-metrics"
       name: "DORA DevOps Research"
       url: "https://dora.dev/research/"
       offline_cache: true
-
     - id: "google-sre-build"
       name: "Google SRE Book - Release Engineering"
       url: "https://sre.google/sre-book/release-engineering/"

@@ -110,6 +110,11 @@ knowledge_sources:
       url: "https://semver.org/"
       offline_cache: true
       priority: "required"
+    - id: "nsa-cicd-security"
+      name: "NSA/CISA: Defending CI/CD Environments"
+      url: "https://media.defense.gov/2023/Jun/28/2003249466/-1/-1/0/CSI_DEFENDING_CI_CD_ENVIRONMENTS.PDF"
+      offline_cache: true
+      priority: "required"
 
   guides:
     - id: "owasp-dep-check"

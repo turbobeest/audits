@@ -137,6 +137,10 @@ knowledge_sources:
       name: "Principles of Chaos Engineering"
       url: "https://principlesofchaos.org/"
       offline_cache: true
+    - id: "sre-book"
+      name: "Site Reliability Engineering"
+      url: "https://sre.google/sre-book/table-of-contents/"
+      offline_cache: true
 
 # ============================================================
 # SECTION 7: TOOLING & AUTOMATION

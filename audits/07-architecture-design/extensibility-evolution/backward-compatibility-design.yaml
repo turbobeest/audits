@@ -114,6 +114,16 @@ knowledge_sources:
       url: "https://developers.google.com/protocol-buffers/docs/overview#updating"
       offline_cache: true
 
+    - id: "refactoring-fowler"
+      name: "Refactoring Catalog"
+      url: "https://refactoring.com/catalog/"
+      offline_cache: true
+
+    - id: "clean-architecture"
+      name: "Clean Architecture"
+      url: "https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html"
+      offline_cache: true
+
   learning_resources:
     - id: "api-design"
       title: "API Design Patterns"

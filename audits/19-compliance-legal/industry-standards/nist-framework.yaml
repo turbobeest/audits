@@ -120,14 +120,14 @@ knowledge_sources:
   specifications:
     - id: "nist-csf-2"
       name: "NIST Cybersecurity Framework 2.0"
-      url: "https://www.nist.gov/cyberframework"
+      url: "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf"
       offline_cache: true
       priority: "required"
     - id: "nist-800-53"
       name: "NIST SP 800-53 Rev 5"
-      url: "https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final"
+      url: "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf"
       offline_cache: true
-      priority: "recommended"
+      priority: "required"
 
   guides:
     - id: "csf-implementation"

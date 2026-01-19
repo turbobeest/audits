@@ -130,6 +130,10 @@ knowledge_sources:
       name: "Google Cloud Multi-Region Deployment"
       url: "https://cloud.google.com/architecture/multi-region-high-availability"
       offline_cache: true
+    - id: "sre-book"
+      name: "Site Reliability Engineering"
+      url: "https://sre.google/sre-book/table-of-contents/"
+      offline_cache: true
 
 # ============================================================
 # SECTION 7: TOOLING & AUTOMATION

@@ -142,6 +142,10 @@ knowledge_sources:
       name: "Google Cloud Backup and DR Planning"
       url: "https://cloud.google.com/architecture/dr-scenarios-planning-guide"
       offline_cache: true
+    - id: "sre-book"
+      name: "Site Reliability Engineering"
+      url: "https://sre.google/sre-book/table-of-contents/"
+      offline_cache: true
 
 # ============================================================
 # SECTION 7: TOOLING & AUTOMATION

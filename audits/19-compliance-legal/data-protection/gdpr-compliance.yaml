@@ -131,6 +131,11 @@ knowledge_sources:
       url: "https://gdpr-info.eu/"
       offline_cache: true
       priority: "required"
+    - id: "nist-800-53"
+      name: "NIST SP 800-53 Rev 5"
+      url: "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf"
+      offline_cache: true
+      priority: "recommended"
 
   guides:
     - id: "edpb-guidelines"

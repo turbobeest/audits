@@ -111,6 +111,11 @@ discovery:
 
 knowledge_sources:
   specifications:
+    - id: "wcag-21"
+      name: "WCAG 2.1 Quick Reference"
+      url: "https://www.w3.org/WAI/WCAG21/quickref/"
+      offline_cache: true
+      priority: "recommended"
     - id: "wcag21-323"
       name: "WCAG 2.1 Success Criterion 3.2.3 Consistent Navigation"
       url: "https://www.w3.org/WAI/WCAG21/Understanding/consistent-navigation.html"

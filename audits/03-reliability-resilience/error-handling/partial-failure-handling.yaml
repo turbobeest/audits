@@ -138,10 +138,13 @@ knowledge_sources:
       name: "Microsoft Cloud Design Patterns - Resilience"
       url: "https://docs.microsoft.com/en-us/azure/architecture/patterns/category/resiliency"
       offline_cache: true
-
     - id: "netflix-hystrix"
       name: "Netflix Hystrix Patterns"
       url: "https://github.com/Netflix/Hystrix/wiki"
+      offline_cache: true
+    - id: "release-it"
+      name: "Michael Nygard - Release It!"
+      url: "https://pragprog.com/titles/mnee2/release-it-second-edition/"
       offline_cache: true
 
   papers:

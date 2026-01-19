@@ -139,10 +139,13 @@ knowledge_sources:
       name: "Kubernetes Pod Termination"
       url: "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-termination"
       offline_cache: true
-
     - id: "go-panic"
       name: "Go Panic and Recover"
       url: "https://go.dev/blog/defer-panic-and-recover"
+      offline_cache: true
+    - id: "release-it"
+      name: "Michael Nygard - Release It!"
+      url: "https://pragprog.com/titles/mnee2/release-it-second-edition/"
       offline_cache: true
 
   learning_resources:

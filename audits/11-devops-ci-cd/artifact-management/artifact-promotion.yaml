@@ -104,6 +104,11 @@ knowledge_sources:
       url: "https://cd.foundation/"
       offline_cache: true
       priority: "recommended"
+    - id: "nsa-supply-chain"
+      name: "NSA: Securing the Software Supply Chain"
+      url: "https://media.defense.gov/2022/Sep/01/2003068942/-1/-1/0/ESF_SECURING_THE_SOFTWARE_SUPPLY_CHAIN_DEVELOPERS.PDF"
+      offline_cache: true
+      priority: "required"
 
 tooling:
   infrastructure_tools:

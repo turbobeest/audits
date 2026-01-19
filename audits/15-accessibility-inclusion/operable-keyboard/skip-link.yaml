@@ -108,6 +108,11 @@ discovery:
 
 knowledge_sources:
   specifications:
+    - id: "wcag-21"
+      name: "WCAG 2.1 Quick Reference"
+      url: "https://www.w3.org/WAI/WCAG21/quickref/"
+      offline_cache: true
+      priority: "recommended"
     - id: "wcag21-241"
       name: "WCAG 2.1 Success Criterion 2.4.1 Bypass Blocks"
       url: "https://www.w3.org/WAI/WCAG21/Understanding/bypass-blocks.html"

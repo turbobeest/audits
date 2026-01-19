@@ -109,6 +109,18 @@ knowledge_sources:
       offline_cache: true
       priority: "required"
 
+    - id: "nist-800-53"
+      name: "NIST SP 800-53 Security and Privacy Controls"
+      url: "https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final"
+      offline_cache: true
+      priority: "required"
+
+    - id: "owasp-asvs"
+      name: "OWASP Application Security Verification Standard"
+      url: "https://owasp.org/www-project-application-security-verification-standard/"
+      offline_cache: true
+      priority: "required"
+
   guides:
     - id: "owasp-password-storage"
       name: "OWASP Password Storage Cheat Sheet"

@@ -92,6 +92,14 @@ knowledge_sources:
       name: "Kubernetes Deployment Strategies"
       url: "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#strategy"
       offline_cache: true
+    - id: "release-it"
+      name: "Michael Nygard - Release It!"
+      url: "https://pragprog.com/titles/mnee2/release-it-second-edition/"
+      offline_cache: true
+    - id: "sre-book"
+      name: "Site Reliability Engineering"
+      url: "https://sre.google/sre-book/table-of-contents/"
+      offline_cache: true
 
 tooling:
   infrastructure_tools:

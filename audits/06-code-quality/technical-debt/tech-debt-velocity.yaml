@@ -93,6 +93,21 @@ knowledge_sources:
       url: "https://www.agilealliance.org/glossary/sustainable"
       offline_cache: true
 
+    - id: "refactoring-fowler"
+      name: "Martin Fowler - Refactoring"
+      url: "https://refactoring.com/"
+      offline_cache: false
+
+    - id: "refactoring-catalog"
+      name: "Refactoring Catalog"
+      url: "https://refactoring.com/catalog/"
+      offline_cache: false
+
+    - id: "clean-code"
+      name: "Robert C. Martin - Clean Code"
+      url: "https://www.oreilly.com/library/view/clean-code-a/9780136083238/"
+      offline_cache: false
+
 tooling:
   static_analysis:
     - tool: "sonarqube"

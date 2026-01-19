@@ -105,6 +105,16 @@ knowledge_sources:
       url: "https://sourcemaking.com/antipatterns"
       offline_cache: true
 
+    - id: "design-patterns-gof"
+      name: "Design Patterns: Elements of Reusable Object-Oriented Software"
+      url: "https://www.oreilly.com/library/view/design-patterns-elements/0201633612/"
+      offline_cache: false
+
+    - id: "effective-java"
+      name: "Effective Java"
+      url: "https://www.oreilly.com/library/view/effective-java-3rd/9780134686097/"
+      offline_cache: false
+
 tooling:
   static_analysis:
     - tool: "eslint"

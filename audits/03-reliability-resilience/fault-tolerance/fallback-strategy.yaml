@@ -119,6 +119,14 @@ knowledge_sources:
       name: "AWS Caching Best Practices"
       url: "https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/BestPractices.html"
       offline_cache: true
+    - id: "release-it"
+      name: "Michael Nygard - Release It!"
+      url: "https://pragprog.com/titles/mnee2/release-it-second-edition/"
+      offline_cache: true
+    - id: "sre-book"
+      name: "Site Reliability Engineering"
+      url: "https://sre.google/sre-book/table-of-contents/"
+      offline_cache: true
 
   learning_resources:
     - id: "release-it"

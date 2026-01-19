@@ -126,6 +126,11 @@ knowledge_sources:
       url: "https://semgrep.dev/docs/writing-rules/overview/"
       offline_cache: true
 
+    - id: "nist-800-218"
+      name: "NIST SP 800-218 - Secure Software Development Framework"
+      url: "https://csrc.nist.gov/publications/detail/sp/800-218/final"
+      offline_cache: false
+
 # ============================================================
 # SECTION 7: TOOLING & AUTOMATION
 # ============================================================

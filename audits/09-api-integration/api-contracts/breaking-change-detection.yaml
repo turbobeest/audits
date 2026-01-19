@@ -94,6 +94,18 @@ discovery:
       purpose: "Spectral configuration"
 
 knowledge_sources:
+  specifications:
+    - id: "semver"
+      name: "Semantic Versioning"
+      url: "https://semver.org/"
+      offline_cache: true
+      priority: "required"
+    - id: "openapi-spec"
+      name: "OpenAPI Specification"
+      url: "https://spec.openapis.org/oas/latest.html"
+      offline_cache: true
+      priority: "recommended"
+
   guides:
     - id: "api-breaking-changes"
       name: "OpenAPI Breaking Changes"
@@ -103,13 +115,6 @@ knowledge_sources:
       name: "Protocol Buffers Wire Compatibility"
       url: "https://protobuf.dev/programming-guides/compatibility/"
       offline_cache: true
-
-  specifications:
-    - id: "semver"
-      name: "Semantic Versioning"
-      url: "https://semver.org/"
-      offline_cache: true
-      priority: "required"
 
 tooling:
   static_analysis:

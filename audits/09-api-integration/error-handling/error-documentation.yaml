@@ -84,6 +84,13 @@ discovery:
       purpose: "Error documentation"
 
 knowledge_sources:
+  specifications:
+    - id: "owasp-api-security"
+      name: "OWASP API Security Top 10"
+      url: "https://owasp.org/API-Security/"
+      offline_cache: true
+      priority: "recommended"
+
   guides:
     - id: "api-documentation"
       name: "API Documentation Best Practices"

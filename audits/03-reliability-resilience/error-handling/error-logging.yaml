@@ -139,10 +139,13 @@ knowledge_sources:
       name: "OWASP Logging Cheat Sheet"
       url: "https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html"
       offline_cache: true
-
     - id: "12-factor-logs"
       name: "12-Factor App - Logs"
       url: "https://12factor.net/logs"
+      offline_cache: true
+    - id: "release-it"
+      name: "Michael Nygard - Release It!"
+      url: "https://pragprog.com/titles/mnee2/release-it-second-edition/"
       offline_cache: true
 
   learning_resources:

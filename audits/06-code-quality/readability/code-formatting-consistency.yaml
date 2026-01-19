@@ -104,6 +104,16 @@ knowledge_sources:
       url: "https://editorconfig.org/"
       offline_cache: true
 
+    - id: "clean-code"
+      name: "Robert C. Martin - Clean Code"
+      url: "https://www.oreilly.com/library/view/clean-code-a/9780136083238/"
+      offline_cache: false
+
+    - id: "pragmatic-programmer"
+      name: "The Pragmatic Programmer"
+      url: "https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/"
+      offline_cache: false
+
 tooling:
   static_analysis:
     - tool: "prettier"

@@ -88,6 +88,13 @@ discovery:
       purpose: "Client implementations"
 
 knowledge_sources:
+  specifications:
+    - id: "building-microservices"
+      name: "Sam Newman - Building Microservices"
+      url: "https://www.oreilly.com/library/view/building-microservices-2nd/9781492034018/"
+      offline_cache: true
+      priority: "recommended"
+
   guides:
     - id: "timeout-patterns"
       name: "Timeout Best Practices"

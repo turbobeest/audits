@@ -92,12 +92,18 @@ discovery:
       purpose: "Pytest parallelization config"
 
 knowledge_sources:
+  specifications:
+    - id: "nsa-cicd-security"
+      name: "NSA/CISA: Defending CI/CD Environments"
+      url: "https://media.defense.gov/2023/Jun/28/2003249466/-1/-1/0/CSI_DEFENDING_CI_CD_ENVIRONMENTS.PDF"
+      offline_cache: true
+      priority: "required"
+
   guides:
     - id: "github-actions-matrix"
       name: "GitHub Actions Matrix Strategy"
       url: "https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs"
       offline_cache: true
-
     - id: "circleci-parallelism"
       name: "CircleCI Test Splitting"
       url: "https://circleci.com/docs/parallelism-faster-jobs/"

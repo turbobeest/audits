@@ -120,6 +120,11 @@ knowledge_sources:
       url: "https://github.com/jendrikseipp/vulture"
       offline_cache: true
 
+    - id: "nist-800-218"
+      name: "NIST SP 800-218 - Secure Software Development Framework"
+      url: "https://csrc.nist.gov/publications/detail/sp/800-218/final"
+      offline_cache: false
+
   learning_resources:
     - id: "refactoring-book"
       title: "Refactoring: Improving the Design of Existing Code"

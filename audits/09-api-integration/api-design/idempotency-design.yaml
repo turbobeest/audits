@@ -94,6 +94,23 @@ discovery:
       purpose: "Middleware implementations"
 
 knowledge_sources:
+  specifications:
+    - id: "rfc-7231"
+      name: "RFC 7231 - HTTP/1.1 Semantics (Idempotent Methods)"
+      url: "https://datatracker.ietf.org/doc/html/rfc7231#section-4.2.2"
+      offline_cache: true
+      priority: "required"
+    - id: "openapi-spec"
+      name: "OpenAPI Specification"
+      url: "https://spec.openapis.org/oas/latest.html"
+      offline_cache: true
+      priority: "recommended"
+    - id: "owasp-api-security"
+      name: "OWASP API Security Top 10"
+      url: "https://owasp.org/API-Security/"
+      offline_cache: true
+      priority: "recommended"
+
   guides:
     - id: "stripe-idempotency"
       name: "Stripe API - Idempotent Requests"
@@ -103,13 +120,6 @@ knowledge_sources:
       name: "AWS - Making Retries Safe with Idempotent APIs"
       url: "https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/"
       offline_cache: true
-
-  specifications:
-    - id: "rfc-7231"
-      name: "RFC 7231 - HTTP/1.1 Semantics (Idempotent Methods)"
-      url: "https://datatracker.ietf.org/doc/html/rfc7231#section-4.2.2"
-      offline_cache: true
-      priority: "required"
 
 tooling:
   static_analysis:

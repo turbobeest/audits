@@ -133,6 +133,11 @@ knowledge_sources:
       url: "https://www.isaca.org/resources/cobit"
       offline_cache: true
       priority: "required"
+    - id: "nist-csf-2"
+      name: "NIST Cybersecurity Framework 2.0"
+      url: "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf"
+      offline_cache: true
+      priority: "recommended"
 
   guides:
     - id: "control-testing"

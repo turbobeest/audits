@@ -103,6 +103,16 @@ knowledge_sources:
       url: "https://refactoring.guru/design-patterns"
       offline_cache: true
 
+    - id: "design-patterns-gof"
+      name: "Design Patterns - GoF"
+      url: "https://refactoring.guru/design-patterns"
+      offline_cache: true
+
+    - id: "building-microservices"
+      name: "Building Microservices"
+      url: "https://samnewman.io/books/building_microservices_2nd_edition/"
+      offline_cache: true
+
   learning_resources:
     - id: "head-first-patterns"
       title: "Head First Design Patterns"

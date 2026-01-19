@@ -94,6 +94,13 @@ discovery:
       purpose: "Identify HTTP calls in tests"
 
 knowledge_sources:
+  specifications:
+    - id: "xunit-patterns"
+      name: "xUnit Test Patterns"
+      url: "http://xunitpatterns.com/"
+      offline_cache: true
+      priority: "required"
+
   guides:
     - id: "test-isolation"
       name: "Unit Test Isolation Best Practices"
@@ -103,9 +110,13 @@ knowledge_sources:
       name: "Test Doubles (Mocks, Stubs, Fakes)"
       url: "https://martinfowler.com/bliki/TestDouble.html"
       offline_cache: true
+    - id: "tdd-by-example"
+      name: "Kent Beck - Test Driven Development"
+      url: "https://www.oreilly.com/library/view/test-driven-development/0321146530/"
+      offline_cache: true
 
   learning_resources:
-    - id: "xunit-patterns"
+    - id: "xunit-patterns-book"
       title: "xUnit Test Patterns: Refactoring Test Code"
       type: "book"
       reference: "ISBN 978-0131495050"

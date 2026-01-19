@@ -123,6 +123,11 @@ discovery:
 
 knowledge_sources:
   specifications:
+    - id: "wcag-22"
+      name: "WCAG 2.2 Specification"
+      url: "https://www.w3.org/TR/WCAG22/"
+      offline_cache: true
+      priority: "recommended"
     - id: "wcag-2.2.2"
       name: "WCAG 2.2 SC 2.2.2: Pause, Stop, Hide"
       url: "https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html"

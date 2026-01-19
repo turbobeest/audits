@@ -139,6 +139,10 @@ knowledge_sources:
       name: "Terraform for Disaster Recovery"
       url: "https://www.hashicorp.com/blog/disaster-recovery-for-terraform"
       offline_cache: true
+    - id: "sre-book"
+      name: "Site Reliability Engineering"
+      url: "https://sre.google/sre-book/table-of-contents/"
+      offline_cache: true
 
 # ============================================================
 # SECTION 7: TOOLING & AUTOMATION

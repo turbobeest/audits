@@ -94,6 +94,11 @@ knowledge_sources:
       url: "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"
       offline_cache: true
       priority: "required"
+    - id: "building-microservices"
+      name: "Sam Newman - Building Microservices"
+      url: "https://www.oreilly.com/library/view/building-microservices-2nd/9781492034018/"
+      offline_cache: true
+      priority: "recommended"
 
   guides:
     - id: "webhook-security"

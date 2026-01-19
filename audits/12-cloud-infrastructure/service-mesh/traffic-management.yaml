@@ -103,6 +103,11 @@ knowledge_sources:
       url: "https://istio.io/latest/docs/concepts/traffic-management/"
       offline_cache: true
       priority: "required"
+    - id: "nist-800-207"
+      name: "NIST SP 800-207: Zero Trust Architecture"
+      url: "https://csrc.nist.gov/publications/detail/sp/800-207/final"
+      offline_cache: true
+      priority: "required"
 
   guides:
     - id: "istio-routing"

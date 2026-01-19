@@ -126,6 +126,11 @@ knowledge_sources:
       url: "https://www.sonarsource.com/docs/CognitiveComplexity.pdf"
       offline_cache: true
 
+    - id: "nist-800-218"
+      name: "NIST SP 800-218 - Secure Software Development Framework"
+      url: "https://csrc.nist.gov/publications/detail/sp/800-218/final"
+      offline_cache: false
+
   papers:
     - id: "complexity-bugs"
       title: "The Relationship Between Class Size and Defects"

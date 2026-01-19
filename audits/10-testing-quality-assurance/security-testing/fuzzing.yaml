@@ -93,6 +93,13 @@ discovery:
       purpose: "Fuzz corpus configuration"
 
 knowledge_sources:
+  specifications:
+    - id: "owasp-asvs"
+      name: "OWASP ASVS"
+      url: "https://owasp.org/www-project-application-security-verification-standard/"
+      offline_cache: true
+      priority: "recommended"
+
   guides:
     - id: "google-fuzzing"
       name: "Google OSS-Fuzz"

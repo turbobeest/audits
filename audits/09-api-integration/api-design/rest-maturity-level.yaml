@@ -105,6 +105,16 @@ knowledge_sources:
       url: "https://datatracker.ietf.org/doc/html/rfc7231"
       offline_cache: true
       priority: "required"
+    - id: "openapi-spec"
+      name: "OpenAPI Specification"
+      url: "https://spec.openapis.org/oas/latest.html"
+      offline_cache: true
+      priority: "recommended"
+    - id: "owasp-api-security"
+      name: "OWASP API Security Top 10"
+      url: "https://owasp.org/API-Security/"
+      offline_cache: true
+      priority: "recommended"
 
   guides:
     - id: "rest-api-design"

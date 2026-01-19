@@ -85,10 +85,21 @@ discovery:
       purpose: "Identify BDD-style naming"
 
 knowledge_sources:
+  specifications:
+    - id: "xunit-patterns"
+      name: "xUnit Test Patterns"
+      url: "http://xunitpatterns.com/"
+      offline_cache: true
+      priority: "recommended"
+
   guides:
     - id: "test-naming"
       name: "Naming Standards for Unit Tests"
       url: "https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-best-practices"
+      offline_cache: true
+    - id: "tdd-by-example"
+      name: "Kent Beck - Test Driven Development"
+      url: "https://www.oreilly.com/library/view/test-driven-development/0321146530/"
       offline_cache: true
 
   learning_resources:

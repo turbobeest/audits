@@ -90,6 +90,13 @@ discovery:
       purpose: "Security test configuration"
 
 knowledge_sources:
+  specifications:
+    - id: "owasp-asvs"
+      name: "OWASP ASVS"
+      url: "https://owasp.org/www-project-application-security-verification-standard/"
+      offline_cache: true
+      priority: "required"
+
   guides:
     - id: "owasp-testing"
       name: "OWASP Testing Guide"

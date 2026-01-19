@@ -113,6 +113,16 @@ knowledge_sources:
       url: "https://wiki.c2.com/?StableDependenciesPrinciple"
       offline_cache: true
 
+    - id: "ddd-evans"
+      name: "Domain-Driven Design Reference"
+      url: "https://www.domainlanguage.com/ddd/reference/"
+      offline_cache: true
+
+    - id: "pragmatic-programmer"
+      name: "Pragmatic Programmer Tips"
+      url: "https://pragprog.com/tips/"
+      offline_cache: true
+
 tooling:
   static_analysis:
     - tool: "dependency-cruiser"

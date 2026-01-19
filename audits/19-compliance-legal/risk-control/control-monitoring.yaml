@@ -121,6 +121,13 @@ discovery:
       purpose: "Assess stakeholder awareness"
 
 knowledge_sources:
+  specifications:
+    - id: "nist-csf-2"
+      name: "NIST Cybersecurity Framework 2.0"
+      url: "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf"
+      offline_cache: true
+      priority: "recommended"
+
   guides:
     - id: "continuous-monitoring"
       name: "Continuous Control Monitoring Guide"

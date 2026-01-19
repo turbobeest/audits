@@ -98,6 +98,11 @@ knowledge_sources:
       url: "https://github.com/airbnb/javascript"
       offline_cache: true
 
+    - id: "design-patterns-gof"
+      name: "Design Patterns: Elements of Reusable Object-Oriented Software"
+      url: "https://www.oreilly.com/library/view/design-patterns-elements/0201633612/"
+      offline_cache: false
+
   learning_resources:
     - id: "idiomatic-python"
       title: "Writing Idiomatic Python"

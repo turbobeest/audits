@@ -115,6 +115,11 @@ discovery:
 
 knowledge_sources:
   specifications:
+    - id: "wcag-21"
+      name: "WCAG 2.1 Quick Reference"
+      url: "https://www.w3.org/WAI/WCAG21/quickref/"
+      offline_cache: true
+      priority: "recommended"
     - id: "wcag21-212"
       name: "WCAG 2.1 Success Criterion 2.1.2 No Keyboard Trap"
       url: "https://www.w3.org/WAI/WCAG21/Understanding/no-keyboard-trap.html"

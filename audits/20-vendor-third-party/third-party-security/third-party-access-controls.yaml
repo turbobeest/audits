@@ -117,6 +117,11 @@ discovery:
 
 knowledge_sources:
   specifications:
+    - id: "nist-800-53"
+      name: "NIST SP 800-53 Rev 5"
+      url: "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf"
+      offline_cache: true
+      priority: "required"
     - id: "nist-ac"
       name: "NIST SP 800-53 Access Control Family"
       url: "https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final"
@@ -127,6 +132,11 @@ knowledge_sources:
       url: "https://www.iso.org/standard/27001"
       offline_cache: true
       priority: "required"
+    - id: "cisa-known-exploited"
+      name: "CISA Known Exploited Vulnerabilities"
+      url: "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+      offline_cache: true
+      priority: "recommended"
 
   guides:
     - id: "privileged-access-guide"

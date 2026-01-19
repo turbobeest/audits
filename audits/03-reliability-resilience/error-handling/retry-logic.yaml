@@ -138,10 +138,13 @@ knowledge_sources:
       name: "AWS Exponential Backoff and Jitter"
       url: "https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/"
       offline_cache: true
-
     - id: "google-retry"
       name: "Google Cloud Retry Strategy"
       url: "https://cloud.google.com/storage/docs/retry-strategy"
+      offline_cache: true
+    - id: "release-it"
+      name: "Michael Nygard - Release It!"
+      url: "https://pragprog.com/titles/mnee2/release-it-second-edition/"
       offline_cache: true
 
   papers:

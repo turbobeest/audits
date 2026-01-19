@@ -97,6 +97,11 @@ discovery:
 
 knowledge_sources:
   specifications:
+    - id: "cisa-ai-security"
+      name: "CISA Guidelines for Secure AI System Development"
+      url: "https://www.cisa.gov/resources-tools/resources/guidelines-secure-ai-system-development"
+      offline_cache: true
+      priority: "recommended"
     - id: "eu-ai-act-art52"
       name: "EU AI Act Article 52 - Transparency Obligations"
       url: "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52021PC0206"

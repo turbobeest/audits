@@ -98,6 +98,11 @@ knowledge_sources:
       url: "https://owasp.org/www-project-web-security-testing-guide/"
       offline_cache: true
       priority: "required"
+    - id: "owasp-asvs"
+      name: "OWASP ASVS"
+      url: "https://owasp.org/www-project-application-security-verification-standard/"
+      offline_cache: true
+      priority: "required"
 
   guides:
     - id: "zap-docs"

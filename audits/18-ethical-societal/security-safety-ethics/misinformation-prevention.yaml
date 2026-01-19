@@ -140,6 +140,11 @@ discovery:
 
 knowledge_sources:
   specifications:
+    - id: "cisa-ai-security"
+      name: "CISA Guidelines for Secure AI System Development"
+      url: "https://www.cisa.gov/resources-tools/resources/guidelines-secure-ai-system-development"
+      offline_cache: true
+      priority: "recommended"
     - id: "dsa-systemic-risk"
       name: "DSA - Systemic Risks and Mitigation"
       url: "https://digital-strategy.ec.europa.eu/en/policies/digital-services-act-package"

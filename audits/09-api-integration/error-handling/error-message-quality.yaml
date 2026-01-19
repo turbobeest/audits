@@ -85,6 +85,13 @@ discovery:
       purpose: "Internationalization files"
 
 knowledge_sources:
+  specifications:
+    - id: "owasp-api-security"
+      name: "OWASP API Security Top 10"
+      url: "https://owasp.org/API-Security/"
+      offline_cache: true
+      priority: "recommended"
+
   guides:
     - id: "error-message-design"
       name: "Writing Helpful Error Messages"

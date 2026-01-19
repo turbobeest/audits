@@ -140,10 +140,13 @@ knowledge_sources:
       name: "Google SRE Book - Monitoring"
       url: "https://sre.google/sre-book/monitoring-distributed-systems/"
       offline_cache: true
-
     - id: "prometheus-alerting"
       name: "Prometheus Alerting Best Practices"
       url: "https://prometheus.io/docs/practices/alerting/"
+      offline_cache: true
+    - id: "release-it"
+      name: "Michael Nygard - Release It!"
+      url: "https://pragprog.com/titles/mnee2/release-it-second-edition/"
       offline_cache: true
 
   learning_resources:

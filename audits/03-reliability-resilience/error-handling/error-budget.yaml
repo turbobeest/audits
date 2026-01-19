@@ -151,10 +151,13 @@ knowledge_sources:
       name: "Google SRE Book - Service Level Objectives"
       url: "https://sre.google/sre-book/service-level-objectives/"
       offline_cache: true
-
     - id: "google-workbook-slo"
       name: "Google SRE Workbook - Implementing SLOs"
       url: "https://sre.google/workbook/implementing-slos/"
+      offline_cache: true
+    - id: "release-it"
+      name: "Michael Nygard - Release It!"
+      url: "https://pragprog.com/titles/mnee2/release-it-second-edition/"
       offline_cache: true
 
   learning_resources:

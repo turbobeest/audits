@@ -90,14 +90,30 @@ discovery:
       purpose: "Identify shared test utilities"
 
 knowledge_sources:
+  specifications:
+    - id: "xunit-patterns"
+      name: "xUnit Test Patterns"
+      url: "http://xunitpatterns.com/"
+      offline_cache: true
+      priority: "required"
+    - id: "working-effectively-legacy"
+      name: "Working Effectively with Legacy Code"
+      url: "https://www.oreilly.com/library/view/working-effectively-with/0131177052/"
+      offline_cache: true
+      priority: "recommended"
+
   guides:
     - id: "maintainable-tests"
       name: "Writing Maintainable Unit Tests"
       url: "https://www.artofunittesting.com/"
       offline_cache: true
+    - id: "tdd-by-example"
+      name: "Kent Beck - Test Driven Development"
+      url: "https://www.oreilly.com/library/view/test-driven-development/0321146530/"
+      offline_cache: true
 
   learning_resources:
-    - id: "xunit-patterns"
+    - id: "xunit-patterns-book"
       title: "xUnit Test Patterns: Refactoring Test Code"
       type: "book"
       reference: "ISBN 978-0131495050"

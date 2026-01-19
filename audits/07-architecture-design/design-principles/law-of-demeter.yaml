@@ -105,6 +105,16 @@ knowledge_sources:
       url: "https://martinfowler.com/bliki/TellDontAsk.html"
       offline_cache: true
 
+    - id: "clean-architecture"
+      name: "Clean Architecture"
+      url: "https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html"
+      offline_cache: true
+
+    - id: "clean-code"
+      name: "Clean Code Summary"
+      url: "https://gist.github.com/wojteklu/73c6914cc446146b8b533c0988cf8d29"
+      offline_cache: true
+
   learning_resources:
     - id: "pragmatic-programmer"
       title: "The Pragmatic Programmer"

@@ -93,6 +93,11 @@ knowledge_sources:
       url: "https://json-schema.org/specification"
       offline_cache: true
       priority: "required"
+    - id: "openapi-spec"
+      name: "OpenAPI Specification"
+      url: "https://spec.openapis.org/oas/latest.html"
+      offline_cache: true
+      priority: "recommended"
 
   guides:
     - id: "google-json-style"

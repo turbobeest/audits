@@ -118,6 +118,21 @@ knowledge_sources:
       url: "https://www.coso.org/Pages/erm.aspx"
       offline_cache: true
       priority: "required"
+    - id: "nist-csf-2"
+      name: "NIST Cybersecurity Framework 2.0"
+      url: "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf"
+      offline_cache: true
+      priority: "recommended"
+    - id: "nist-800-37"
+      name: "NIST SP 800-37 Rev 2: RMF"
+      url: "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-37r2.pdf"
+      offline_cache: true
+      priority: "required"
+    - id: "nist-800-30"
+      name: "NIST SP 800-30: Risk Assessment"
+      url: "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-30r1.pdf"
+      offline_cache: true
+      priority: "required"
 
   guides:
     - id: "risk-assessment"

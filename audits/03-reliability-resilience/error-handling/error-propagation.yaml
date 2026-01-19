@@ -140,10 +140,13 @@ knowledge_sources:
       name: "Go Error Handling and Wrapping"
       url: "https://go.dev/blog/go1.13-errors"
       offline_cache: true
-
     - id: "grpc-errors"
       name: "gRPC Error Handling"
       url: "https://grpc.io/docs/guides/error/"
+      offline_cache: true
+    - id: "release-it"
+      name: "Michael Nygard - Release It!"
+      url: "https://pragprog.com/titles/mnee2/release-it-second-edition/"
       offline_cache: true
 
   learning_resources:

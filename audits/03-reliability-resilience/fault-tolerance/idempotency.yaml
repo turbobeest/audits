@@ -119,6 +119,14 @@ knowledge_sources:
       name: "Google API Design - Idempotency"
       url: "https://cloud.google.com/apis/design/design_patterns#request_duplication"
       offline_cache: true
+    - id: "release-it"
+      name: "Michael Nygard - Release It!"
+      url: "https://pragprog.com/titles/mnee2/release-it-second-edition/"
+      offline_cache: true
+    - id: "sre-book"
+      name: "Site Reliability Engineering"
+      url: "https://sre.google/sre-book/table-of-contents/"
+      offline_cache: true
 
   learning_resources:
     - id: "designing-data-intensive"
