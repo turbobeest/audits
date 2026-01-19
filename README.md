@@ -1,228 +1,181 @@
-# Audit Template Examples
+# Software Stack Audit Taxonomy
 
-> Three diverse examples showing how to adapt the template across different domains.
+A comprehensive, multi-dimensional taxonomy of software stack audits designed as knowledge grounding for AI-powered audit agents.
+
+## What This Is
+
+This repository contains **1,100+ structured audit definitions** covering every meaningful dimension of software quality: security, performance, reliability, accessibility, compliance, ethics, and more.
+
+Each audit is a YAML file that defines:
+- **What to look for** (signals at critical/high/medium/low severity)
+- **How to find it** (discovery patterns, commands, interview questions)
+- **Why it matters** (business and technical context)
+- **How to fix it** (remediation guidance)
+- **How to verify** (closeout checklists)
 
 ## Purpose
 
-When generating audit files for the ~2,200 audits in AUDIT-MENU.md, Claude Code should reference these examples to understand how the template adapts to different audit types. **The OAuth2 example in the full template is just ONE pattern** — not all audits look like that.
+### For AI Agents
+The taxonomy provides structured knowledge that enables AI agents to perform sophisticated, context-aware audits. Each audit includes:
+- Cognitive mode guidance (critical, evaluative, informative)
+- Tier classification (focused, expert, PhD-level)
+- Escalation triggers for edge cases
+- Tool and verification command references
 
----
+### For Humans
+An exhaustive reference catalog of audit concerns, organized hierarchically so teams can cherry-pick relevant audits for their specific stack and compliance requirements.
 
-## The Three Examples
+## Taxonomy Structure
 
-| Example | Domain | Key Differences from OAuth2 |
-|---------|--------|---------------------------|
-| **01-bus-factor-audit.yaml** | Organizational/Qualitative | Interviews instead of grep; manual verification; qualitative findings |
-| **02-container-resource-limits-audit.yaml** | Infrastructure/Metrics | kubectl commands; quantitative thresholds; highly automatable |
-| **03-runbook-completeness-audit.yaml** | Process/Documentation | Document analysis; mixed automation; quality assessment |
-
----
-
-## When to Use Each Pattern
-
-### Pattern 1: Organizational/Qualitative (Bus Factor Example)
-
-**Use for categories:**
-- Human & Organizational (20)
-- Ethical & Societal (21)
-- Gamification & Behavioral Design (22)
-- Emotional Design & Trust (23)
-- Parts of Requirements & Specification Quality (28)
-- Parts of Risk Management (29)
-
-**Key adaptations:**
-```yaml
-execution:
-  automatable: "manual"  # Cannot be automated
-  scope: "organizational"
-
-discovery:
-  interviews:            # Instead of code_patterns
-    - role: "..."
-      questions: [...]
-      
-closeout_checklist:
-  - verification: "manual"  # Human review, not bash commands
-    verification_notes: "What reviewer should confirm"
+```
+audits/
+├── 01-security-trust/           # Authentication, authorization, cryptography
+├── 02-performance-efficiency/   # Latency, throughput, resource usage
+├── 03-reliability-resilience/   # Fault tolerance, recovery, chaos engineering
+├── ...
+├── 19-compliance-legal/         # GDPR, SOC2, HIPAA, PCI-DSS
+├── 20-vendor-third-party/       # Supply chain, SLAs, vendor risk
+└── [21-43 in progress]
 ```
 
-**Signals use `evidence_indicators` (observable behaviors) instead of `evidence_pattern` (grep patterns):**
+### Categories by Cluster
+
+| Cluster | Categories | Focus |
+|---------|------------|-------|
+| **Core Technical** | 1-12 | Security, performance, reliability, architecture, data, APIs |
+| **Infrastructure** | 13-16 | Compute, network, storage, IaC |
+| **Human & Experience** | 14-18 | Usability, accessibility, SEO, organizational, ethics |
+| **Process & Governance** | 19-20+ | Compliance, vendor management, risk |
+| **Economics & Dependencies** | TBD | Cost, supply chain, legacy |
+| **Specialized Domains** | TBD | ML/AI, embedded, blockchain, quantum |
+
+## Current Status
+
+| Metric | Value |
+|--------|-------|
+| Total Audits | 1,142 |
+| Categories Complete | 1-20 |
+| Categories Remaining | 21-43 |
+| Target | ~2,200 audits |
+
+## Audit File Format
+
 ```yaml
+audit:
+  id: "security-trust.authentication.oauth2-implementation"
+  name: "OAuth2 Implementation Audit"
+  tier: "expert"
+
+description:
+  what: |
+    Evaluates OAuth2 implementation for security best practices...
+  why_it_matters: |
+    Flawed OAuth2 enables account takeover and privilege escalation...
+
 signals:
   critical:
-    - evidence_indicators:
-        - "Only one person has ever resolved incidents for this system"
-        - "Team members say 'only X understands that'"
-```
+    - id: "OAUTH-CRIT-001"
+      signal: "Authorization code used without PKCE"
+      remediation: "Implement PKCE for all public clients"
+  high:
+    - id: "OAUTH-HIGH-001"
+      signal: "Token refresh without rotation"
 
----
+procedure:
+  steps:
+    - id: "1"
+      name: "Identify OAuth flows"
+      commands:
+        - "grep -r 'oauth\\|authorize' --include='*.ts'"
 
-### Pattern 2: Infrastructure/Metrics (Container Resource Limits Example)
-
-**Use for categories:**
-- Compute & Orchestration (13)
-- Network Infrastructure (14)
-- Storage Infrastructure (15)
-- Infrastructure as Code (16)
-- Performance & Efficiency (2) - metrics portions
-- Scalability & Capacity (4)
-- Cost & Economics (31)
-
-**Key adaptations:**
-```yaml
-execution:
-  automatable: "yes"  # Fully automatable
-  scope: "infrastructure"
-
-discovery:
-  kubernetes_resources:  # Or cloud resources
-    - kind: "Deployment"
-      fields_of_interest: [...]
-      
-  metrics_queries:
-    - system: "Prometheus"
-      query: "..."
-      threshold: "< 0.8"  # Quantitative!
-```
-
-**Signals use `evidence_threshold` with quantitative criteria:**
-```yaml
-signals:
-  critical:
-    - evidence_threshold: "Any pod without memory limits"
-      verification_command: "kubectl get pods -o json | jq '...'"
-      verification_expected: "0"
-```
-
----
-
-### Pattern 3: Process/Documentation (Runbook Completeness Example)
-
-**Use for categories:**
-- Documentation & Knowledge (27)
-- Testing & Quality Assurance (26)
-- Operational Excellence (25)
-- Compliance & Governance (24)
-- Configuration Management (30)
-- Developer Experience (35) - tooling portions
-
-**Key adaptations:**
-```yaml
-execution:
-  automatable: "partial"  # File existence = auto, quality = manual
-  scope: "documentation"
-
-discovery:
-  file_patterns:         # Find documents
-    - glob: "**/runbooks/*.md"
-    
-  documents_to_review:   # What to analyze
-    - type: "runbooks"
-      analysis_checklist:
-        - "Has clear title"
-        - "Includes troubleshooting"
-```
-
-**Mixed closeout — some bash, some manual:**
-```yaml
 closeout_checklist:
-  - id: "auto-check"
-    verification: "find runbooks/ -name '*.md' | wc -l"
-    expected: "> 0"
-    
-  - id: "manual-check"
-    verification: "manual"
-    verification_notes: "Reviewer confirms quality assessment completed"
+  - id: "oauth-001"
+    item: "PKCE implementation verified"
+    verification: "grep -r 'code_challenge' src/"
 ```
+
+## Design Principles
+
+### 1. Audits Have Two Components
+- **Static Framework** (this taxonomy): What to check, signals, remediation
+- **Project Grounding** (your project): PRDs, SLAs, compliance requirements
+
+### 2. Completeness Varies
+Some audits are **complete** (can run without project context):
+- SQL Injection Audit
+- TLS Configuration Audit
+
+Some audits **require discovery** first:
+- SLA Compliance Audit (needs: stated SLAs)
+- Requirements Traceability (needs: requirements docs)
+
+### 3. Cherry-Pick Per Project
+Not every project needs every audit. A healthcare SaaS might select:
+- Security & Trust (full)
+- Compliance (with HIPAA overlay)
+- Accessibility
+- Performance (subset)
+
+An embedded system might select:
+- Real-Time & Embedded (full)
+- Reliability & Resilience
+- Security (subset)
+
+## Industry Overlays
+
+Domain-specific requirements extend the core taxonomy:
+
+| Overlay | Standards | Key Concerns |
+|---------|-----------|--------------|
+| Healthcare | HIPAA, HL7, FHIR | PHI protection, clinical data |
+| Finance | SOX, PCI-DSS | Trade surveillance, regulatory reporting |
+| Defense | ITAR, NIST 800-53 | Classification, TEMPEST |
+| Automotive | ISO 26262 | Functional safety |
+
+## Repository Structure
+
+```
+.
+├── audits/                  # The audit taxonomy (1,100+ YAML files)
+│   ├── 01-security-trust/
+│   ├── 02-performance-efficiency/
+│   └── ...
+├── schema/                  # Audit file templates and schemas
+│   └── AUDIT-TEMPLATE-BLANK.yaml
+├── docs/                    # Documentation
+│   └── auditing-whitepaper.txt
+└── README.md
+```
+
+## Usage
+
+### Browse Audits
+Explore the `audits/` directory by category and subcategory.
+
+### Find Relevant Audits
+```bash
+# Find all authentication-related audits
+find audits -name "*.yaml" -path "*auth*"
+
+# Search for GDPR-related content
+grep -r "GDPR" audits/ --include="*.yaml"
+```
+
+### Integrate with AI Agents
+Load audit definitions as context for AI-powered code review, security scanning, or compliance checking.
+
+## Contributing
+
+The taxonomy targets ~2,200 audits across 43 categories. Contributions welcome for:
+- New audits in existing categories
+- Industry overlay definitions
+- Improved signals and remediation guidance
+- Tool integration references
+
+## License
+
+[TBD]
 
 ---
 
-## DO NOT Do This
-
-❌ **Don't force-fit grep patterns where they don't apply:**
-```yaml
-# BAD - Bus factor can't be grepped
-signals:
-  critical:
-    - evidence_pattern: "grep -r 'bus factor' src/"  # This is nonsense
-```
-
-❌ **Don't claim everything is automatable:**
-```yaml
-# BAD - Interviews can't be automated
-execution:
-  automatable: "yes"  # Wrong for organizational audits
-```
-
-❌ **Don't use bash verification for qualitative findings:**
-```yaml
-# BAD - Can't verify team health with bash
-closeout_checklist:
-  - verification: "test -f team-health.txt && echo PASS"  # Meaningless
-```
-
----
-
-## Choosing the Right Pattern
-
-```
-Is this about CODE or CONFIG?
-├─ YES → Is it security-focused? 
-│        ├─ YES → Use OAuth2 pattern (security signals, CWE references)
-│        └─ NO → Use Infrastructure pattern (quantitative thresholds)
-└─ NO → Is this about PEOPLE or PROCESS?
-         ├─ PEOPLE → Use Organizational pattern (interviews, qualitative)
-         └─ PROCESS → Use Documentation pattern (mixed automation)
-```
-
----
-
-## Category-to-Pattern Quick Reference
-
-| Categories | Primary Pattern | Notes |
-|------------|-----------------|-------|
-| 1. Security & Trust | OAuth2 (security code) | CWE mappings, security tooling |
-| 2. Performance & Efficiency | Infrastructure/Metrics | Quantitative thresholds |
-| 3. Reliability & Resilience | Mixed | Some code, some config |
-| 4. Scalability & Capacity | Infrastructure/Metrics | Capacity metrics |
-| 5. Observability | Infrastructure/Metrics | Monitoring queries |
-| 6. Code Quality | OAuth2 (code analysis) | Static analysis, linters |
-| 7. Architecture & Design | Mixed | Some automated, much judgment |
-| 8. Data & State | Mixed | Schema checks + design review |
-| 9. API & Integration | OAuth2 (code/config) | Contract testing |
-| 10. Messaging & Events | Infrastructure + Code | Mixed |
-| 11. Time & Scheduling | Code/Config | Time handling patterns |
-| 12. Versioning & Lifecycle | Documentation | Process-focused |
-| 13-16. Infrastructure | Infrastructure/Metrics | kubectl, cloud CLIs |
-| 17. Usability | Organizational | User research, heuristics |
-| 18. Accessibility | Mixed | Automated scans + manual review |
-| 19. SEO | Infrastructure/Metrics | Crawl data, scores |
-| 20-23. Human/Experience | Organizational | Interviews, qualitative |
-| 24-30. Process/Governance | Documentation | Mixed automation |
-| 31. Cost & Economics | Infrastructure/Metrics | Cost queries |
-| 32. Dependency & Supply Chain | Code/Config | SBOM, scanning |
-| 33. Legacy & Migration | Mixed | Assessment + code analysis |
-| 34. Business Logic | Code | Domain rule verification |
-| 35. Developer Experience | Mixed | Tooling + surveys |
-| 36. Internationalization | Code | i18n pattern checks |
-| 37. Machine Learning & AI | Mixed | Metrics + qualitative |
-| 38-40. Sensors/RT/Signal | Infrastructure | Embedded/hardware focus |
-| 41. Blockchain | Code (security) | Smart contract analysis |
-| 42. Quantum | Mixed | Novel domain |
-| 43. Metaverse/XR | Mixed | Performance + UX |
-
----
-
-## Files in This Directory
-
-```
-examples/
-├── 01-bus-factor-audit.yaml           # Organizational/Qualitative
-├── 02-container-resource-limits-audit.yaml  # Infrastructure/Metrics
-├── 03-runbook-completeness-audit.yaml      # Process/Documentation
-└── README.md                          # This file
-```
-
----
-
-*Last Updated: January 2025*
+*For the full design rationale, see [docs/auditing-whitepaper.txt](docs/auditing-whitepaper.txt)*
