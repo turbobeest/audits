@@ -2907,6 +2907,103 @@
 
 ---
 
-*Document Version: 1.0*
+## Future Add-ons (Roadmap)
+
+The following audits have been identified based on industry guides and standards that are not fully covered by the current 43-category taxonomy. These are candidates for future additions or supplementary overlays.
+
+### Identified from NSA Guides
+
+| Topic | Status | Notes |
+|-------|--------|-------|
+| Memory Safety (C/C++/Rust) | **GAP** | Buffer overflows, use-after-free, unsafe code analysis, MISRA compliance |
+| Supply Chain Security | Covered | Categories 11, 20, 32 |
+| Kubernetes Hardening | Covered | Category 13 |
+| Zero Trust Architecture | Partial | Fragmented across Categories 1, 12, 14 - needs unified audit |
+| CI/CD Security | Covered | Category 11, 25 |
+| Network/BGP Hardening | Planned | Category 14 includes BGP Configuration Audit |
+
+### Identified from CISA Guides
+
+| Topic | Status | Notes |
+|-------|--------|-------|
+| Secure by Design | **GAP** | Threat modeling, architecture-level security decisions |
+| AI Security | Partial | Category 37 covers ML security; missing adversarial robustness, prompt injection |
+
+### Identified from NIST Frameworks
+
+| Framework | Status | Notes |
+|-----------|--------|-------|
+| CSF 2.0 | Covered | Category 19/24 |
+| SP 800-53 | Covered | Referenced in compliance audits |
+| SP 800-37 (RMF) | Partial | Risk assessment exists; formal RMF process audit needed |
+| SP 800-30 | Partial | Risk assessment covered |
+| SP 800-82 (OT/ICS) | Partial | Categories 38-39 cover embedded; SCADA-specific gaps remain |
+| SP 800-207 (Zero Trust) | Partial | See NSA Zero Trust above |
+| SP 800-218 (SSDF) | **GAP** | Needs formal SSDF practice mapping (PO, PS, PW, RV) |
+
+### Identified from Classic Programming Books
+
+| Book/Topic | Status | Notes |
+|------------|--------|-------|
+| Clean Code (Martin) | Covered | Category 6 extensively |
+| Pragmatic Programmer | Partial | Principles scattered across Categories 6, 27, 35 |
+| Design Patterns (GoF) | Covered | Categories 6, 7 |
+| SICP | **GAP** | Functional programming paradigms not explicitly covered |
+| Refactoring (Fowler) | Covered | Category 6, 33 |
+
+### Identified from Code Practices
+
+| Practice | Status | Notes |
+|----------|--------|-------|
+| Optimization | Covered | Category 2 extensively |
+| DRY Principle | Covered | Category 6 (duplication audits) |
+| Code Golf | N/A | Not applicable to enterprise audits |
+| Minification | Partial | Compression covered; explicit minification audit not present |
+
+### Recommended New Audits
+
+Based on the gap analysis, the following new audits are recommended for future development:
+
+1. **Memory Safety Audit** (Category 1 or 6)
+   - Buffer overflow detection
+   - Use-after-free vulnerability analysis
+   - Unsafe Rust code review
+   - MISRA C/C++ compliance
+
+2. **Zero Trust Architecture Audit** (Category 1)
+   - Unified audit mapping to NIST SP 800-207
+   - Device posture requirements
+   - Continuous verification
+   - Micro-segmentation validation
+
+3. **Secure by Design Audit** (Category 7)
+   - CISA Secure by Design principles
+   - Threat modeling practices
+   - Security architecture decisions
+   - Defense-in-depth validation
+
+4. **SSDF Compliance Audit** (Category 24)
+   - NIST SP 800-218 formal practice mapping
+   - PO (Prepare the Organization)
+   - PS (Protect the Software)
+   - PW (Produce Well-Secured Software)
+   - RV (Respond to Vulnerabilities)
+
+5. **SCADA/ICS Security Audit** (Category 38 or 39)
+   - NIST SP 800-82 alignment
+   - OT network segmentation
+   - Industrial protocol security
+   - Safety system integrity
+
+6. **Functional Programming Practices Audit** (Category 6)
+   - Immutability patterns
+   - Pure function usage
+   - Composition over inheritance
+   - Referential transparency
+
+---
+
+*Document Version: 1.1*
 *Generated: January 2025*
+*Updated: January 2026 (Future Add-ons section)*
 *Source: Software Stack Audit Taxonomy Project*
