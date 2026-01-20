@@ -78,14 +78,8 @@
     return colors[cluster] || 'border-l-gray-500';
   }
 
-  function getTierColor(tier: string): string {
-    const colors: Record<string, string> = {
-      focused: 'bg-green-500',
-      expert: 'bg-blue-500',
-      phd: 'bg-purple-500',
-      standard: 'bg-gray-400'
-    };
-    return colors[tier] || 'bg-gray-400';
+  function getStatusColor(status: string): string {
+    return status === 'active' ? 'bg-emerald-500' : 'bg-amber-500';
   }
 </script>
 
@@ -162,7 +156,7 @@
                           onclick={() => setFilter('category', category.slug)}
                           class="w-full flex items-center gap-2 px-3 py-1 text-left text-xs hover:bg-gray-50 transition-colors group"
                         >
-                          <span class="w-1.5 h-1.5 rounded-full {getTierColor(audit.tier)}"></span>
+                          <span class="w-1.5 h-1.5 rounded-full {getStatusColor(audit.status)}"></span>
                           <span class="text-gray-600 truncate group-hover:text-gray-900">{audit.name}</span>
                           {#if audit.status === 'planned'}
                             <span class="text-[10px] text-amber-600 bg-amber-50 px-1 rounded">planned</span>
@@ -182,23 +176,30 @@
 
   <!-- Legend -->
   <div class="p-4 border-t border-gray-200 mt-4">
-    <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Tier Legend</h3>
-    <div class="grid grid-cols-2 gap-2 text-xs">
+    <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Legend</h3>
+    <div class="space-y-2 text-xs">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+        <span class="text-gray-600">Active</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+        <span class="text-gray-600">Planned</span>
+      </div>
+    </div>
+    <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2 mt-4">Automation</h3>
+    <div class="space-y-2 text-xs">
       <div class="flex items-center gap-2">
         <span class="w-2 h-2 rounded-full bg-green-500"></span>
-        <span class="text-gray-600">Focused</span>
+        <span class="text-gray-600">Fully Automated</span>
       </div>
       <div class="flex items-center gap-2">
         <span class="w-2 h-2 rounded-full bg-blue-500"></span>
-        <span class="text-gray-600">Expert</span>
+        <span class="text-gray-600">Semi-Automated</span>
       </div>
       <div class="flex items-center gap-2">
-        <span class="w-2 h-2 rounded-full bg-purple-500"></span>
-        <span class="text-gray-600">PhD</span>
-      </div>
-      <div class="flex items-center gap-2">
-        <span class="w-2 h-2 rounded-full bg-gray-400"></span>
-        <span class="text-gray-600">Standard</span>
+        <span class="w-2 h-2 rounded-full bg-orange-500"></span>
+        <span class="text-gray-600">Manual Review</span>
       </div>
     </div>
   </div>

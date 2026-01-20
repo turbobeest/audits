@@ -12,13 +12,22 @@
   }
 
   let { filterOptions }: Props = $props();
-  let expanded = $state(false);
+  let expanded = $state(true); // Start expanded by default
 
   function formatLabel(value: string): string {
     return value
-      .split('_')
+      .split(/[-_]/)
       .map(word => word.charAt(0).toUpperCase() + word.slice(1))
       .join(' ');
+  }
+
+  // Toggle boolean filter
+  function toggleBooleanFilter(key: string, currentValue: boolean | undefined) {
+    if (currentValue === true) {
+      removeFilter(key as any);
+    } else {
+      setFilter(key as any, true);
+    }
   }
 </script>
 
@@ -48,8 +57,9 @@
   </button>
 
   {#if expanded}
-    <div class="mt-4 space-y-4 animate-fade-in">
-      <!-- Quick filters row -->
+    <div class="mt-4 space-y-5 animate-fade-in">
+
+      <!-- Row 1: Status, Category, Automation -->
       <div class="flex flex-wrap gap-4">
         <!-- Status -->
         <div class="space-y-1">
@@ -61,31 +71,11 @@
               if (value) setFilter('status', value as 'active' | 'planned');
               else removeFilter('status');
             }}
-            class="block w-36 px-3 py-1.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            class="block w-32 px-3 py-1.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option value="">All</option>
-            {#each filterOptions.statuses as status}
-              <option value={status}>{formatLabel(status)}</option>
-            {/each}
-          </select>
-        </div>
-
-        <!-- Tier -->
-        <div class="space-y-1">
-          <label class="text-xs font-medium text-gray-500 uppercase">Tier</label>
-          <select
-            value={$filters.tier || ''}
-            onchange={(e) => {
-              const value = (e.target as HTMLSelectElement).value;
-              if (value) setFilter('tier', value as any);
-              else removeFilter('tier');
-            }}
-            class="block w-36 px-3 py-1.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
-            <option value="">All</option>
-            {#each filterOptions.tiers as tier}
-              <option value={tier}>{formatLabel(tier)}</option>
-            {/each}
+            <option value="active">Active</option>
+            <option value="planned">Planned</option>
           </select>
         </div>
 
@@ -99,7 +89,7 @@
               if (value) setFilter('category', value);
               else removeFilter('category');
             }}
-            class="block w-48 px-3 py-1.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            class="block w-52 px-3 py-1.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option value="">All Categories</option>
             {#each filterOptions.categories as category}
@@ -121,16 +111,16 @@
             class="block w-44 px-3 py-1.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option value="">All</option>
-            {#each filterOptions.automationLevels as level}
-              <option value={level}>{formatLabel(level)}</option>
-            {/each}
+            <option value="fully_automated">Fully Automated</option>
+            <option value="semi_automated">Semi-Automated</option>
+            <option value="human_required">Manual Review</option>
           </select>
         </div>
       </div>
 
       <!-- SDLC Phase -->
       <div class="space-y-2">
-        <label class="text-xs font-medium text-gray-500 uppercase">SDLC Phase</label>
+        <label class="text-xs font-medium text-gray-500 uppercase">When to Run (SDLC Phase)</label>
         <div class="flex flex-wrap gap-2">
           {#each SDLC_PHASES as phase}
             <button
@@ -151,6 +141,47 @@
           {/each}
         </div>
       </div>
+
+      <!-- Requirements -->
+      <div class="space-y-2">
+        <label class="text-xs font-medium text-gray-500 uppercase">Requirements (What the audit needs)</label>
+        <div class="flex flex-wrap gap-2">
+          <button
+            onclick={() => toggleBooleanFilter('requiresSourceCode', $filters.requiresSourceCode)}
+            class="px-3 py-1.5 text-xs rounded-full border transition-colors {$filters.requiresSourceCode
+              ? 'bg-slate-700 text-white border-slate-700'
+              : 'bg-white text-gray-700 border-gray-300 hover:border-slate-400'}"
+          >
+            Source Code
+          </button>
+          <button
+            onclick={() => toggleBooleanFilter('requiresRuntimeData', $filters.requiresRuntimeData)}
+            class="px-3 py-1.5 text-xs rounded-full border transition-colors {$filters.requiresRuntimeData
+              ? 'bg-slate-700 text-white border-slate-700'
+              : 'bg-white text-gray-700 border-gray-300 hover:border-slate-400'}"
+          >
+            Runtime Data
+          </button>
+          <button
+            onclick={() => toggleBooleanFilter('requiresProductionAccess', $filters.requiresProductionAccess)}
+            class="px-3 py-1.5 text-xs rounded-full border transition-colors {$filters.requiresProductionAccess
+              ? 'bg-slate-700 text-white border-slate-700'
+              : 'bg-white text-gray-700 border-gray-300 hover:border-slate-400'}"
+          >
+            Production Access
+          </button>
+          <button
+            onclick={() => toggleBooleanFilter('requiresTeamInput', $filters.requiresTeamInput)}
+            class="px-3 py-1.5 text-xs rounded-full border transition-colors {$filters.requiresTeamInput
+              ? 'bg-slate-700 text-white border-slate-700'
+              : 'bg-white text-gray-700 border-gray-300 hover:border-slate-400'}"
+          >
+            Team Input
+          </button>
+        </div>
+        <p class="text-[10px] text-gray-400">Click to filter for audits that require these resources</p>
+      </div>
+
     </div>
   {/if}
 </div>

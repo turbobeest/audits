@@ -22,9 +22,6 @@
     }
 
     // Apply filters
-    if ($filters.tier) {
-      results = results.filter(a => a.tier === $filters.tier);
-    }
     if ($filters.status) {
       results = results.filter(a => a.status === $filters.status);
     }
@@ -43,6 +40,19 @@
       } else if ($filters.automationLevel === 'human_required') {
         results = results.filter(a => a.human_required);
       }
+    }
+    // Requirements filters
+    if ($filters.requiresSourceCode) {
+      results = results.filter(a => a.requires_source_code);
+    }
+    if ($filters.requiresRuntimeData) {
+      results = results.filter(a => a.requires_runtime_data);
+    }
+    if ($filters.requiresProductionAccess) {
+      results = results.filter(a => a.requires_production_access);
+    }
+    if ($filters.requiresTeamInput) {
+      results = results.filter(a => a.requires_team_input);
     }
 
     return results;
