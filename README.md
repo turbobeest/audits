@@ -4,7 +4,9 @@ A comprehensive, multi-dimensional taxonomy of software stack audits designed as
 
 ## What This Is
 
-This repository contains **1,100+ structured audit definitions** covering every meaningful dimension of software quality: security, performance, reliability, accessibility, compliance, ethics, and more.
+This repository contains **1,245 structured audit definitions** (and growing) covering every meaningful dimension of software quality: security, performance, reliability, accessibility, compliance, ethics, and more.
+
+**[Browse the Audit Catalog](https://turbobeest.github.io/audits/)** - Interactive web UI for exploring and filtering audits.
 
 Each audit is a YAML file that defines:
 - **What to look for** (signals at critical/high/medium/low severity)
@@ -35,7 +37,11 @@ audits/
 ├── ...
 ├── 19-compliance-legal/         # GDPR, SOC2, HIPAA, PCI-DSS
 ├── 20-vendor-third-party/       # Supply chain, SLAs, vendor risk
-└── [21-43 in progress]
+├── 21-ethical-societal/         # Bias, fairness, environmental impact
+├── 22-gamification-behavioral/  # Engagement ethics, dark patterns
+├── 23-emotional-design-trust/   # Trust signals, social proof, credibility (partial)
+├── 24-compliance-governance/    # Regulatory compliance, data privacy (partial)
+└── [25-43 in progress]
 ```
 
 ### Categories by Cluster
@@ -53,10 +59,11 @@ audits/
 
 | Metric | Value |
 |--------|-------|
-| Total Audits | 1,142 |
-| Categories Complete | 1-20 |
-| Categories Remaining | 21-43 |
-| Target | ~2,200 audits |
+| Total Audits | 1,245 |
+| Categories Complete | 1-22 |
+| Categories In Progress | 23-24 |
+| Categories Remaining | 25-43 |
+| Target | ~2,080 audits |
 
 ## Audit File Format
 
@@ -136,10 +143,13 @@ Domain-specific requirements extend the core taxonomy:
 
 ```
 .
-├── audits/                  # The audit taxonomy (1,100+ YAML files)
+├── audits/                  # The audit taxonomy (1,245 YAML files)
 │   ├── 01-security-trust/
 │   ├── 02-performance-efficiency/
 │   └── ...
+├── audit-browser/           # SvelteKit web UI for browsing audits
+│   ├── src/
+│   └── static/data/
 ├── schema/                  # Audit file templates and schemas
 │   └── AUDIT-TEMPLATE-BLANK.yaml
 ├── docs/                    # Documentation
