@@ -112,7 +112,7 @@
           >
             <option value="">All</option>
             <option value="fully_automated">Deterministic</option>
-            <option value="judgment_based">Judgment-based</option>
+            <option value="non_deterministic">Non-deterministic</option>
           </select>
         </div>
       </div>

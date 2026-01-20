@@ -23,7 +23,7 @@
 
   // Calculate derived stats
   let deterministic = $derived(() => stats.byAutomation.fullyAutomated);
-  let judgmentBased = $derived(() => stats.byAutomation.semiAutomated + stats.byAutomation.humanRequired);
+  let nonDeterministic = $derived(() => stats.byAutomation.semiAutomated + stats.byAutomation.humanRequired);
   let activePercent = $derived(() => Math.round((stats.active / stats.total) * 100));
 </script>
 
@@ -58,10 +58,10 @@
     <div class="text-sm text-gray-500">Deterministic</div>
   </div>
 
-  <!-- Judgment-based -->
+  <!-- Non-deterministic -->
   <div class="bg-white rounded-lg border border-gray-200 p-4">
-    <div class="text-2xl font-bold text-amber-600">{judgmentBased().toLocaleString()}</div>
-    <div class="text-sm text-gray-500">Judgment-based</div>
+    <div class="text-2xl font-bold text-amber-600">{nonDeterministic().toLocaleString()}</div>
+    <div class="text-sm text-gray-500">Non-deterministic</div>
   </div>
 </div>
 
@@ -70,7 +70,7 @@
   <h3 class="text-sm font-medium text-gray-700 mb-2">Audit Type Breakdown</h3>
   <p class="text-xs text-gray-500 mb-3">
     <strong>Deterministic</strong> audits have objective pass/fail criteria.
-    <strong>Judgment-based</strong> audits require interpretation — review findings critically.
+    <strong>Non-deterministic</strong> audits require interpretation — review findings critically.
   </p>
 
   <!-- Progress bar -->
@@ -82,8 +82,8 @@
     ></div>
     <div
       class="bg-amber-500 h-full"
-      style="width: {(judgmentBased() / stats.total) * 100}%"
-      title="Judgment-based: {judgmentBased()}"
+      style="width: {(nonDeterministic() / stats.total) * 100}%"
+      title="Non-deterministic: {nonDeterministic()}"
     ></div>
   </div>
 
@@ -94,7 +94,7 @@
     </div>
     <div class="flex items-center gap-2">
       <span class="w-3 h-3 rounded-full bg-amber-500"></span>
-      <span class="text-gray-600">Judgment-based: {judgmentBased().toLocaleString()} ({Math.round((judgmentBased() / stats.total) * 100)}%)</span>
+      <span class="text-gray-600">Non-deterministic: {nonDeterministic().toLocaleString()} ({Math.round((nonDeterministic() / stats.total) * 100)}%)</span>
     </div>
   </div>
 </div>

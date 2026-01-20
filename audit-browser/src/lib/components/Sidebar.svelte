@@ -195,7 +195,7 @@
       </div>
       <div class="flex items-center gap-2">
         <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-        <span class="text-gray-600">Judgment-based</span>
+        <span class="text-gray-600">Non-deterministic</span>
       </div>
     </div>
   </div>

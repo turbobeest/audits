@@ -21,7 +21,8 @@ const config = {
       base: isStatic ? '/audits' : ''
     },
     prerender: {
-      entries: isStatic ? ['*'] : []
+      entries: isStatic ? ['/'] : [],
+      handleHttpError: 'warn'
     }
   }
 };

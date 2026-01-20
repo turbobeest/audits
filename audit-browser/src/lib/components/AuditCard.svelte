@@ -16,7 +16,7 @@
     });
   });
 
-  // Get audit type - deterministic vs judgment-based
+  // Get audit type - deterministic vs non-deterministic
   let auditTypeInfo = $derived(() => {
     if (audit.fully_automated) {
       return {
@@ -25,9 +25,9 @@
         tooltip: 'Objective pass/fail criteria - results are reliable'
       };
     }
-    // semi_automated or human_required = judgment-based
+    // semi_automated or human_required = non-deterministic
     return {
-      label: 'Judgment-based',
+      label: 'Non-deterministic',
       color: 'text-amber-700 bg-amber-100',
       tooltip: 'Requires interpretation - review findings critically'
     };

@@ -36,8 +36,8 @@
       if ($filters.automationLevel === 'fully_automated') {
         // Deterministic - objective pass/fail criteria
         results = results.filter(a => a.fully_automated);
-      } else if ($filters.automationLevel === 'judgment_based') {
-        // Judgment-based - requires interpretation
+      } else if ($filters.automationLevel === 'non_deterministic') {
+        // Non-deterministic - requires interpretation
         results = results.filter(a => a.semi_automated || a.human_required);
       }
     }
