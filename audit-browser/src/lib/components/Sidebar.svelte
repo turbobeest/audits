@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import type { NavCategory } from '$lib/types';
   import { toggleCategory, toggleSubcategory, expandedCategories, expandedSubcategories, setFilter } from '$lib/stores';
   import { CATEGORY_CLUSTERS } from '$lib/types';
@@ -8,6 +9,53 @@
   }
 
   let { navigation }: Props = $props();
+
+  // Resizable sidebar state
+  const MIN_WIDTH = 200;
+  const MAX_WIDTH = 600;
+  const DEFAULT_WIDTH = 320;
+
+  let sidebarWidth = $state(DEFAULT_WIDTH);
+  let isResizing = $state(false);
+
+  onMount(() => {
+    // Load saved width from localStorage
+    const saved = localStorage.getItem('sidebar-width');
+    if (saved) {
+      const width = parseInt(saved, 10);
+      if (width >= MIN_WIDTH && width <= MAX_WIDTH) {
+        sidebarWidth = width;
+      }
+    }
+  });
+
+  function startResize(e: MouseEvent) {
+    isResizing = true;
+    e.preventDefault();
+
+    const startX = e.clientX;
+    const startWidth = sidebarWidth;
+
+    function onMouseMove(e: MouseEvent) {
+      const delta = e.clientX - startX;
+      const newWidth = Math.min(MAX_WIDTH, Math.max(MIN_WIDTH, startWidth + delta));
+      sidebarWidth = newWidth;
+    }
+
+    function onMouseUp() {
+      isResizing = false;
+      localStorage.setItem('sidebar-width', sidebarWidth.toString());
+      document.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('mouseup', onMouseUp);
+      document.body.style.cursor = '';
+      document.body.style.userSelect = '';
+    }
+
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
+    document.body.style.cursor = 'col-resize';
+    document.body.style.userSelect = 'none';
+  }
 
   function getCategoryCluster(categoryNumber: number): string {
     for (const [name, config] of Object.entries(CATEGORY_CLUSTERS)) {
@@ -41,7 +89,20 @@
   }
 </script>
 
-<aside class="w-80 bg-white border-r border-gray-200 overflow-y-auto h-[calc(100vh-73px)] sticky top-[73px]">
+<aside
+  class="bg-white border-r border-gray-200 overflow-y-auto h-[calc(100vh-73px)] sticky top-[73px] relative flex-shrink-0"
+  style="width: {sidebarWidth}px"
+>
+  <!-- Resize handle -->
+  <div
+    class="absolute top-0 right-0 w-1 h-full cursor-col-resize hover:bg-blue-400 transition-colors z-10 {isResizing ? 'bg-blue-500' : 'bg-transparent hover:bg-blue-300'}"
+    onmousedown={startResize}
+    role="separator"
+    aria-orientation="vertical"
+    aria-label="Resize sidebar"
+    tabindex="0"
+  ></div>
+
   <div class="p-4">
     <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Categories</h2>
 
