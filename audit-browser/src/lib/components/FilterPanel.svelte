@@ -97,24 +97,6 @@
             {/each}
           </select>
         </div>
-
-        <!-- Audit Type -->
-        <div class="space-y-1">
-          <label class="text-xs font-medium text-slate-400 uppercase">Audit Type</label>
-          <select
-            value={$filters.automationLevel || ''}
-            onchange={(e) => {
-              const value = (e.target as HTMLSelectElement).value;
-              if (value) setFilter('automationLevel', value as any);
-              else removeFilter('automationLevel');
-            }}
-            class="block w-44 px-3 py-1.5 text-sm border border-slate-600 rounded-md bg-slate-700 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
-            <option value="">All</option>
-            <option value="fully_automated">Deterministic</option>
-            <option value="non_deterministic">Non-deterministic</option>
-          </select>
-        </div>
       </div>
 
       <!-- SDLC Phase -->

@@ -32,15 +32,6 @@
       const phase = $filters.sdlcPhase as keyof typeof results[0];
       results = results.filter(a => a[phase] === true);
     }
-    if ($filters.automationLevel) {
-      if ($filters.automationLevel === 'fully_automated') {
-        // Deterministic - objective pass/fail criteria
-        results = results.filter(a => a.fully_automated);
-      } else if ($filters.automationLevel === 'non_deterministic') {
-        // Non-deterministic - requires interpretation
-        results = results.filter(a => a.semi_automated || a.human_required);
-      }
-    }
     // Requirements filters
     if ($filters.requiresSourceCode) {
       results = results.filter(a => a.requires_source_code);
