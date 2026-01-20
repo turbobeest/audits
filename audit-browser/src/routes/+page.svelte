@@ -55,13 +55,13 @@
 </script>
 
 <svelte:head>
-  <title>Audit Browser - Software Stack Audits</title>
+  <title>Audit Manager - Software Stack Audits</title>
 </svelte:head>
 
 <div class="space-y-6">
   <div class="flex flex-col lg:flex-row gap-4 items-start lg:items-center justify-between">
     <div>
-      <h1 class="text-3xl font-bold text-slate-100">Audit Browser</h1>
+      <h1 class="text-3xl font-bold text-slate-100">Audit Manager</h1>
       <p class="text-slate-400 mt-1">Browse and filter {data.audits.length} software stack audits</p>
     </div>
     <SearchBar />

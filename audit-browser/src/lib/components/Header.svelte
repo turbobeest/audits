@@ -34,7 +34,7 @@
           </svg>
         </div>
         <div>
-          <h1 class="text-xl font-bold text-slate-100">Audit Browser</h1>
+          <h1 class="text-xl font-bold text-slate-100">Audit Manager</h1>
           <p class="text-xs text-slate-400">Software Stack Audit Taxonomy</p>
         </div>
       </a>
