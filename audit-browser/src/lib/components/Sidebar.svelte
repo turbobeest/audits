@@ -187,19 +187,15 @@
         <span class="text-gray-600">Planned</span>
       </div>
     </div>
-    <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2 mt-4">Automation</h3>
+    <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2 mt-4">Audit Type</h3>
     <div class="space-y-2 text-xs">
       <div class="flex items-center gap-2">
         <span class="w-2 h-2 rounded-full bg-green-500"></span>
-        <span class="text-gray-600">Fully Automated</span>
+        <span class="text-gray-600">Deterministic</span>
       </div>
       <div class="flex items-center gap-2">
-        <span class="w-2 h-2 rounded-full bg-blue-500"></span>
-        <span class="text-gray-600">Semi-Automated</span>
-      </div>
-      <div class="flex items-center gap-2">
-        <span class="w-2 h-2 rounded-full bg-orange-500"></span>
-        <span class="text-gray-600">Manual Review</span>
+        <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+        <span class="text-gray-600">Judgment-based</span>
       </div>
     </div>
   </div>

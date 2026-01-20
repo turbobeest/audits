@@ -16,12 +16,21 @@
     });
   });
 
-  // Get automation info
-  let automationInfo = $derived(() => {
-    if (audit.fully_automated) return { label: 'Fully Automated', color: 'text-green-700 bg-green-100', icon: '⚡' };
-    if (audit.semi_automated) return { label: 'Semi-Automated', color: 'text-blue-700 bg-blue-100', icon: '🔧' };
-    if (audit.human_required) return { label: 'Manual Review', color: 'text-orange-700 bg-orange-100', icon: '👤' };
-    return { label: 'Unknown', color: 'text-gray-600 bg-gray-100', icon: '?' };
+  // Get audit type - deterministic vs judgment-based
+  let auditTypeInfo = $derived(() => {
+    if (audit.fully_automated) {
+      return {
+        label: 'Deterministic',
+        color: 'text-green-700 bg-green-100',
+        tooltip: 'Objective pass/fail criteria - results are reliable'
+      };
+    }
+    // semi_automated or human_required = judgment-based
+    return {
+      label: 'Judgment-based',
+      color: 'text-amber-700 bg-amber-100',
+      tooltip: 'Requires interpretation - review findings critically'
+    };
   });
 
   // Get phase restriction info
@@ -60,10 +69,13 @@
     <span class="capitalize">{audit.subcategory.replace(/-/g, ' ')}</span>
   </div>
 
-  <!-- Automation & Phase Restriction -->
+  <!-- Audit Type & Phase Restriction -->
   <div class="flex flex-wrap gap-1.5 mb-3">
-    <span class="text-xs px-2 py-0.5 rounded {automationInfo().color}">
-      {automationInfo().label}
+    <span
+      class="text-xs px-2 py-0.5 rounded {auditTypeInfo().color}"
+      title={auditTypeInfo().tooltip}
+    >
+      {auditTypeInfo().label}
     </span>
     {#if phaseRestriction()}
       <span class="text-xs px-2 py-0.5 rounded {phaseRestriction().color}">

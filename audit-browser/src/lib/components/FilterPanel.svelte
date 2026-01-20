@@ -98,9 +98,9 @@
           </select>
         </div>
 
-        <!-- Automation Level -->
+        <!-- Audit Type -->
         <div class="space-y-1">
-          <label class="text-xs font-medium text-gray-500 uppercase">Automation</label>
+          <label class="text-xs font-medium text-gray-500 uppercase">Audit Type</label>
           <select
             value={$filters.automationLevel || ''}
             onchange={(e) => {
@@ -111,9 +111,8 @@
             class="block w-44 px-3 py-1.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option value="">All</option>
-            <option value="fully_automated">Fully Automated</option>
-            <option value="semi_automated">Semi-Automated</option>
-            <option value="human_required">Manual Review</option>
+            <option value="fully_automated">Deterministic</option>
+            <option value="judgment_based">Judgment-based</option>
           </select>
         </div>
       </div>

@@ -21,8 +21,9 @@
 
   let { stats }: Props = $props();
 
-  // Calculate percentages
-  let automatedPercent = $derived(() => Math.round((stats.byAutomation.fullyAutomated / stats.total) * 100));
+  // Calculate derived stats
+  let deterministic = $derived(() => stats.byAutomation.fullyAutomated);
+  let judgmentBased = $derived(() => stats.byAutomation.semiAutomated + stats.byAutomation.humanRequired);
   let activePercent = $derived(() => Math.round((stats.active / stats.total) * 100));
 </script>
 
@@ -51,54 +52,49 @@
     <div class="text-sm text-gray-500">Categories</div>
   </div>
 
-  <!-- Fully Automated -->
+  <!-- Deterministic -->
   <div class="bg-white rounded-lg border border-gray-200 p-4">
-    <div class="text-2xl font-bold text-green-600">{stats.byAutomation.fullyAutomated.toLocaleString()}</div>
-    <div class="text-sm text-gray-500">Fully Automated</div>
+    <div class="text-2xl font-bold text-green-600">{deterministic().toLocaleString()}</div>
+    <div class="text-sm text-gray-500">Deterministic</div>
   </div>
 
-  <!-- Manual Review -->
+  <!-- Judgment-based -->
   <div class="bg-white rounded-lg border border-gray-200 p-4">
-    <div class="text-2xl font-bold text-orange-600">{stats.byAutomation.humanRequired.toLocaleString()}</div>
-    <div class="text-sm text-gray-500">Manual Review</div>
+    <div class="text-2xl font-bold text-amber-600">{judgmentBased().toLocaleString()}</div>
+    <div class="text-sm text-gray-500">Judgment-based</div>
   </div>
 </div>
 
-<!-- Automation breakdown -->
+<!-- Audit Type breakdown -->
 <div class="mt-4 bg-white rounded-lg border border-gray-200 p-4">
-  <h3 class="text-sm font-medium text-gray-700 mb-3">Automation Level Breakdown</h3>
+  <h3 class="text-sm font-medium text-gray-700 mb-2">Audit Type Breakdown</h3>
+  <p class="text-xs text-gray-500 mb-3">
+    <strong>Deterministic</strong> audits have objective pass/fail criteria.
+    <strong>Judgment-based</strong> audits require interpretation — review findings critically.
+  </p>
 
   <!-- Progress bar -->
   <div class="h-3 rounded-full bg-gray-100 overflow-hidden flex mb-3">
     <div
       class="bg-green-500 h-full"
-      style="width: {(stats.byAutomation.fullyAutomated / stats.total) * 100}%"
-      title="Fully Automated: {stats.byAutomation.fullyAutomated}"
+      style="width: {(deterministic() / stats.total) * 100}%"
+      title="Deterministic: {deterministic()}"
     ></div>
     <div
-      class="bg-blue-500 h-full"
-      style="width: {(stats.byAutomation.semiAutomated / stats.total) * 100}%"
-      title="Semi-Automated: {stats.byAutomation.semiAutomated}"
-    ></div>
-    <div
-      class="bg-orange-500 h-full"
-      style="width: {(stats.byAutomation.humanRequired / stats.total) * 100}%"
-      title="Manual Review: {stats.byAutomation.humanRequired}"
+      class="bg-amber-500 h-full"
+      style="width: {(judgmentBased() / stats.total) * 100}%"
+      title="Judgment-based: {judgmentBased()}"
     ></div>
   </div>
 
-  <div class="flex flex-wrap gap-4 text-sm">
+  <div class="flex flex-wrap gap-6 text-sm">
     <div class="flex items-center gap-2">
       <span class="w-3 h-3 rounded-full bg-green-500"></span>
-      <span class="text-gray-600">Fully Automated: {stats.byAutomation.fullyAutomated.toLocaleString()}</span>
+      <span class="text-gray-600">Deterministic: {deterministic().toLocaleString()} ({Math.round((deterministic() / stats.total) * 100)}%)</span>
     </div>
     <div class="flex items-center gap-2">
-      <span class="w-3 h-3 rounded-full bg-blue-500"></span>
-      <span class="text-gray-600">Semi-Automated: {stats.byAutomation.semiAutomated.toLocaleString()}</span>
-    </div>
-    <div class="flex items-center gap-2">
-      <span class="w-3 h-3 rounded-full bg-orange-500"></span>
-      <span class="text-gray-600">Manual Review: {stats.byAutomation.humanRequired.toLocaleString()}</span>
+      <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+      <span class="text-gray-600">Judgment-based: {judgmentBased().toLocaleString()} ({Math.round((judgmentBased() / stats.total) * 100)}%)</span>
     </div>
   </div>
 </div>
