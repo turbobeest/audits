@@ -23,11 +23,11 @@
 </script>
 
 <div class="bg-white rounded-lg border border-gray-200 p-4">
-  <div class="flex items-center justify-between">
-    <button
-      onclick={() => expanded = !expanded}
-      class="flex items-center gap-2 text-sm font-medium text-gray-700"
-    >
+  <button
+    onclick={() => expanded = !expanded}
+    class="w-full flex items-center justify-between cursor-pointer"
+  >
+    <div class="flex items-center gap-2 text-sm font-medium text-gray-700">
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
       </svg>
@@ -35,7 +35,7 @@
       {#if $hasActiveFilters}
         <span class="bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded-full">{$activeFiltersCount}</span>
       {/if}
-    </button>
+    </div>
 
     <svg
       class="w-5 h-5 text-gray-400 transition-transform {expanded ? 'rotate-180' : ''}"
@@ -45,7 +45,7 @@
     >
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
     </svg>
-  </div>
+  </button>
 
   {#if expanded}
     <div class="mt-4 space-y-4 animate-fade-in">
