@@ -1,3 +1,8 @@
+
+![audits](https://github.com/user-attachments/assets/bf757b2a-779e-43ef-b35a-d2d9f7a48f43)
+
+
+
 # Software Stack Audit Taxonomy
 
 A comprehensive, multi-dimensional taxonomy of software stack audits designed as knowledge grounding for AI-powered audit agents.
