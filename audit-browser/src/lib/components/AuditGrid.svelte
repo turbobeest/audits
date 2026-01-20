@@ -4,9 +4,10 @@
 
   interface Props {
     audits: AuditInventoryRow[];
+    onselect?: (audit: AuditInventoryRow) => void;
   }
 
-  let { audits }: Props = $props();
+  let { audits, onselect }: Props = $props();
 
   // Group audits by category for better organization
   let groupedAudits = $derived(() => {
@@ -45,7 +46,7 @@
           </h3>
           <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
             {#each categoryAudits as audit (audit.audit_id)}
-              <AuditCard {audit} />
+              <AuditCard {audit} onclick={() => onselect?.(audit)} />
             {/each}
           </div>
         </div>
@@ -54,7 +55,7 @@
   {:else}
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
       {#each audits as audit (audit.audit_id)}
-        <AuditCard {audit} />
+        <AuditCard {audit} onclick={() => onselect?.(audit)} />
       {/each}
     </div>
   {/if}

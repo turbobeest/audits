@@ -3,9 +3,13 @@
   import FilterPanel from '$lib/components/FilterPanel.svelte';
   import AuditGrid from '$lib/components/AuditGrid.svelte';
   import StatsCards from '$lib/components/StatsCards.svelte';
+  import AuditModal from '$lib/components/AuditModal.svelte';
   import { searchQuery, filters, hasActiveFilters, clearFilters } from '$lib/stores';
+  import type { AuditInventoryRow } from '$lib/types';
 
   let { data } = $props();
+
+  let selectedAudit = $state<AuditInventoryRow | null>(null);
 
   let filteredAudits = $derived(() => {
     let results = data.audits;
@@ -79,5 +83,7 @@
     </div>
   {/if}
 
-  <AuditGrid audits={filteredAudits()} />
+  <AuditGrid audits={filteredAudits()} onselect={(audit) => selectedAudit = audit} />
 </div>
+
+<AuditModal audit={selectedAudit} onclose={() => selectedAudit = null} />

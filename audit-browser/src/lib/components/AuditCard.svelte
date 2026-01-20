@@ -4,9 +4,10 @@
 
   interface Props {
     audit: AuditInventoryRow;
+    onclick?: () => void;
   }
 
-  let { audit }: Props = $props();
+  let { audit, onclick }: Props = $props();
 
   // GitHub raw file URL base
   const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/turbobeest/audits/main';
@@ -131,7 +132,11 @@ _Generated from [Software Stack Audit Taxonomy](https://turbobeest.github.io/aud
   });
 </script>
 
-<div class="bg-slate-800 rounded-lg border border-slate-700 p-4 hover:border-slate-600 transition-colors">
+<!-- svelte-ignore a11y_click_events_have_key_events a11y_no_static_element_interactions -->
+<div
+  class="bg-slate-800 rounded-lg border border-slate-700 p-4 hover:border-blue-500 transition-colors cursor-pointer"
+  onclick={onclick}
+>
   <!-- Header -->
   <div class="flex items-start justify-between gap-2 mb-2">
     <h3 class="font-medium text-slate-100 leading-tight">{audit.audit_name}</h3>
@@ -139,8 +144,9 @@ _Generated from [Software Stack Audit Taxonomy](https://turbobeest.github.io/aud
       <span class="text-xs px-2 py-0.5 rounded-full {audit.status === 'active' ? 'bg-emerald-900/50 text-emerald-400' : 'bg-amber-900/50 text-amber-400'}">
         {audit.status}
       </span>
+      <!-- svelte-ignore a11y_click_events_have_key_events a11y_no_static_element_interactions -->
       <button
-        onclick={downloadMarkdown}
+        onclick={(e) => { e.stopPropagation(); downloadMarkdown(); }}
         class="p-1 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition-colors"
         title="Export as Markdown"
       >
