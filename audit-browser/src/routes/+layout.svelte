@@ -7,7 +7,7 @@
   let { children, data } = $props();
 </script>
 
-<div class="min-h-screen flex flex-col">
+<div class="min-h-screen flex flex-col bg-slate-900">
   <Header stats={data.stats} />
 
   <div class="flex flex-1">

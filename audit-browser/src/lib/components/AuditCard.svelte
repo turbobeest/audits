@@ -21,23 +21,23 @@
     if (audit.fully_automated) {
       return {
         label: 'Deterministic',
-        color: 'text-green-700 bg-green-100',
+        color: 'text-green-400 bg-green-900/50',
         tooltip: 'Objective pass/fail criteria - results are reliable'
       };
     }
     // semi_automated or human_required = non-deterministic
     return {
       label: 'Non-deterministic',
-      color: 'text-amber-700 bg-amber-100',
+      color: 'text-amber-400 bg-amber-900/50',
       tooltip: 'Requires interpretation - review findings critically'
     };
   });
 
   // Get phase restriction info
   let phaseRestriction = $derived(() => {
-    if (audit.pre_production_only) return { label: 'Pre-Production Only', color: 'text-purple-700 bg-purple-100' };
-    if (audit.production_only) return { label: 'Production Only', color: 'text-red-700 bg-red-100' };
-    if (audit.any_phase) return { label: 'Any Phase', color: 'text-gray-600 bg-gray-100' };
+    if (audit.pre_production_only) return { label: 'Pre-Production Only', color: 'text-purple-400 bg-purple-900/50' };
+    if (audit.production_only) return { label: 'Production Only', color: 'text-red-400 bg-red-900/50' };
+    if (audit.any_phase) return { label: 'Any Phase', color: 'text-slate-400 bg-slate-700' };
     return null;
   });
 
@@ -53,19 +53,19 @@
   });
 </script>
 
-<div class="bg-white rounded-lg border border-gray-200 p-4 hover:shadow-md transition-shadow">
+<div class="bg-slate-800 rounded-lg border border-slate-700 p-4 hover:border-slate-600 transition-colors">
   <!-- Header -->
   <div class="flex items-start justify-between gap-2 mb-2">
-    <h3 class="font-medium text-gray-900 leading-tight">{audit.audit_name}</h3>
-    <span class="text-xs px-2 py-0.5 rounded-full shrink-0 {audit.status === 'active' ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'}">
+    <h3 class="font-medium text-slate-100 leading-tight">{audit.audit_name}</h3>
+    <span class="text-xs px-2 py-0.5 rounded-full shrink-0 {audit.status === 'active' ? 'bg-emerald-900/50 text-emerald-400' : 'bg-amber-900/50 text-amber-400'}">
       {audit.status}
     </span>
   </div>
 
   <!-- Category breadcrumb -->
-  <div class="text-xs text-gray-500 mb-3 flex items-center gap-1">
+  <div class="text-xs text-slate-400 mb-3 flex items-center gap-1">
     <span class="capitalize">{audit.category.replace(/-/g, ' ')}</span>
-    <span class="text-gray-300">›</span>
+    <span class="text-slate-600">›</span>
     <span class="capitalize">{audit.subcategory.replace(/-/g, ' ')}</span>
   </div>
 
@@ -87,10 +87,10 @@
   <!-- Requirements -->
   {#if requirementsList().length > 0}
     <div class="mb-3">
-      <div class="text-[10px] text-gray-400 uppercase mb-1">Requires</div>
+      <div class="text-[10px] text-slate-500 uppercase mb-1">Requires</div>
       <div class="flex flex-wrap gap-1">
         {#each requirementsList() as req}
-          <span class="text-[11px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-600">
+          <span class="text-[11px] px-1.5 py-0.5 rounded bg-slate-700 text-slate-300">
             {req.label}
           </span>
         {/each}
@@ -101,17 +101,17 @@
   <!-- SDLC Phases -->
   {#if activePhases().length > 0}
     <div>
-      <div class="text-[10px] text-gray-400 uppercase mb-1">SDLC Phases</div>
+      <div class="text-[10px] text-slate-500 uppercase mb-1">SDLC Phases</div>
       <div class="flex gap-0.5" title={activePhases().map(p => p.label).join(', ')}>
         {#each SDLC_PHASES as phase}
           {@const isActive = activePhases().some(p => p.id === phase.id)}
           <div
-            class="w-2 h-2 rounded-sm {isActive ? 'bg-blue-500' : 'bg-gray-200'}"
+            class="w-2 h-2 rounded-sm {isActive ? 'bg-blue-500' : 'bg-slate-600'}"
             title={phase.label}
           ></div>
         {/each}
       </div>
-      <div class="text-[10px] text-gray-400 mt-1">
+      <div class="text-[10px] text-slate-500 mt-1">
         {activePhases().map(p => p.label).join(' → ')}
       </div>
     </div>

@@ -84,7 +84,7 @@
 </script>
 
 <aside
-  class="bg-white border-r border-gray-200 overflow-y-auto h-[calc(100vh-73px)] sticky top-[73px] relative flex-shrink-0"
+  class="bg-slate-800 border-r border-slate-700 overflow-y-auto h-[calc(100vh-73px)] sticky top-[73px] relative flex-shrink-0"
   style="width: {sidebarWidth}px"
 >
   <!-- Resize handle -->
@@ -98,7 +98,7 @@
   ></div>
 
   <div class="p-4">
-    <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Categories</h2>
+    <h2 class="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-3">Categories</h2>
 
     <nav class="space-y-1">
       {#each navigation as category}
@@ -108,16 +108,16 @@
         <div class="border-l-4 {clusterColor}">
           <button
             onclick={() => toggleCategory(category.id)}
-            class="w-full flex items-center justify-between px-3 py-2 text-left hover:bg-gray-50 transition-colors"
+            class="w-full flex items-center justify-between px-3 py-2 text-left hover:bg-slate-700 transition-colors"
           >
             <div class="flex items-center gap-2 min-w-0">
-              <span class="text-xs font-mono text-gray-400">{category.number}.</span>
-              <span class="font-medium text-gray-900 truncate">{category.title}</span>
+              <span class="text-xs font-mono text-slate-500">{category.number}.</span>
+              <span class="font-medium text-slate-200 truncate">{category.title}</span>
             </div>
             <div class="flex items-center gap-2 shrink-0">
-              <span class="text-xs text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded">{category.auditCount}</span>
+              <span class="text-xs text-slate-400 bg-slate-700 px-1.5 py-0.5 rounded">{category.auditCount}</span>
               <svg
-                class="w-4 h-4 text-gray-400 transition-transform {$expandedCategories.has(category.id) ? 'rotate-90' : ''}"
+                class="w-4 h-4 text-slate-500 transition-transform {$expandedCategories.has(category.id) ? 'rotate-90' : ''}"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -128,18 +128,18 @@
           </button>
 
           {#if $expandedCategories.has(category.id)}
-            <div class="ml-4 border-l border-gray-200">
+            <div class="ml-4 border-l border-slate-600">
               {#each category.subcategories as subcategory}
                 <div>
                   <button
                     onclick={() => toggleSubcategory(subcategory.id)}
-                    class="w-full flex items-center justify-between px-3 py-1.5 text-left text-sm hover:bg-gray-50 transition-colors"
+                    class="w-full flex items-center justify-between px-3 py-1.5 text-left text-sm hover:bg-slate-700 transition-colors"
                   >
-                    <span class="text-gray-700 truncate">{subcategory.title}</span>
+                    <span class="text-slate-300 truncate">{subcategory.title}</span>
                     <div class="flex items-center gap-2 shrink-0">
-                      <span class="text-xs text-gray-400">{subcategory.audits.length}</span>
+                      <span class="text-xs text-slate-500">{subcategory.audits.length}</span>
                       <svg
-                        class="w-3 h-3 text-gray-400 transition-transform {$expandedSubcategories.has(subcategory.id) ? 'rotate-90' : ''}"
+                        class="w-3 h-3 text-slate-500 transition-transform {$expandedSubcategories.has(subcategory.id) ? 'rotate-90' : ''}"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -154,12 +154,12 @@
                       {#each subcategory.audits as audit}
                         <button
                           onclick={() => setFilter('category', category.slug)}
-                          class="w-full flex items-center gap-2 px-3 py-1 text-left text-xs hover:bg-gray-50 transition-colors group"
+                          class="w-full flex items-center gap-2 px-3 py-1 text-left text-xs hover:bg-slate-700 transition-colors group"
                         >
                           <span class="w-1.5 h-1.5 rounded-full {getStatusColor(audit.status)}"></span>
-                          <span class="text-gray-600 truncate group-hover:text-gray-900">{audit.name}</span>
+                          <span class="text-slate-400 truncate group-hover:text-slate-200">{audit.name}</span>
                           {#if audit.status === 'planned'}
-                            <span class="text-[10px] text-amber-600 bg-amber-50 px-1 rounded">planned</span>
+                            <span class="text-[10px] text-amber-400 bg-amber-900/50 px-1 rounded">planned</span>
                           {/if}
                         </button>
                       {/each}
@@ -175,27 +175,27 @@
   </div>
 
   <!-- Legend -->
-  <div class="p-4 border-t border-gray-200 mt-4">
-    <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Legend</h3>
+  <div class="p-4 border-t border-slate-700 mt-4">
+    <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Legend</h3>
     <div class="space-y-2 text-xs">
       <div class="flex items-center gap-2">
         <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-        <span class="text-gray-600">Active</span>
+        <span class="text-slate-400">Active</span>
       </div>
       <div class="flex items-center gap-2">
         <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-        <span class="text-gray-600">Planned</span>
+        <span class="text-slate-400">Planned</span>
       </div>
     </div>
-    <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2 mt-4">Audit Type</h3>
+    <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 mt-4">Audit Type</h3>
     <div class="space-y-2 text-xs">
       <div class="flex items-center gap-2">
         <span class="w-2 h-2 rounded-full bg-green-500"></span>
-        <span class="text-gray-600">Deterministic</span>
+        <span class="text-slate-400">Deterministic</span>
       </div>
       <div class="flex items-center gap-2">
         <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-        <span class="text-gray-600">Non-deterministic</span>
+        <span class="text-slate-400">Non-deterministic</span>
       </div>
     </div>
   </div>

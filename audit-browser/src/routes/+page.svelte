@@ -66,8 +66,8 @@
 <div class="space-y-6">
   <div class="flex flex-col lg:flex-row gap-4 items-start lg:items-center justify-between">
     <div>
-      <h1 class="text-3xl font-bold text-gray-900">Audit Browser</h1>
-      <p class="text-gray-600 mt-1">Browse and filter {data.audits.length} software stack audits</p>
+      <h1 class="text-3xl font-bold text-slate-100">Audit Browser</h1>
+      <p class="text-slate-400 mt-1">Browse and filter {data.audits.length} software stack audits</p>
     </div>
     <SearchBar />
   </div>
@@ -77,11 +77,11 @@
   <FilterPanel filterOptions={data.filterOptions} />
 
   {#if $hasActiveFilters || $searchQuery}
-    <div class="flex items-center gap-2 text-sm text-gray-600">
+    <div class="flex items-center gap-2 text-sm text-slate-400">
       <span>Showing {filteredAudits().length} of {data.audits.length} audits</span>
       <button
         onclick={() => clearFilters()}
-        class="text-blue-600 hover:text-blue-800 underline"
+        class="text-blue-400 hover:text-blue-300 underline"
       >
         Clear all filters
       </button>

@@ -14,12 +14,12 @@
   let { stats }: Props = $props();
 </script>
 
-<header class="bg-white border-b border-gray-200 px-6 py-4 sticky top-0 z-50">
+<header class="bg-slate-800 border-b border-slate-700 px-6 py-4 sticky top-0 z-50">
   <div class="flex items-center justify-between">
     <div class="flex items-center gap-4">
       <button
         onclick={() => toggleSidebar()}
-        class="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+        class="p-2 hover:bg-slate-700 rounded-lg transition-colors text-slate-300"
         aria-label={$sidebarOpen ? 'Close sidebar' : 'Open sidebar'}
       >
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -34,8 +34,8 @@
           </svg>
         </div>
         <div>
-          <h1 class="text-xl font-bold text-gray-900">Audit Browser</h1>
-          <p class="text-xs text-gray-500">Software Stack Audit Taxonomy</p>
+          <h1 class="text-xl font-bold text-slate-100">Audit Browser</h1>
+          <p class="text-xs text-slate-400">Software Stack Audit Taxonomy</p>
         </div>
       </a>
     </div>
@@ -44,21 +44,21 @@
       <div class="hidden md:flex items-center gap-4 text-sm">
         <div class="flex items-center gap-2">
           <span class="w-2 h-2 bg-emerald-500 rounded-full"></span>
-          <span class="text-gray-600">{stats.active} Active</span>
+          <span class="text-slate-300">{stats.active} Active</span>
         </div>
         <div class="flex items-center gap-2">
           <span class="w-2 h-2 bg-amber-500 rounded-full"></span>
-          <span class="text-gray-600">{stats.planned} Planned</span>
+          <span class="text-slate-300">{stats.planned} Planned</span>
         </div>
-        <div class="text-gray-400">|</div>
-        <span class="text-gray-600">{stats.categories} Categories</span>
+        <div class="text-slate-600">|</div>
+        <span class="text-slate-300">{stats.categories} Categories</span>
       </div>
 
       <a
         href="https://github.com/turbobeest/audits"
         target="_blank"
         rel="noopener noreferrer"
-        class="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+        class="p-2 hover:bg-slate-700 rounded-lg transition-colors text-slate-300"
         aria-label="View on GitHub"
       >
         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">

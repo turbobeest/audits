@@ -17,7 +17,7 @@
 
 <div class="relative w-full max-w-md">
   <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-    <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <svg class="h-5 w-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
     </svg>
   </div>
@@ -27,7 +27,7 @@
     value={inputValue}
     oninput={handleInput}
     placeholder="Search audits by name, category, or ID..."
-    class="block w-full pl-10 pr-10 py-2.5 border border-gray-300 rounded-lg bg-white text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+    class="block w-full pl-10 pr-10 py-2.5 border border-slate-600 rounded-lg bg-slate-800 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
   />
 
   {#if inputValue}
@@ -36,7 +36,7 @@
       class="absolute inset-y-0 right-0 pr-3 flex items-center"
       aria-label="Clear search"
     >
-      <svg class="h-5 w-5 text-gray-400 hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg class="h-5 w-5 text-slate-400 hover:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
       </svg>
     </button>
