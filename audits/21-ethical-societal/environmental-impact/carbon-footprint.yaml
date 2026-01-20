@@ -1,0 +1,284 @@
+# ============================================================
+# AUDIT: Carbon Footprint
+# Category: 21 - Ethical & Societal
+# Subcategory: Environmental Impact
+# ============================================================
+
+audit:
+  id: "ethical-societal.environmental-impact.carbon-footprint"
+  name: "Carbon Footprint Audit"
+  version: "1.0.0"
+  last_updated: "2025-01-19"
+  status: "active"
+
+  category: "ethical-societal"
+  category_number: 21
+  subcategory: "environmental-impact"
+
+  tier: "expert"
+  estimated_duration: "4-6 hours"
+
+  completeness: "requires_discovery"
+  requires_runtime: true
+  destructive: false
+
+execution:
+  automatable: "partial"
+  severity: "medium"
+  scope: "qualitative"
+
+  default_profiles:
+    - "full"
+
+  blocks_phase: false
+  parallelizable: true
+
+description:
+  what: |
+    Assesses the carbon footprint of software systems including compute
+    resources, data storage, network transfer, and operational emissions.
+    Evaluates whether carbon impact is measured, reported, and minimized
+    through efficient design and green infrastructure choices.
+
+    Examines infrastructure carbon intensity, efficiency optimization,
+    carbon tracking, and reduction strategies.
+
+  why_it_matters: |
+    Software carbon footprint is increasingly significant:
+
+    - Tech sector accounts for growing share of global emissions
+    - ESG reporting requires carbon accounting
+    - Regulatory requirements expanding (EU CSRD, SEC climate rules)
+    - Customer and investor pressure for sustainability
+    - Cost savings often align with carbon reduction
+    - Reputational value of environmental responsibility
+
+  when_to_run:
+    - "During infrastructure decisions"
+    - "For ESG/sustainability reporting"
+    - "When scaling significantly"
+    - "Annually for ongoing monitoring"
+
+prerequisites:
+  required_artifacts:
+    - type: "infrastructure_documentation"
+      description: "Documentation of compute, storage, and network resources"
+    - type: "cloud_billing"
+      description: "Cloud provider usage and billing data"
+
+  access_requirements:
+    - "Infrastructure documentation"
+    - "Cloud provider carbon data"
+    - "Interview access to infrastructure team"
+
+discovery:
+  interviews:
+    - role: "Infrastructure/Platform Lead"
+      questions:
+        - "What cloud providers and regions are used?"
+        - "How do you measure carbon footprint?"
+        - "What efficiency optimization is done?"
+        - "Have you considered carbon in infrastructure decisions?"
+      purpose: "Understand current carbon awareness"
+      duration: "45 min"
+
+    - role: "Sustainability Lead (if exists)"
+      questions:
+        - "What carbon accounting is performed?"
+        - "What reduction targets exist?"
+        - "How is carbon reported?"
+      purpose: "Understand sustainability program"
+      duration: "30 min"
+
+  documents_to_review:
+    - type: "Cloud Provider Carbon Reports"
+      purpose: "Review carbon data from providers"
+      look_for:
+        - "Carbon intensity by region"
+        - "Renewable energy percentage"
+        - "Efficiency metrics"
+
+    - type: "Infrastructure Architecture"
+      purpose: "Assess efficiency opportunities"
+      look_for:
+        - "Resource utilization"
+        - "Region choices"
+        - "Scaling efficiency"
+
+signals:
+  critical:
+    - id: "CARBON-CRIT-001"
+      signal: "No carbon measurement or awareness"
+      evidence_indicators:
+        - "Carbon footprint never measured"
+        - "No awareness of infrastructure carbon impact"
+        - "Carbon not considered in decisions"
+        - "No sustainability metrics tracked"
+      explanation: |
+        Without measurement, there can be no management. Lack of carbon
+        awareness prevents improvement and fails growing disclosure
+        requirements.
+      remediation: |
+        - Implement carbon measurement using cloud provider tools
+        - Establish baseline carbon footprint
+        - Begin tracking over time
+        - Consider sustainability in decisions
+
+  high:
+    - id: "CARBON-HIGH-001"
+      signal: "High-carbon regions used without justification"
+      evidence_indicators:
+        - "Infrastructure in high-carbon-intensity regions"
+        - "No consideration of regional carbon mix"
+        - "Green regions available but not used"
+      explanation: |
+        Cloud region choices significantly impact carbon footprint.
+        Using high-carbon regions without justification misses easy
+        reduction opportunities.
+      remediation: |
+        - Evaluate regional carbon intensity
+        - Consider migration to greener regions
+        - Document region selection criteria including carbon
+
+    - id: "CARBON-HIGH-002"
+      signal: "Significant resource waste"
+      evidence_indicators:
+        - "Low utilization of provisioned resources"
+        - "Idle resources running continuously"
+        - "No right-sizing optimization"
+        - "Dev/test environments running 24/7"
+      explanation: |
+        Resource waste directly increases carbon footprint and cost.
+        Efficiency improvements reduce both.
+      remediation: |
+        - Implement utilization monitoring
+        - Right-size resources
+        - Schedule non-production environments
+        - Use spot/preemptible for suitable workloads
+
+  medium:
+    - id: "CARBON-MED-001"
+      signal: "Carbon not in decision criteria"
+      evidence_indicators:
+        - "Architecture decisions ignore carbon impact"
+        - "Vendor selection doesn't consider sustainability"
+        - "No carbon impact assessment for new systems"
+      remediation: |
+        - Add carbon to decision criteria
+        - Evaluate vendor sustainability
+        - Include carbon impact in architecture reviews
+
+  positive:
+    - id: "CARBON-POS-001"
+      signal: "Comprehensive carbon management"
+      evidence_indicators:
+        - "Carbon footprint measured and reported"
+        - "Reduction targets established"
+        - "Green regions prioritized"
+        - "Efficiency optimized"
+
+procedure:
+  context:
+    cognitive_mode: "evaluative"
+    ensemble_role: "auditor"
+
+  steps:
+    - id: "1"
+      name: "Infrastructure Inventory"
+      description: Document compute, storage, and network resources.
+      duration_estimate: "1 hour"
+      expected_findings:
+        - "Resource inventory"
+        - "Provider and region documentation"
+
+    - id: "2"
+      name: "Carbon Measurement"
+      description: Measure or estimate carbon footprint.
+      duration_estimate: "1.5 hours"
+      expected_findings:
+        - "Carbon footprint estimate"
+        - "Major contributors identified"
+
+    - id: "3"
+      name: "Efficiency Assessment"
+      description: Assess resource utilization and waste.
+      duration_estimate: "1 hour"
+      expected_findings:
+        - "Utilization assessment"
+        - "Waste identification"
+
+    - id: "4"
+      name: "Reduction Opportunities"
+      description: Identify carbon reduction opportunities.
+      duration_estimate: "45 min"
+      expected_findings:
+        - "Reduction opportunities"
+        - "Prioritization"
+
+    - id: "5"
+      name: "Synthesize Findings"
+      description: Compile findings and recommendations.
+      duration_estimate: "30 min"
+      expected_findings:
+        - "Prioritized findings"
+        - "Recommendations"
+
+output:
+  deliverables:
+    - type: "finding_list"
+      format: "structured"
+    - type: "summary"
+      format: "prose"
+      sections:
+        - "Executive Summary"
+        - "Carbon Footprint Assessment"
+        - "Efficiency Analysis"
+        - "Reduction Recommendations"
+
+  confidence_guidance:
+    high: "Cloud carbon data available, infrastructure documented"
+    medium: "Estimates based on usage data"
+    low: "High-level assessment only"
+
+offline:
+  capability: "partial"
+
+profiles:
+  membership:
+    quick:
+      included: false
+      reason: "Requires comprehensive assessment"
+    full:
+      included: true
+      priority: 65
+
+closeout_checklist:
+  - id: "carbon-001"
+    item: "Infrastructure inventory completed"
+    level: "CRITICAL"
+    verification: "manual"
+    verification_notes: "Compute, storage, and network resources documented"
+    expected: "Confirmed by reviewer"
+
+  - id: "carbon-002"
+    item: "Carbon footprint measured or estimated"
+    level: "BLOCKING"
+    verification: "manual"
+    verification_notes: "Carbon impact quantified"
+    expected: "Confirmed by reviewer"
+
+governance:
+  applicable_to:
+    archetypes: ["all"]
+    team_sizes: ["medium", "large"]
+
+  compliance_frameworks:
+    - framework: "EU CSRD"
+      controls: ["Environmental sustainability reporting"]
+    - framework: "GHG Protocol"
+      controls: ["Scope 2, Scope 3 reporting"]
+
+relationships:
+  commonly_combined:
+    - "ethical-societal.environmental-impact.data-center-efficiency"
+    - "ethical-societal.environmental-impact.green-hosting"
