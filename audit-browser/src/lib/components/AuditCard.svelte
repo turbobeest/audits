@@ -8,6 +8,84 @@
 
   let { audit }: Props = $props();
 
+  // GitHub raw file URL base
+  const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/turbobeest/audits/main';
+  const GITHUB_BLOB_BASE = 'https://github.com/turbobeest/audits/blob/main';
+
+  // Generate markdown content for export
+  function generateMarkdown(): string {
+    const auditType = audit.fully_automated ? 'Deterministic' : 'Non-deterministic';
+    const auditTypeDesc = audit.fully_automated
+      ? 'Objective pass/fail criteria - results are reliable'
+      : 'Requires interpretation - review findings critically';
+
+    let phaseRestrict = 'Any Phase';
+    if (audit.pre_production_only) phaseRestrict = 'Pre-Production Only';
+    if (audit.production_only) phaseRestrict = 'Production Only';
+
+    const requirements = [];
+    if (audit.requires_source_code) requirements.push('Source Code');
+    if (audit.requires_runtime_data) requirements.push('Runtime Data');
+    if (audit.requires_production_access) requirements.push('Production Access');
+    if (audit.requires_team_input) requirements.push('Team Input');
+    if (audit.requires_cost_data) requirements.push('Cost Data');
+
+    const sdlcPhases = SDLC_PHASES
+      .filter(phase => audit[phase.id as keyof AuditInventoryRow] === true)
+      .map(p => p.label);
+
+    const yamlUrl = `${GITHUB_BLOB_BASE}/${audit.file_path}`;
+
+    return `# ${audit.audit_name}
+
+**Audit ID:** \`${audit.audit_id}\`
+
+**Status:** ${audit.status}
+
+## Classification
+
+| Property | Value |
+|----------|-------|
+| **Category** | ${audit.category.replace(/-/g, ' ')} |
+| **Subcategory** | ${audit.subcategory.replace(/-/g, ' ')} |
+| **Tier** | ${audit.tier} |
+| **Audit Type** | ${auditType} |
+| **Phase Restriction** | ${phaseRestrict} |
+
+> **${auditType}:** ${auditTypeDesc}
+
+## Requirements
+
+${requirements.length > 0 ? requirements.map(r => `- ${r}`).join('\n') : '_No special requirements_'}
+
+## SDLC Phases
+
+This audit applies to the following development phases:
+
+${sdlcPhases.length > 0 ? sdlcPhases.map(p => `- ${p}`).join('\n') : '_Not specified_'}
+
+---
+
+📄 **Source:** [View YAML Definition](${yamlUrl})
+
+_Generated from [Software Stack Audit Taxonomy](https://turbobeest.github.io/audits/)_
+`;
+  }
+
+  // Download markdown file
+  function downloadMarkdown() {
+    const content = generateMarkdown();
+    const blob = new Blob([content], { type: 'text/markdown' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${audit.audit_id}.md`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
   // Get active SDLC phases for this audit
   let activePhases = $derived(() => {
     return SDLC_PHASES.filter(phase => {
@@ -57,9 +135,22 @@
   <!-- Header -->
   <div class="flex items-start justify-between gap-2 mb-2">
     <h3 class="font-medium text-slate-100 leading-tight">{audit.audit_name}</h3>
-    <span class="text-xs px-2 py-0.5 rounded-full shrink-0 {audit.status === 'active' ? 'bg-emerald-900/50 text-emerald-400' : 'bg-amber-900/50 text-amber-400'}">
-      {audit.status}
-    </span>
+    <div class="flex items-center gap-1.5 shrink-0">
+      <span class="text-xs px-2 py-0.5 rounded-full {audit.status === 'active' ? 'bg-emerald-900/50 text-emerald-400' : 'bg-amber-900/50 text-amber-400'}">
+        {audit.status}
+      </span>
+      <button
+        onclick={downloadMarkdown}
+        class="p-1 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition-colors"
+        title="Export as Markdown"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+      </button>
+    </div>
   </div>
 
   <!-- Category breadcrumb -->
