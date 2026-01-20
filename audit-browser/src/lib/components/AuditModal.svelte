@@ -17,41 +17,43 @@
 
   // Fetch YAML content when audit changes
   $effect(() => {
-    if (audit) {
-      fetchYamlContent();
+    // Explicitly read audit to track dependency
+    const currentAudit = audit;
+    if (currentAudit) {
+      loading = true;
+      error = null;
+      yamlContent = null;
+
+      const url = `${GITHUB_RAW_BASE}/${currentAudit.file_path}`;
+      fetch(url)
+        .then(response => {
+          if (!response.ok) {
+            if (response.status === 404) {
+              error = 'This audit definition has not been created yet (planned).';
+            } else {
+              error = `Failed to fetch: ${response.status} ${response.statusText}`;
+            }
+            return null;
+          }
+          return response.text();
+        })
+        .then(text => {
+          if (text) {
+            yamlContent = text;
+          }
+        })
+        .catch(e => {
+          error = `Network error: ${e instanceof Error ? e.message : 'Unknown error'}`;
+        })
+        .finally(() => {
+          loading = false;
+        });
     } else {
       yamlContent = null;
       error = null;
-    }
-  });
-
-  async function fetchYamlContent() {
-    if (!audit) return;
-
-    loading = true;
-    error = null;
-    yamlContent = null;
-
-    try {
-      const url = `${GITHUB_RAW_BASE}/${audit.file_path}`;
-      const response = await fetch(url);
-
-      if (!response.ok) {
-        if (response.status === 404) {
-          error = 'This audit definition has not been created yet (planned).';
-        } else {
-          error = `Failed to fetch: ${response.status} ${response.statusText}`;
-        }
-        return;
-      }
-
-      yamlContent = await response.text();
-    } catch (e) {
-      error = `Network error: ${e instanceof Error ? e.message : 'Unknown error'}`;
-    } finally {
       loading = false;
     }
-  }
+  });
 
   function handleKeydown(event: KeyboardEvent) {
     if (event.key === 'Escape') {
@@ -134,6 +136,11 @@
           </div>
         {:else if yamlContent}
           <pre class="text-sm text-slate-300 bg-slate-900 rounded-lg p-4 overflow-x-auto font-mono leading-relaxed whitespace-pre-wrap">{yamlContent}</pre>
+        {:else}
+          <div class="flex items-center justify-center py-12">
+            <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
+            <span class="ml-3 text-slate-400">Initializing...</span>
+          </div>
         {/if}
       </div>
 
