@@ -1,0 +1,314 @@
+# ============================================================
+# AUDIT: Child Safety
+# Category: 21 - Ethical & Societal
+# Subcategory: Content Harm
+# ============================================================
+
+audit:
+  id: "ethical-societal.content-harm.child-safety"
+  name: "Child Safety Audit"
+  version: "1.0.0"
+  last_updated: "2025-01-19"
+  status: "active"
+
+  category: "ethical-societal"
+  category_number: 21
+  subcategory: "content-harm"
+
+  tier: "expert"
+  estimated_duration: "4-6 hours"
+
+  completeness: "requires_discovery"
+  requires_runtime: true
+  destructive: false
+
+execution:
+  automatable: "partial"
+  severity: "critical"
+  scope: "qualitative"
+
+  default_profiles:
+    - "full"
+    - "security"
+
+  blocks_phase: true
+  parallelizable: false
+
+description:
+  what: |
+    Evaluates protections for children using or affected by the platform.
+    Assesses age verification, child-appropriate content controls, CSAM
+    detection and reporting, predatory behavior prevention, and compliance
+    with child protection regulations like COPPA.
+
+  why_it_matters: |
+    Child safety is both legal requirement and ethical imperative:
+
+    - COPPA regulates children's data and requires parental consent
+    - CSAM detection and reporting legally required
+    - EU DSA requires enhanced protection for minors
+    - UK Online Safety Act has extensive child safety provisions
+    - Children face unique vulnerabilities online
+    - Severe legal and reputational consequences for failures
+
+  when_to_run:
+    - "For any platform accessible to children"
+    - "When children are potential users"
+    - "During regulatory compliance reviews"
+    - "Before launching child-facing features"
+
+prerequisites:
+  required_artifacts:
+    - type: "age_verification"
+      description: "Age verification systems"
+    - type: "child_safety_policies"
+      description: "Child protection policies"
+
+  access_requirements:
+    - "Age verification documentation"
+    - "Safety feature access"
+    - "Interview access to trust & safety"
+
+discovery:
+  interviews:
+    - role: "Trust & Safety Lead"
+      questions:
+        - "How do you verify user age?"
+        - "What protections exist specifically for children?"
+        - "How do you detect and report CSAM?"
+        - "What prevents predatory contact with minors?"
+        - "How do you handle child user data?"
+      purpose: "Understand child safety measures"
+      duration: "45 min"
+
+    - role: "Product/Legal"
+      questions:
+        - "What child protection regulations apply?"
+        - "How is COPPA compliance ensured?"
+        - "What are the age restrictions for the service?"
+      purpose: "Understand compliance posture"
+      duration: "30 min"
+
+  documents_to_review:
+    - type: "Age Verification Documentation"
+      purpose: "Review age verification effectiveness"
+      look_for:
+        - "Verification methods"
+        - "Circumvention prevention"
+        - "Age gate effectiveness"
+
+    - type: "Child Safety Policies"
+      purpose: "Review protections"
+      look_for:
+        - "Child-specific policies"
+        - "CSAM detection"
+        - "Predatory behavior prevention"
+
+signals:
+  critical:
+    - id: "CHILD-CRIT-001"
+      signal: "No CSAM detection or reporting"
+      evidence_indicators:
+        - "No hash-matching for CSAM"
+        - "No NCMEC reporting implemented"
+        - "CSAM reports not handled properly"
+        - "No proactive CSAM detection"
+      explanation: |
+        Failure to detect and report CSAM is a legal violation in
+        most jurisdictions and enables severe child harm.
+      remediation: |
+        - Implement hash-matching (PhotoDNA, CSAI Match)
+        - Establish NCMEC reporting
+        - Create rapid removal process
+        - Document compliance
+
+    - id: "CHILD-CRIT-002"
+      signal: "Children can access without parental involvement"
+      evidence_indicators:
+        - "No effective age verification"
+        - "Children under 13 can create accounts"
+        - "No parental consent for children"
+        - "COPPA compliance not in place"
+      explanation: |
+        COPPA requires verifiable parental consent for children under 13.
+        Failure creates legal liability and child safety risk.
+      remediation: |
+        - Implement effective age verification
+        - Require parental consent for children
+        - Or restrict service to 13+"
+        - Document COPPA compliance
+
+  high:
+    - id: "CHILD-HIGH-001"
+      signal: "No protections against predatory contact"
+      evidence_indicators:
+        - "Adults can freely message children"
+        - "No grooming behavior detection"
+        - "Direct messages unrestricted"
+        - "Contact requests not monitored"
+      explanation: |
+        Platforms that enable adult-child contact without safeguards
+        enable predatory behavior and grooming.
+      remediation: |
+        - Restrict adult-child direct contact"
+        - Implement grooming behavior detection"
+        - Monitor flagged interactions"
+        - Educate users about risks"
+
+    - id: "CHILD-HIGH-002"
+      signal: "Age-inappropriate content reaches children"
+      evidence_indicators:
+        - "Adult content visible to verified minors"
+        - "No content restrictions by age"
+        - "Algorithm serves adult content to children"
+      explanation: |
+        Exposing children to age-inappropriate content causes harm
+        and may violate regulations.
+      remediation: |
+        - Implement age-appropriate content filtering
+        - Restrict adult content from minors
+        - Consider restricted modes for children
+
+  medium:
+    - id: "CHILD-MED-001"
+      signal: "Child data handled same as adult data"
+      evidence_indicators:
+        - "No special handling for child data"
+        - "Child data used for advertising"
+        - "No data minimization for children"
+      remediation: |
+        - Implement child-specific data handling
+        - Restrict use of child data
+        - Apply data minimization
+
+  positive:
+    - id: "CHILD-POS-001"
+      signal: "Comprehensive child safety program"
+      evidence_indicators:
+        - "Effective age verification"
+        - "CSAM detection and reporting"
+        - "Predatory behavior prevention"
+        - "Age-appropriate content"
+        - "COPPA compliance documented"
+
+procedure:
+  context:
+    cognitive_mode: "critical"
+    ensemble_role: "auditor"
+
+  steps:
+    - id: "1"
+      name: "Age Verification Assessment"
+      description: Evaluate age verification effectiveness.
+      duration_estimate: "1 hour"
+      expected_findings:
+        - "Verification assessment"
+        - "Circumvention risks"
+
+    - id: "2"
+      name: "CSAM Compliance Review"
+      description: Review CSAM detection and reporting.
+      duration_estimate: "1 hour"
+      expected_findings:
+        - "Detection implementation"
+        - "Reporting compliance"
+
+    - id: "3"
+      name: "Protection Mechanisms Review"
+      description: Assess predatory behavior and content protections.
+      duration_estimate: "1 hour"
+      expected_findings:
+        - "Contact protections"
+        - "Content protections"
+
+    - id: "4"
+      name: "Regulatory Compliance"
+      description: Review COPPA and other regulatory compliance.
+      duration_estimate: "1 hour"
+      expected_findings:
+        - "Compliance status"
+        - "Gaps identified"
+
+    - id: "5"
+      name: "Synthesize Findings"
+      description: Compile findings and recommendations.
+      duration_estimate: "30 min"
+      expected_findings:
+        - "Prioritized findings"
+        - "Recommendations"
+
+output:
+  deliverables:
+    - type: "finding_list"
+      format: "structured"
+    - type: "summary"
+      format: "prose"
+      sections:
+        - "Executive Summary"
+        - "Age Verification Assessment"
+        - "CSAM Compliance"
+        - "Protection Mechanisms"
+        - "Regulatory Compliance"
+        - "Recommendations"
+
+  confidence_guidance:
+    high: "Full access, documentation complete"
+    medium: "Partial access"
+    low: "External assessment only"
+
+offline:
+  capability: "partial"
+
+profiles:
+  membership:
+    quick:
+      included: false
+      reason: "Requires comprehensive analysis"
+    security:
+      included: true
+      priority: 95
+    full:
+      included: true
+      priority: 95
+
+closeout_checklist:
+  - id: "child-001"
+    item: "CSAM detection and reporting verified"
+    level: "CRITICAL"
+    verification: "manual"
+    verification_notes: "Detection implementation and reporting compliance confirmed"
+    expected: "Confirmed by reviewer"
+
+  - id: "child-002"
+    item: "Age verification assessed"
+    level: "CRITICAL"
+    verification: "manual"
+    verification_notes: "Age verification effectiveness evaluated"
+    expected: "Confirmed by reviewer"
+
+  - id: "child-003"
+    item: "COPPA compliance reviewed"
+    level: "BLOCKING"
+    verification: "manual"
+    verification_notes: "Regulatory compliance status documented"
+    expected: "Confirmed by reviewer"
+
+governance:
+  applicable_to:
+    archetypes: ["all"]
+    team_sizes: ["small", "medium", "large"]
+
+  compliance_frameworks:
+    - framework: "COPPA"
+      controls: ["Parental consent", "Data minimization"]
+    - framework: "EU DSA"
+      controls: ["Article 28 (Minors protection)"]
+    - framework: "UK Online Safety Act"
+      controls: ["Child safety duties"]
+    - framework: "18 USC 2258A"
+      controls: ["CSAM reporting requirements"]
+
+relationships:
+  commonly_combined:
+    - "ethical-societal.content-harm.harmful-content-moderation"
+    - "ethical-societal.content-harm.harassment-prevention"
