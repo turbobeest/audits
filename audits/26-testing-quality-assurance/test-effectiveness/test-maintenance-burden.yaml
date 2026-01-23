@@ -73,7 +73,7 @@ discovery:
       purpose: "Spec files"
 
   code_patterns:
-    - pattern: "selector|\.get\\(|getElementById"
+    - pattern: 'selector|\.get\(|getElementById'
       type: "regex"
       scope: "test"
       purpose: "Brittle selector usage"

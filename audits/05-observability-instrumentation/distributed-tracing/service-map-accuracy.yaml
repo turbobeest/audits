@@ -111,7 +111,7 @@ tooling:
 
     - tool: "graphviz"
       purpose: "Visualize dependencies"
-      command: "curl -s 'http://jaeger:16686/api/dependencies' | jq -r '.data[] | \"\(.parent) -> \(.child)\"'"
+      command: 'curl -s ''http://jaeger:16686/api/dependencies'' | jq -r ''.data[] | "\(.parent) -> \(.child)"'''
 
   monitoring_queries:
     - system: "Prometheus"
@@ -193,7 +193,8 @@ procedure:
         - purpose: "Get Jaeger dependencies"
           command: "curl -s 'http://jaeger:16686/api/dependencies?endTs=$(date +%s000)&lookback=604800000' | jq '.data'"
         - purpose: "List unique service pairs"
-          command: "curl -s 'http://jaeger:16686/api/dependencies?endTs=$(date +%s000)&lookback=604800000' | jq -r '.data[] | \"\(.parent) -> \(.child): \(.callCount) calls\"'"
+          command: |
+            curl -s 'http://jaeger:16686/api/dependencies?endTs=$(date +%s000)&lookback=604800000' | jq -r '.data[] | "\(.parent) -> \(.child): \(.callCount) calls"'
 
       expected_findings:
         - "Traced dependency list"

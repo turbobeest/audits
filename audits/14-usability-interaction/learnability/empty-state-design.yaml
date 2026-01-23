@@ -85,7 +85,7 @@ discovery:
       type: "regex"
       scope: "source"
       purpose: "Identify empty state components"
-    - pattern: "(\.length\\s*===?\\s*0|isEmpty|!data|null.?state)"
+    - pattern: '(\.length\s*===?\s*0|isEmpty|!data|null.?state)'
       type: "regex"
       scope: "source"
       purpose: "Find empty state conditions"

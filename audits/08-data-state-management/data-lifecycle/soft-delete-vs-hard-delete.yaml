@@ -199,7 +199,7 @@ procedure:
         - purpose: "Find soft delete ORM configuration"
           command: "grep -riE 'paranoid|softDelete|@SoftDelete|DeleteDateColumn' --include='*.ts' --include='*.py' --include='*.java' . 2>/dev/null | head -30"
         - purpose: "Find hard delete operations"
-          command: "grep -riE 'DELETE FROM(?!.*deleted)|\.destroy\\(.*force|hardDelete|forceDelete' --include='*.sql' --include='*.ts' --include='*.py' . 2>/dev/null | head -30"
+          command: 'grep -riE ''DELETE FROM(?!.*deleted)|\.destroy\(.*force|hardDelete|forceDelete'' --include=''*.sql'' --include=''*.ts'' --include=''*.py'' . 2>/dev/null | head -30'
 
       expected_findings:
         - "Entities with soft delete"

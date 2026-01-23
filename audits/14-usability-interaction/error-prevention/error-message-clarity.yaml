@@ -90,7 +90,7 @@ discovery:
       type: "keyword"
       scope: "source"
       purpose: "Find error handling code"
-    - pattern: "catch\\s*\\(|\.catch\\("
+    - pattern: 'catch\s*\(|\.catch\('
       type: "regex"
       scope: "source"
       purpose: "Find error catch blocks"

@@ -282,7 +282,7 @@ procedure:
       duration_estimate: "30 min"
       questions:
         - "Can every swipe action be done via button?"
-        - "Can pinch-to-zoom be done via buttons (+/-)?""
+        - "Can pinch-to-zoom be done via buttons (+/-)?"
         - "Can long-press actions be accessed otherwise?"
       expected_findings:
         - "Alternative availability"

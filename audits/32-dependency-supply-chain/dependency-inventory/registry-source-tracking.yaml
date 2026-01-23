@@ -220,7 +220,8 @@ procedure:
       description: "Create inventory of all registry sources"
       commands:
         - purpose: "List all unique registries"
-          command: "grep -rhE 'registry[\"=:].*http' .npmrc .yarnrc* pip.conf 2>/dev/null | grep -oE 'https?://[^\"'\'' ]+' | sort -u || echo 'No registries found'"
+          command: |
+            grep -rhE 'registry["=:].*http' .npmrc .yarnrc* pip.conf 2>/dev/null | grep -oE 'https?://[^"'"'"' ]+' | sort -u || echo 'No registries found'
 
 output:
   deliverables:

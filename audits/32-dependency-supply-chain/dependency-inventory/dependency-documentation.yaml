@@ -161,7 +161,7 @@ procedure:
       description: "Locate any existing dependency documentation"
       commands:
         - purpose: "Find dependency documentation files"
-          command: "find . -iname '*depend*' -type f 2>/dev/null | grep -vE 'node_modules|vendor|\.lock' | head -20"
+          command: 'find . -iname ''*depend*'' -type f 2>/dev/null | grep -vE ''node_modules|vendor|\.lock'' | head -20'
         - purpose: "Find ADRs"
           command: "find . -type d -name 'adr' -o -name 'decisions' 2>/dev/null | head -10"
 

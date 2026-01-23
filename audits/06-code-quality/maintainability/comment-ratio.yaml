@@ -64,7 +64,8 @@ discovery:
       type: "regex"
       scope: "source"
       purpose: "Identify comments"
-    - pattern: '"""[^"]*"""|\'\'\'[^\']*\'\'\''
+    - pattern: |-
+        """[^"]*"""|'''[^']*'''
       type: "regex"
       scope: "source"
       purpose: "Identify docstrings"

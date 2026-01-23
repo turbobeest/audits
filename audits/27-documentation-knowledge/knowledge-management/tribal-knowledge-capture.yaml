@@ -65,7 +65,7 @@ prerequisites:
 
 discovery:
   tribal_knowledge_indicators:
-    - "Go-to person" patterns
+    - '"Go-to person" patterns'
     - Areas with no documentation
     - Systems only one person understands
     - Undocumented processes

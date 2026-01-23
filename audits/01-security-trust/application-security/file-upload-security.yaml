@@ -72,7 +72,7 @@ discovery:
       type: "regex"
       scope: "source"
       purpose: "Identify file upload implementations"
-    - pattern: "contentType|mimeType|extension|\.(?:exe|php|jsp|asp)"
+    - pattern: 'contentType|mimeType|extension|\.(?:exe|php|jsp|asp)'
       type: "regex"
       scope: "source"
       purpose: "Identify file type validation"
