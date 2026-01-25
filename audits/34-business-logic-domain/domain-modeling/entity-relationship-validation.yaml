@@ -16,7 +16,7 @@ audit:
   subcategory: "domain-modeling"
 
   tier: "expert"
-  estimated_duration: "3-6 hours"
+  estimated_duration: "3-6 hours"  # median: 4h
 
   completeness: "requires_discovery"
   requires_runtime: false

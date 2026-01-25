@@ -76,7 +76,7 @@ audit-taxonomy/
 │   ├── 18-accessibility-inclusion.md
 │   ├── 19-seo-web-discoverability.md
 │   ├── 20-human-organizational.md
-│   ├── 21-ethical-societal.md
+│   ├── 21-responsible-design.md
 │   ├── 22-gamification-behavioral-design.md
 │   ├── 23-emotional-design-trust.md
 │   │

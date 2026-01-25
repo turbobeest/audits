@@ -16,7 +16,7 @@ audit:
   subcategory: "interrupt-handling"
 
   tier: "expert"
-  estimated_duration: "4-6 hours"
+  estimated_duration: "4-6 hours"  # median: 5h
 
   completeness: "requires_discovery"
   requires_runtime: true
@@ -24,6 +24,7 @@ audit:
 
 execution:
   automatable: "partial"
+  requires_physical_access: true
   severity: "critical"
   scope: "embedded-systems"
 
@@ -302,3 +303,9 @@ relationships:
   feeds_into:
     - "real-time-embedded.timing-analysis.deadline-verification"
     - "reliability.response-time-guarantee"
+
+# Glossary of domain-specific terms:
+glossary:
+  "WCET": "Worst-Case Execution Time - maximum possible execution time for a code path"
+  "ISR": "Interrupt Service Routine - function executed in response to hardware interrupt"
+  "jitter": "Variation in timing between expected and actual execution"

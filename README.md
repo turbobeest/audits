@@ -9,7 +9,7 @@ A comprehensive, multi-dimensional taxonomy of software stack audits designed as
 
 ## What This Is
 
-This repository contains **2,189 structured audit definitions** covering every meaningful dimension of software quality: security, performance, reliability, accessibility, compliance, ethics, and more.
+This repository contains **2186 structured audit definitions** covering every meaningful dimension of software quality: security, performance, reliability, accessibility, compliance, ethics, and more.
 
 **[Browse the Audit Catalog](https://turbobeest.github.io/audits/)** - Interactive web UI for exploring and filtering audits.
 
@@ -42,7 +42,7 @@ audits/
 ├── ...
 ├── 19-compliance-legal/         # GDPR, SOC2, HIPAA, PCI-DSS
 ├── 20-vendor-third-party/       # Supply chain, SLAs, vendor risk
-├── 21-ethical-societal/         # Bias, fairness, environmental impact
+├── 21-responsible-design/         # Bias, fairness, environmental impact
 ├── 22-gamification-behavioral/  # Engagement ethics, dark patterns
 ├── 23-emotional-design-trust/   # Trust signals, social proof, credibility
 ├── 24-compliance-governance/    # Regulatory compliance, data privacy
@@ -65,7 +65,7 @@ audits/
 
 | Metric | Value |
 |--------|-------|
-| Total Audits | 2,189 |
+| Total Audits | 2186 |
 | Categories Complete | 1-43 (all) |
 | Target | ~2,200 audits |
 | Completion | 99.5% |
@@ -148,7 +148,7 @@ Domain-specific requirements extend the core taxonomy:
 
 ```
 .
-├── audits/                  # The audit taxonomy (2,189 YAML files across 43 categories)
+├── audits/                  # The audit taxonomy (2186 YAML files across 43 categories)
 │   ├── 01-security-trust/
 │   ├── 02-performance-efficiency/
 │   └── ... (43 categories total)
@@ -182,7 +182,7 @@ Load audit definitions as context for AI-powered code review, security scanning,
 
 ## Contributing
 
-The taxonomy is nearly complete with 2,189 audits across 43 categories. Contributions welcome for:
+The taxonomy is nearly complete with 2186 audits across 43 categories. Contributions welcome for:
 - Improvements to existing audit signals and remediation guidance
 - Industry overlay definitions (Healthcare, Finance, Defense, etc.)
 - Tool integration references

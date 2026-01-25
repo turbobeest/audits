@@ -67,29 +67,6 @@ prerequisites:
     - "Debug logging capability for ORM"
 
 discovery:
-  code_patterns:
-    - pattern: "for.*in.*:\\s*\\n.*\\.query\\(|for.*of.*:\\s*\\n.*\\.find"
-      type: "regex"
-      scope: "source"
-      purpose: "Loop with database query inside"
-    - pattern: "LazyInitializationException|failed to lazily initialize"
-      type: "regex"
-      scope: "source"
-      purpose: "Lazy loading issues indicating N+1 potential"
-    - pattern: "@ManyToOne|@OneToMany|has_many|belongs_to"
-      type: "regex"
-      scope: "source"
-      purpose: "ORM relationship definitions that may cause N+1"
-
-  metrics_queries:
-    - system: "PostgreSQL"
-      query: |
-        SELECT query, calls FROM pg_stat_statements
-        WHERE query ~ 'SELECT.*WHERE.*id = \$1'
-        ORDER BY calls DESC
-      purpose: "Identify single-record queries executed many times"
-      threshold: "High calls count suggests N+1 pattern"
-
 knowledge_sources:
   guides:
     - id: "rails-n-plus-one"

@@ -19,7 +19,7 @@ audit:
   subcategory: "feature-flags"
 
   tier: "expert"
-  estimated_duration: "2-3 hours"
+  estimated_duration: "2-3 hours"  # median: 2h
   completeness: "complete"
   requires_runtime: true
   destructive: false
@@ -47,16 +47,6 @@ description:
     - "When code complexity is high"
 
 discovery:
-  code_patterns:
-    - pattern: "(flag|feature|toggle).*100%|always[-_]on"
-      type: "regex"
-      scope: "config"
-      purpose: "Detect always-on flags"
-
-  file_patterns:
-    - glob: "**/*feature*flag*"
-      purpose: "Feature flag configurations"
-
 signals:
   high:
     - id: "SFLG-HIGH-001"

@@ -16,7 +16,7 @@ audit:
   subcategory: "technical-debt-assessment"
 
   tier: "expert"
-  estimated_duration: "8-12 hours"
+  estimated_duration: "8-12 hours"  # median: 10h
 
   completeness: "requires_discovery"
   requires_runtime: false

@@ -19,7 +19,7 @@ audit:
   subcategory: "structured-data"
 
   tier: "expert"
-  estimated_duration: "2-3 hours"
+  estimated_duration: "2-3 hours"  # median: 2h
 
   completeness: "complete"
   requires_runtime: true

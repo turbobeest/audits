@@ -345,3 +345,18 @@ relationships:
   commonly_combined:
     - "devops-ci-cd.pipeline-security.secrets-in-pipeline"
     - "devops-ci-cd.pipeline-security.branch-protection"
+
+  # Multi-platform CI/CD access control checks:
+  # GitHub Actions:
+  #   gh api repos/{owner}/{repo}/actions/permissions
+  #   gh api repos/{owner}/{repo}/environments
+  # GitLab CI:
+  #   glab api projects/:id/protected_branches
+  #   glab api projects/:id/members
+  # Jenkins:
+  #   curl -s ${JENKINS_URL}/api/json?tree=jobs[name,permissions]
+  # Azure DevOps:
+  #   az devops security permission list --id ${PROJECT_ID}
+  # CircleCI:
+  #   circleci context list
+  #   circleci orb list

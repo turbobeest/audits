@@ -18,7 +18,7 @@ audit:
   subcategory: "industry-standards"
 
   tier: "phd"
-  estimated_duration: "16-24 hours"
+  estimated_duration: "16-24 hours"  # median: 20h
 
   completeness: "requires_discovery"
   requires_runtime: true

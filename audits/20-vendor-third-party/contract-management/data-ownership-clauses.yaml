@@ -19,7 +19,7 @@ audit:
   subcategory: "contract-management"
 
   tier: "expert"
-  estimated_duration: "3-4 hours"
+  estimated_duration: "3-4 hours"  # median: 3h
 
   completeness: "requires_discovery"
   requires_runtime: false

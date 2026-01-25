@@ -342,4 +342,4 @@ relationships:
   commonly_combined:
     - "testing-quality-assurance.unit-testing.unit-test-coverage"
     - "testing-quality-assurance.unit-testing.assertion-quality"
-    - "security-trust.input-validation.input-validation"
+    - "security-trust.input-validation.sql-injection"

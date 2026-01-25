@@ -16,7 +16,7 @@ audit:
   subcategory: "change-control"
 
   tier: "focused"
-  estimated_duration: "1-2 hours"
+  estimated_duration: "1-2 hours"  # median: 1h
 
   completeness: "requires_discovery"
   requires_runtime: false

@@ -301,14 +301,14 @@ closeout_checklist:
     item: "Class size analysis completed"
     level: "BLOCKING"
     verification: |
-      find . -name "*.{java,ts,cs}" 2>/dev/null | xargs wc -l 2>/dev/null | tail -1
+      find . \( -name "*.java" -o -name "*.ts" -o -name "*.cs" \) 2>/dev/null | xargs wc -l 2>/dev/null | tail -1
     expected: "Analysis complete"
 
   - id: "god-class-002"
     item: "No classes exceed 2000 lines"
     level: "CRITICAL"
     verification: |
-      find . -name "*.{java,ts,cs}" 2>/dev/null | xargs wc -l 2>/dev/null | awk '$1 > 2000 {count++} END {print count+0}'
+      find . \( -name "*.java" -o -name "*.ts" -o -name "*.cs" \) 2>/dev/null | xargs wc -l 2>/dev/null | awk '$1 > 2000 {count++} END {print count+0}'
     expected: "0"
 
   - id: "god-class-003"

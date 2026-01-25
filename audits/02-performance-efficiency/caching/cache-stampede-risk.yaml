@@ -328,4 +328,4 @@ relationships:
   commonly_combined:
     - "performance-efficiency.caching.cache-hit-rate"
     - "performance-efficiency.caching.ttl-configuration"
-    - "reliability.fault-tolerance.circuit-breaker"
+    - "reliability-resilience.fault-tolerance.circuit-breaker"

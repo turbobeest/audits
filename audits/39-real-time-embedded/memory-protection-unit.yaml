@@ -16,7 +16,7 @@ audit:
   subcategory: "memory-management"
 
   tier: "expert"
-  estimated_duration: "4-6 hours"
+  estimated_duration: "4-6 hours"  # median: 5h
 
   completeness: "requires_discovery"
   requires_runtime: true

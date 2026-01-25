@@ -19,7 +19,7 @@ audit:
   subcategory: "technical-seo"
 
   tier: "expert"
-  estimated_duration: "2-4 hours"
+  estimated_duration: "2-4 hours"  # median: 3h
 
   completeness: "complete"
   requires_runtime: true

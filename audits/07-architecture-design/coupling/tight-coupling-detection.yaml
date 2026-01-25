@@ -17,7 +17,7 @@ audit:
   subcategory: "coupling"
 
   tier: "expert"
-  estimated_duration: "2-4 hours"
+  estimated_duration: "2-4 hours"  # median: 3h
 
   completeness: "complete"
   requires_runtime: false
@@ -172,7 +172,7 @@ tooling:
         #!/bin/bash
         # Count direct instantiations of concrete classes
         echo "=== Direct Instantiation Count ==="
-        find . -name "*.java" -o -name "*.ts" | xargs grep -c "new [A-Z]" 2>/dev/null | grep -v ":0$"
+        find . \( find . -name "*.java" -o -name "*.ts" \) | xargs grep -c "new [A-Z]" 2>/dev/null | grep -v ":0$"
 
 signals:
   critical:

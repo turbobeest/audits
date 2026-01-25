@@ -17,7 +17,7 @@ audit:
   subcategory: "design-principles"
 
   tier: "expert"
-  estimated_duration: "2-4 hours"
+  estimated_duration: "2-4 hours"  # median: 3h
 
   completeness: "complete"
   requires_runtime: false
@@ -56,6 +56,13 @@ description:
     - "When refactoring legacy code"
     - "When classes grow beyond initial scope"
     - "During architecture quality assessments"
+
+# NOTE: Domain Definition for SRP
+# A "domain" in this context refers to a cohesive area of business functionality:
+# - Business capability: e.g., payments, inventory, user management
+# - Bounded context (DDD): A self-contained model with clear boundaries
+# - Functional area: e.g., validation, persistence, notification, formatting
+# A class violates SRP when it handles multiple domains (e.g., both validation AND persistence).
 
 prerequisites:
   required_artifacts:

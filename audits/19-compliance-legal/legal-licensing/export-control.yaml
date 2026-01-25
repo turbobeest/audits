@@ -18,7 +18,7 @@ audit:
   subcategory: "legal-licensing"
 
   tier: "phd"
-  estimated_duration: "6-10 hours"
+  estimated_duration: "6-10 hours"  # median: 8h
 
   completeness: "requires_discovery"
   requires_runtime: false

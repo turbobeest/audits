@@ -19,7 +19,7 @@ audit:
   subcategory: "fourth-party-risk"
 
   tier: "expert"
-  estimated_duration: "5-7 hours"
+  estimated_duration: "5-7 hours"  # median: 6h
 
   completeness: "requires_discovery"
   requires_runtime: false

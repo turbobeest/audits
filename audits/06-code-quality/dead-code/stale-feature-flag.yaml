@@ -217,7 +217,7 @@ procedure:
       commands:
         - purpose: "Find flag config files"
           command: |
-            find . -name "*flag*" -o -name "*feature*" | grep -E "\.(json|yaml|yml)$" 2>/dev/null
+            find . \( find . -name "*flag*" -o -name "*feature*" \) | grep -E "\.(json|yaml|yml)$" 2>/dev/null
       expected_findings:
         - "List of configured flags"
         - "Flag states per environment"

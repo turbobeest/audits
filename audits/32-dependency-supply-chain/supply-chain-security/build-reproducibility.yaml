@@ -16,7 +16,7 @@ audit:
   subcategory: "supply-chain-security"
 
   tier: "expert"
-  estimated_duration: "3-6 hours"
+  estimated_duration: "3-6 hours"  # median: 4h
 
   completeness: "complete"
   requires_runtime: true

@@ -16,7 +16,7 @@ audit:
   subcategory: "data-migration"
 
   tier: "expert"
-  estimated_duration: "6-8 hours"
+  estimated_duration: "6-8 hours"  # median: 7h
 
   completeness: "requires_discovery"
   requires_runtime: true

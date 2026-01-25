@@ -1459,7 +1459,7 @@
 ---
 
 ### Category 21: Ethical & Societal
-**File:** `21-ethical-societal.md` | **Audits:** ~50
+**File:** `21-responsible-design.md` | **Audits:** ~50
 
 #### 21.1 Algorithmic Fairness
 - Bias Detection Audit

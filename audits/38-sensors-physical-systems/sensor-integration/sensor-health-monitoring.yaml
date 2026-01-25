@@ -16,7 +16,7 @@ audit:
   subcategory: "sensor-integration"
 
   tier: "expert"
-  estimated_duration: "4-6 hours"
+  estimated_duration: "4-6 hours"  # median: 5h
 
   completeness: "requires_discovery"
   requires_runtime: true
@@ -24,6 +24,7 @@ audit:
 
 execution:
   automatable: "partial"
+  requires_physical_access: true
   severity: "high"
   scope: "physical-systems"
 

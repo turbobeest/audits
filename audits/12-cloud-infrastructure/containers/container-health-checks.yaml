@@ -14,7 +14,7 @@ audit:
   subcategory: "containers"
 
   tier: "expert"
-  estimated_duration: "1-2 hours"
+  estimated_duration: "1-2 hours"  # median: 1h
 
   completeness: "complete"
   requires_runtime: true

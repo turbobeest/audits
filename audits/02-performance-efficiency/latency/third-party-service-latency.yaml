@@ -339,4 +339,4 @@ governance:
 relationships:
   commonly_combined:
     - "performance-efficiency.latency.end-to-end-latency"
-    - "reliability.fault-tolerance.circuit-breakers"
+    - "reliability-resilience.fault-tolerance.circuit-breakers"

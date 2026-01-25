@@ -16,7 +16,7 @@ audit:
   subcategory: "firmware-quality"
 
   tier: "expert"
-  estimated_duration: "6-10 hours"
+  estimated_duration: "6-10 hours"  # median: 8h
 
   completeness: "requires_discovery"
   requires_runtime: false
@@ -308,3 +308,9 @@ relationships:
   feeds_into:
     - "certification.coding-standard-compliance"
     - "quality.code-quality-metrics"
+
+# Glossary of domain-specific terms:
+glossary:
+  "WCET": "Worst-Case Execution Time - maximum possible execution time for a code path"
+  "ISR": "Interrupt Service Routine - function executed in response to hardware interrupt"
+  "jitter": "Variation in timing between expected and actual execution"

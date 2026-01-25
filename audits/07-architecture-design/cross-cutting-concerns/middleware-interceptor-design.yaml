@@ -17,7 +17,7 @@ audit:
   subcategory: "cross-cutting-concerns"
 
   tier: "expert"
-  estimated_duration: "2-3 hours"
+  estimated_duration: "2-3 hours"  # median: 2h
 
   completeness: "complete"
   requires_runtime: false
@@ -132,7 +132,7 @@ tooling:
         find . -name "*Interceptor*.java" | head -20
 
         echo "=== Middleware Implementations ==="
-        find . -name "*Middleware*.ts" -o -name "*Middleware*.js" | head -20
+        find . \( find . -name "*Middleware*.ts" -o -name "*Middleware*.js" \) | head -20
 
         echo "=== Order Annotations ==="
         grep -rn "@Order\|addFilter\|use(" --include="*.java" --include="*.ts" | head -30

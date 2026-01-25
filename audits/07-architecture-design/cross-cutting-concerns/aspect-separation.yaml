@@ -17,7 +17,7 @@ audit:
   subcategory: "cross-cutting-concerns"
 
   tier: "expert"
-  estimated_duration: "2-3 hours"
+  estimated_duration: "2-3 hours"  # median: 2h
 
   completeness: "complete"
   requires_runtime: false
@@ -143,7 +143,7 @@ tooling:
         grep -rn "@Before\|@After\|@Around" --include="*.java" | head -30
 
         echo "=== Decorator Patterns ==="
-        find . -name "*Decorator*.java" -o -name "*Wrapper*.java" | head -15
+        find . \( find . -name "*Decorator*.java" -o -name "*Wrapper*.java" \) | head -15
 
 signals:
   critical:

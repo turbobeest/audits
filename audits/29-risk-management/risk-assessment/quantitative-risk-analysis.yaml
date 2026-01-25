@@ -19,7 +19,7 @@ audit:
   subcategory: "risk-assessment"
 
   tier: "phd"
-  estimated_duration: "4-6 hours"
+  estimated_duration: "4-6 hours"  # median: 5h
 
   completeness: "requires_discovery"
   requires_runtime: false
@@ -27,6 +27,7 @@ audit:
 
 execution:
   automatable: "partial"
+  requires_interviews: true
   severity: "medium"
   scope: "organizational"
 

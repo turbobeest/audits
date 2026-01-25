@@ -18,7 +18,7 @@ audit:
   subcategory: "ai-algorithm-ethics"
 
   tier: "expert"
-  estimated_duration: "4-8 hours"
+  estimated_duration: "4-8 hours"  # median: 6h
 
   completeness: "requires_discovery"
   requires_runtime: true

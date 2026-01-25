@@ -19,7 +19,7 @@ audit:
   subcategory: "sla-monitoring"
 
   tier: "expert"
-  estimated_duration: "2-4 hours"
+  estimated_duration: "2-4 hours"  # median: 3h
 
   completeness: "requires_discovery"
   requires_runtime: false

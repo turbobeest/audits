@@ -17,7 +17,7 @@ audit:
   subcategory: "networking"
 
   tier: "expert"
-  estimated_duration: "2-3 hours"
+  estimated_duration: "2-3 hours"  # median: 2h
 
   completeness: "requires_discovery"
   requires_runtime: true

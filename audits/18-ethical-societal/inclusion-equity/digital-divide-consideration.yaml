@@ -20,7 +20,7 @@ audit:
   subcategory: "inclusion-equity"
 
   tier: "expert"
-  estimated_duration: "4-6 hours"
+  estimated_duration: "4-6 hours"  # median: 5h
 
   completeness: "complete"
   requires_runtime: true

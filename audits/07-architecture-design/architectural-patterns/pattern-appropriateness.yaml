@@ -17,7 +17,7 @@ audit:
   subcategory: "architectural-patterns"
 
   tier: "expert"
-  estimated_duration: "3-4 hours"
+  estimated_duration: "3-4 hours"  # median: 3h
 
   completeness: "complete"
   requires_runtime: false
@@ -154,13 +154,13 @@ tooling:
         #!/bin/bash
         echo "=== GoF Pattern Usage ==="
         for pattern in Factory Strategy Observer Singleton Builder Decorator Command Adapter; do
-          count=$(find . -name "*.java" -o -name "*.ts" | xargs grep -l "$pattern" 2>/dev/null | wc -l)
+          count=$(find . \( find . -name "*.java" -o -name "*.ts" \) | xargs grep -l "$pattern" 2>/dev/null | wc -l)
           echo "$pattern: $count files"
         done
 
         echo "=== Enterprise Pattern Usage ==="
         for pattern in Repository UnitOfWork EventBus Mediator Saga; do
-          count=$(find . -name "*.java" -o -name "*.ts" | xargs grep -l "$pattern" 2>/dev/null | wc -l)
+          count=$(find . \( find . -name "*.java" -o -name "*.ts" \) | xargs grep -l "$pattern" 2>/dev/null | wc -l)
           echo "$pattern: $count files"
         done
 

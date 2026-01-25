@@ -18,7 +18,7 @@ audit:
   subcategory: "industry-standards"
 
   tier: "expert"
-  estimated_duration: "10-16 hours"
+  estimated_duration: "10-16 hours"  # median: 13h
 
   completeness: "requires_discovery"
   requires_runtime: true

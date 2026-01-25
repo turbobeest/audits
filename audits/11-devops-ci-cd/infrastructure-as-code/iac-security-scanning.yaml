@@ -384,3 +384,22 @@ relationships:
   commonly_combined:
     - "devops-ci-cd.infrastructure-as-code.iac-testing"
     - "devops-ci-cd.infrastructure-as-code.state-management"
+
+  # Multi-tool IaC security scanning:
+  # Terraform:
+  #   tflint --recursive
+  #   checkov -d . --framework terraform
+  #   tfsec .
+  #   terrascan scan -i terraform
+  # Pulumi:
+  #   pulumi preview --json | jq '.steps[].diagnostics'
+  # CloudFormation:
+  #   cfn-lint template.yaml
+  #   cfn_nag_scan --input-path template.yaml
+  # CDK:
+  #   cdk synth && checkov -f cdk.out/*.template.json
+  # Ansible:
+  #   ansible-lint playbook.yaml
+  # Generic:
+  #   snyk iac test
+  #   trivy config .

@@ -16,7 +16,7 @@ audit:
   subcategory: "workflow-processes"
 
   tier: "expert"
-  estimated_duration: "4-6 hours"
+  estimated_duration: "4-6 hours"  # median: 5h
 
   completeness: "requires_discovery"
   requires_runtime: false
@@ -69,30 +69,6 @@ prerequisites:
     - "Access to state transition logs"
 
 discovery:
-  file_patterns:
-    - glob: "**/*StateMachine*.{ts,java,cs,py}"
-      purpose: "Find state machine implementations"
-    - glob: "**/*State*.{ts,java,cs,py}"
-      purpose: "Find state definitions"
-    - glob: "**/*Workflow*.{ts,java,cs,py}"
-      purpose: "Find workflow implementations"
-    - glob: "**/*Transition*.{ts,java,cs,py}"
-      purpose: "Find transition logic"
-    - glob: "**/*.bpmn"
-      purpose: "Find BPMN workflow definitions"
-
-  interview_questions:
-    - role: "Business Analyst"
-      questions:
-        - "What are the main business workflows in the system?"
-        - "What states can an order/request/item be in?"
-        - "What conditions must be met for state changes?"
-    - role: "Lead Developer"
-      questions:
-        - "How are state machines implemented?"
-        - "Are there known issues with invalid state transitions?"
-        - "How are concurrent state changes handled?"
-
 knowledge_sources:
   guides:
     - id: "state-machine-patterns"

@@ -16,7 +16,7 @@ audit:
   subcategory: "perceivable-visual"
 
   tier: "expert"
-  estimated_duration: "2-4 hours"
+  estimated_duration: "2-4 hours"  # median: 3h
 
   completeness: "complete"
   requires_runtime: true
@@ -176,7 +176,7 @@ tooling:
       code: |
         #!/bin/bash
         # Extract color pairs from CSS files for contrast analysis
-        find . -name "*.css" -o -name "*.scss" | xargs grep -E "(^|;)\s*(color|background-color):" | \
+        find . \( find . -name "*.css" -o -name "*.scss" \) | xargs grep -E "(^|;)\s*(color|background-color):" | \
           sed 's/.*:\s*//' | sort | uniq -c | sort -rn
 
 signals:

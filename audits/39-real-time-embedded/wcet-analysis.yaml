@@ -16,7 +16,7 @@ audit:
   subcategory: "timing-analysis"
 
   tier: "expert"
-  estimated_duration: "6-12 hours"
+  estimated_duration: "6-12 hours"  # median: 9h
 
   completeness: "requires_discovery"
   requires_runtime: true
@@ -310,3 +310,9 @@ relationships:
   feeds_into:
     - "reliability.embedded-reliability"
     - "safety.functional-safety-analysis"
+
+# Glossary of domain-specific terms:
+glossary:
+  "WCET": "Worst-Case Execution Time - maximum possible execution time for a code path"
+  "ISR": "Interrupt Service Routine - function executed in response to hardware interrupt"
+  "jitter": "Variation in timing between expected and actual execution"
