@@ -28,6 +28,10 @@ export const activeFiltersCount = derived(filters, ($filters) => {
   if ($filters.requiresRuntimeData !== undefined) count++;
   if ($filters.requiresTeamInput !== undefined) count++;
   if ($filters.requiresProductionAccess !== undefined) count++;
+  // New filters from meta-audit
+  if ($filters.requiresPhysicalAccess !== undefined) count++;
+  if ($filters.requiresHumanEvaluation !== undefined) count++;
+  if ($filters.requiresInterviews !== undefined) count++;
   return count;
 });
 

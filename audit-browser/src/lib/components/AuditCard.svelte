@@ -123,11 +123,15 @@ _Generated from [Software Stack Audit Taxonomy](https://turbobeest.github.io/aud
   // Count requirements
   let requirementsList = $derived(() => {
     const reqs = [];
-    if (audit.requires_source_code) reqs.push({ label: 'Source Code', icon: '📄' });
-    if (audit.requires_runtime_data) reqs.push({ label: 'Runtime Data', icon: '📊' });
-    if (audit.requires_production_access) reqs.push({ label: 'Prod Access', icon: '🔐' });
-    if (audit.requires_team_input) reqs.push({ label: 'Team Input', icon: '👥' });
-    if (audit.requires_cost_data) reqs.push({ label: 'Cost Data', icon: '💰' });
+    if (audit.requires_source_code) reqs.push({ label: 'Source Code', icon: '📄', color: 'bg-slate-700' });
+    if (audit.requires_runtime_data) reqs.push({ label: 'Runtime Data', icon: '📊', color: 'bg-slate-700' });
+    if (audit.requires_production_access) reqs.push({ label: 'Prod Access', icon: '🔐', color: 'bg-slate-700' });
+    if (audit.requires_team_input) reqs.push({ label: 'Team Input', icon: '👥', color: 'bg-slate-700' });
+    if (audit.requires_cost_data) reqs.push({ label: 'Cost Data', icon: '💰', color: 'bg-slate-700' });
+    // New special requirements from meta-audit
+    if (audit.requires_physical_access) reqs.push({ label: 'Physical Access', icon: '🔧', color: 'bg-orange-900/50 text-orange-300' });
+    if (audit.requires_human_evaluation) reqs.push({ label: 'Human Eval', icon: '👁️', color: 'bg-purple-900/50 text-purple-300' });
+    if (audit.requires_interviews) reqs.push({ label: 'Interviews', icon: '🎤', color: 'bg-cyan-900/50 text-cyan-300' });
     return reqs;
   });
 </script>
@@ -187,7 +191,7 @@ _Generated from [Software Stack Audit Taxonomy](https://turbobeest.github.io/aud
       <div class="text-[10px] text-slate-500 uppercase mb-1">Requires</div>
       <div class="flex flex-wrap gap-1">
         {#each requirementsList() as req}
-          <span class="text-[11px] px-1.5 py-0.5 rounded bg-slate-700 text-slate-300">
+          <span class="text-[11px] px-1.5 py-0.5 rounded {req.color || 'bg-slate-700 text-slate-300'}">
             {req.label}
           </span>
         {/each}

@@ -18,7 +18,8 @@ def main():
     for yaml_file in sorted(AUDITS_DIR.rglob("*.yaml")):
         try:
             with open(yaml_file, 'r', encoding='utf-8') as f:
-                data = yaml.safe_load(f.read())
+                content = f.read()
+                data = yaml.safe_load(content)
 
             if not data or 'audit' not in data:
                 continue
@@ -45,6 +46,8 @@ def main():
 
             audit_entry = {
                 "id": audit.get('id', ''),
+                "audit_id": audit.get('id', ''),
+                "audit_name": audit.get('name', ''),
                 "name": audit.get('name', ''),
                 "category": cat_name,
                 "category_number": cat_num,
@@ -58,8 +61,34 @@ def main():
                 "why_it_matters": description.get('why_it_matters', '')[:500] if description.get('why_it_matters') else '',
                 "file_path": str(yaml_file.relative_to(AUDITS_DIR.parent)),
                 "requires_runtime": audit.get('requires_runtime', False),
-                "requires_physical_access": 'requires_physical_access' in str(data),
-                "requires_interviews": 'requires_interviews' in str(data),
+                "requires_source_code": True,  # Most audits need source
+                "requires_runtime_data": audit.get('requires_runtime', False),
+                "requires_production_access": False,
+                "requires_team_input": False,
+                "requires_cost_data": False,
+                # New metadata fields from meta-audit (check execution section)
+                "requires_physical_access": execution.get('requires_physical_access', False) or 'requires_physical_access: true' in content,
+                "requires_human_evaluation": execution.get('requires_human_evaluation', False) or 'requires_human_evaluation: true' in content,
+                "requires_interviews": execution.get('requires_interviews', False) or 'requires_interviews: true' in content,
+                # SDLC phases (simplified - most apply to all)
+                "discovery": True,
+                "prd": True,
+                "task_decomposition": True,
+                "specification": True,
+                "tdd": True,
+                "implementation": True,
+                "testing": True,
+                "integration": True,
+                "deployment": True,
+                "post_production": True,
+                # Automation levels
+                "fully_automated": execution.get('automatable', '') == 'full',
+                "semi_automated": execution.get('automatable', '') == 'partial',
+                "human_required": execution.get('automatable', '') == 'none',
+                # Phase restrictions
+                "pre_production_only": False,
+                "production_only": False,
+                "any_phase": True,
             }
 
             audits.append(audit_entry)

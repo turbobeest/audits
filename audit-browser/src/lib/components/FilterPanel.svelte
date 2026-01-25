@@ -163,6 +163,41 @@
         <p class="text-[10px] text-slate-500">Click to filter for audits that require these resources</p>
       </div>
 
+      <!-- Special Requirements (from meta-audit) -->
+      <div class="space-y-2">
+        <label class="text-xs font-medium text-slate-400 uppercase">Special Requirements</label>
+        <div class="flex flex-wrap gap-2">
+          <button
+            onclick={() => toggleBooleanFilter('requiresPhysicalAccess', $filters.requiresPhysicalAccess)}
+            class="px-3 py-1.5 text-xs rounded-full border transition-colors {$filters.requiresPhysicalAccess
+              ? 'bg-orange-500 text-white border-orange-500'
+              : 'bg-slate-700 text-slate-300 border-slate-600 hover:border-orange-400'}"
+            title="Requires physical access to hardware, sensors, or equipment"
+          >
+            Physical Access
+          </button>
+          <button
+            onclick={() => toggleBooleanFilter('requiresHumanEvaluation', $filters.requiresHumanEvaluation)}
+            class="px-3 py-1.5 text-xs rounded-full border transition-colors {$filters.requiresHumanEvaluation
+              ? 'bg-purple-500 text-white border-purple-500'
+              : 'bg-slate-700 text-slate-300 border-slate-600 hover:border-purple-400'}"
+            title="Requires human perception testing or subjective evaluation"
+          >
+            Human Evaluation
+          </button>
+          <button
+            onclick={() => toggleBooleanFilter('requiresInterviews', $filters.requiresInterviews)}
+            class="px-3 py-1.5 text-xs rounded-full border transition-colors {$filters.requiresInterviews
+              ? 'bg-cyan-500 text-white border-cyan-500'
+              : 'bg-slate-700 text-slate-300 border-slate-600 hover:border-cyan-400'}"
+            title="Requires stakeholder interviews or surveys"
+          >
+            Interviews
+          </button>
+        </div>
+        <p class="text-[10px] text-slate-500">Audits with special requirements that may limit automation</p>
+      </div>
+
     </div>
   {/if}
 </div>

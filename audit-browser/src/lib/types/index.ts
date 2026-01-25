@@ -93,6 +93,10 @@ export interface AuditInventoryRow {
   requires_cost_data: boolean;
   requires_team_input: boolean;
   requires_production_access: boolean;
+  // New metadata fields from meta-audit
+  requires_physical_access: boolean;
+  requires_human_evaluation: boolean;
+  requires_interviews: boolean;
   // Automation
   fully_automated: boolean;
   semi_automated: boolean;
@@ -140,6 +144,10 @@ export interface SearchFilters {
   requiresRuntimeData?: boolean;
   requiresTeamInput?: boolean;
   requiresProductionAccess?: boolean;
+  // New filters from meta-audit
+  requiresPhysicalAccess?: boolean;
+  requiresHumanEvaluation?: boolean;
+  requiresInterviews?: boolean;
 }
 
 export interface SearchResult {

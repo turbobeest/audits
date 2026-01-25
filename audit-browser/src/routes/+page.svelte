@@ -49,6 +49,16 @@
     if ($filters.requiresTeamInput) {
       results = results.filter(a => a.requires_team_input);
     }
+    // New special requirements filters from meta-audit
+    if ($filters.requiresPhysicalAccess) {
+      results = results.filter(a => a.requires_physical_access);
+    }
+    if ($filters.requiresHumanEvaluation) {
+      results = results.filter(a => a.requires_human_evaluation);
+    }
+    if ($filters.requiresInterviews) {
+      results = results.filter(a => a.requires_interviews);
+    }
 
     return results;
   });

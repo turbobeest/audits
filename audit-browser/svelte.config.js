@@ -22,7 +22,8 @@ const config = {
     },
     prerender: {
       entries: isStatic ? ['/'] : [],
-      handleHttpError: 'warn'
+      handleHttpError: 'warn',
+      handleUnseenRoutes: 'ignore'
     }
   }
 };
