@@ -388,3 +388,20 @@ governance:
 relationships:
   commonly_combined:                                             # [OPTIONAL]
     - "{related-audit-id}"
+
+# ============================================================
+# SECTION 16: SDLC PHASE APPLICABILITY
+# ============================================================
+# Which software development lifecycle phases does this audit apply to?
+# Set each phase to true if the audit is relevant during that phase.
+
+sdlc_phases:
+  discovery: false                                               # [REQUIRED] Initial project discovery
+  prd: false                                                     # [REQUIRED] Product requirements definition
+  task_decomposition: false                                      # [REQUIRED] Breaking down work
+  specification: true                                            # [REQUIRED] Technical specification
+  implementation: true                                           # [REQUIRED] Active development
+  testing: true                                                  # [REQUIRED] QA and testing
+  integration: true                                              # [REQUIRED] System integration
+  deployment: true                                               # [REQUIRED] Deployment and release
+  post_production: true                                          # [REQUIRED] Production monitoring
