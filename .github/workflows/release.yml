@@ -1,0 +1,149 @@
+name: Release Audit Catalog
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag to use for a dry-run build (artifacts uploaded to the workflow run; no GitHub Release created)'
+        required: true
+        default: 'v0.0.0-dryrun'
+
+permissions:
+  contents: write
+  id-token: write   # required for cosign keyless signing
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Resolve version
+        id: version
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            VERSION="${GITHUB_REF#refs/tags/}"
+          else
+            VERSION="${{ inputs.tag }}"
+          fi
+          if [[ ! "$VERSION" =~ ^v[0-9]+\.[0-9]+\.[0-9]+([-+].+)?$ ]]; then
+            echo "::error::Tag '${VERSION}' is not a valid semver tag (expected vMAJOR.MINOR.PATCH)"
+            exit 1
+          fi
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "tarball=audits-${VERSION}.tar.gz" >> "$GITHUB_OUTPUT"
+          echo "Resolved version: ${VERSION}"
+
+      - name: Stamp VERSION file
+        run: echo "${{ steps.version.outputs.version }}" > VERSION
+
+      - name: Build deterministic tarball
+        id: tarball
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+          TARBALL: ${{ steps.version.outputs.tarball }}
+        run: |
+          set -euo pipefail
+          STAGE="$(mktemp -d)"
+          DEST="${STAGE}/audits-${VERSION}"
+          mkdir -p "${DEST}"
+
+          # Copy everything except CI-only and out-of-scope directories.
+          # audit-browser/ is excluded — see AIRGAP.md "Browser deployment".
+          rsync -a \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='.gitignore' \
+            --exclude='audit-browser' \
+            --exclude='node_modules' \
+            ./ "${DEST}/"
+
+          # Deterministic tarball: sorted file order, zeroed timestamps,
+          # numeric owner/group, gzip without timestamp.
+          tar \
+            --sort=name \
+            --owner=0 --group=0 --numeric-owner \
+            --mtime='@0' \
+            --format=ustar \
+            -cf "${STAGE}/audits-${VERSION}.tar" \
+            -C "${STAGE}" "audits-${VERSION}"
+
+          gzip -n -9 "${STAGE}/audits-${VERSION}.tar"
+          mv "${STAGE}/audits-${VERSION}.tar.gz" "${TARBALL}"
+
+          ls -la "${TARBALL}"
+          echo "size_bytes=$(stat -c %s "${TARBALL}")" >> "$GITHUB_OUTPUT"
+
+      - name: Generate SHA256 checksum
+        env:
+          TARBALL: ${{ steps.version.outputs.tarball }}
+        run: |
+          sha256sum "${TARBALL}" > "${TARBALL}.sha256"
+          cat "${TARBALL}.sha256"
+
+      - name: Install cosign
+        uses: sigstore/cosign-installer@v3
+        with:
+          cosign-release: 'v2.4.1'
+
+      - name: Sign tarball with cosign keyless
+        env:
+          TARBALL: ${{ steps.version.outputs.tarball }}
+          COSIGN_YES: 'true'
+        run: |
+          cosign sign-blob \
+            --output-signature "${TARBALL}.sig" \
+            --output-certificate "${TARBALL}.pem" \
+            "${TARBALL}"
+
+      - name: Verify own signature (smoke test)
+        env:
+          TARBALL: ${{ steps.version.outputs.tarball }}
+        run: |
+          cosign verify-blob \
+            --certificate "${TARBALL}.pem" \
+            --signature "${TARBALL}.sig" \
+            --certificate-identity-regexp 'https://github.com/${{ github.repository }}/.+' \
+            --certificate-oidc-issuer 'https://token.actions.githubusercontent.com' \
+            "${TARBALL}"
+
+      - name: Upload artifacts to workflow run
+        uses: actions/upload-artifact@v4
+        with:
+          name: audits-${{ steps.version.outputs.version }}
+          path: |
+            audits-${{ steps.version.outputs.version }}.tar.gz
+            audits-${{ steps.version.outputs.version }}.tar.gz.sha256
+            audits-${{ steps.version.outputs.version }}.tar.gz.sig
+            audits-${{ steps.version.outputs.version }}.tar.gz.pem
+          retention-days: 90
+
+      - name: Create GitHub Release
+        if: github.event_name == 'push'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ steps.version.outputs.version }}
+          TARBALL: ${{ steps.version.outputs.tarball }}
+        run: |
+          gh release create "${VERSION}" \
+            --title "Audit Catalog ${VERSION}" \
+            --notes "Signed catalog tarball for offline / airgap consumption.
+
+          Verification: see [AIRGAP.md](https://github.com/${{ github.repository }}/blob/main/AIRGAP.md).
+
+          Artifacts:
+          - \`${TARBALL}\` — catalog tarball
+          - \`${TARBALL}.sha256\` — SHA256 checksum
+          - \`${TARBALL}.sig\` — cosign signature
+          - \`${TARBALL}.pem\` — cosign certificate" \
+            "${TARBALL}" \
+            "${TARBALL}.sha256" \
+            "${TARBALL}.sig" \
+            "${TARBALL}.pem"
