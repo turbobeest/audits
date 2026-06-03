@@ -22,15 +22,30 @@ Each audit is a YAML file that defines:
 
 ## Purpose
 
-### For AI Agents
-The taxonomy provides structured knowledge that enables AI agents to perform sophisticated, context-aware audits. Each audit includes:
-- Cognitive mode guidance (critical, evaluative, informative)
-- Tier classification (focused, expert, PhD-level)
-- Escalation triggers for edge cases
-- Tool and verification command references
+This repository provides a comprehensive audit taxonomy specifically tailored
+for **DoD embedded software infrastructure**. It covers 28 categories spanning:
 
-### For Humans
-An exhaustive reference catalog of audit concerns, organized hierarchically so teams can cherry-pick relevant audits for their specific stack and compliance requirements.
+- Safety-critical real-time systems (avionics, weapons systems)
+- Command & control infrastructure (C4ISR, tactical communications)
+- Vehicle/platform embedded systems (UxS, naval/ground vehicles)
+- Sensors, signal processing, and data acquisition
+- Embedded security, cryptography, and compliance
+
+Each audit is designed to support defense-specific standards including
+MIL-STD-882E, DO-178C/254, FIPS 140-2/3, Common Criteria, and functional
+safety standards (IEC 61508, ISO 26262).
+
+### For AI Agents
+The taxonomy provides structured knowledge that enables AI agents to perform
+sophisticated, context-aware audits of DoD embedded systems. Each audit includes:
+- Discovery patterns for embedded architectures
+- Defense-specific compliance mappings
+- Remediation guidance for safety-critical systems
+
+### For Human Auditors
+An exhaustive reference catalog of audit concerns organized hierarchically,
+allowing teams to cherry-pick relevant audits for their specific embedded
+platform and compliance requirements.
 
 ## Taxonomy Structure
 
