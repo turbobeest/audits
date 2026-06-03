@@ -142,3 +142,41 @@ audits:
 ```
 
 This separation keeps audits focused and reusable while enabling flexible composition.
+
+## Field Semantics: Human-Focused, Model-Neutral
+
+The `tier` and `cognitive_mode` fields in audit YAML files describe the level of
+**human expertise** required to perform the audit effectively. They are NOT
+recommendations for specific AI models, LLM tiers (Sonnet/Opus/Haiku), or model
+capabilities.
+
+### Tier Definitions
+
+- `tier: "focused"` — Routine audit, junior auditor capable
+  - Pattern-based checks (e.g., grep for hardcoded secrets)
+  - Checklist verification
+  - Basic configuration review
+
+- `tier: "expert"` — Requires domain expertise, senior auditor
+  - Architecture analysis
+  - Security threat modeling
+  - Performance optimization strategies
+  - Requires deep understanding of the domain
+
+- `tier: "phd"` — Research-level analysis, deep specialization
+  - Novel attack vector discovery
+  - Formal verification
+  - Cutting-edge algorithm analysis
+  - Requires academic or research-level expertise
+
+### Cognitive Mode
+
+Similarly, `cognitive_mode` describes the mental model required for the audit:
+
+- `"informative"` — Data gathering, observation, checklist execution
+- `"evaluative"` — Judgment calls, tradeoff analysis, comparative assessment
+- `"critical"` — Adversarial thinking, threat modeling, vulnerability discovery
+
+These fields help auditors (human or AI) calibrate their approach and allocate
+appropriate time and expertise to each audit. They do not prescribe which AI model
+to use.
