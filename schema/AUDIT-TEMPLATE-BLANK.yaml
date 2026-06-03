@@ -39,7 +39,9 @@ audit:
   category_number: 0                                             # [REQUIRED] 1-43
   subcategory: "{subcategory-id}"                                # [REQUIRED]
   
-  # Complexity
+  # Complexity / Auditor Skill Level
+  # NOTE: This describes HUMAN auditor expertise required (focused/expert/phd).
+  # NOT a recommendation for specific AI models or LLM tiers (e.g., Sonnet/Opus/Haiku).
   tier: "expert"                                                 # [REQUIRED] focused|expert|phd
   estimated_duration: "{X hours/minutes}"                        # [OPTIONAL]
   
