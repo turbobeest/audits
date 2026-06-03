@@ -121,6 +121,16 @@ closeout_checklist:
     verification: "grep -r 'code_challenge' src/"
 ```
 
+### Model Neutrality
+
+The `tier` field (focused/expert/phd) describes the level of **human auditor
+expertise** required to perform the audit effectively. It is NOT a recommendation
+for specific AI models or LLM tiers (e.g., Sonnet, Opus, Haiku).
+
+- `tier: "focused"` — Routine audit, junior auditor capable
+- `tier: "expert"` — Requires domain expertise, senior auditor
+- `tier: "phd"` — Research-level analysis, deep specialization
+
 ## Design Principles
 
 ### 1. Audits Have Two Components
