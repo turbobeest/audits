@@ -9,7 +9,7 @@ A comprehensive, multi-dimensional taxonomy of software stack audits designed as
 
 ## What This Is
 
-This repository contains **2186 structured audit definitions** covering every meaningful dimension of software quality: security, performance, reliability, accessibility, compliance, ethics, and more.
+This repository contains **1411 structured audit definitions** covering every meaningful dimension of software quality: security, performance, reliability, accessibility, compliance, ethics, and more.
 
 **[Browse the Audit Catalog](https://turbobeest.github.io/audits/)** - Interactive web UI for exploring and filtering audits.
 
@@ -80,10 +80,10 @@ audits/
 
 | Metric | Value |
 |--------|-------|
-| Total Audits | 2186 |
-| Categories Complete | 1-43 (all) |
-| Target | ~2,200 audits |
-| Completion | 99.5% |
+| Total Audits | 1411 |
+| Categories Complete | 28 (DoD embedded focus) |
+| Target | DoD embedded systems coverage |
+| Completion | 100% (DoD scope) |
 
 ## Audit File Format
 
@@ -173,10 +173,10 @@ Domain-specific requirements extend the core taxonomy:
 
 ```
 .
-├── audits/                  # The audit taxonomy (2186 YAML files across 43 categories)
+├── audits/                  # The audit taxonomy (1411 YAML files across 28 categories)
 │   ├── 01-security-trust/
 │   ├── 02-performance-efficiency/
-│   └── ... (43 categories total)
+│   └── ... (28 categories total)
 ├── audit-browser/           # SvelteKit web UI for browsing audits
 │   ├── src/
 │   └── static/data/
@@ -207,7 +207,7 @@ Load audit definitions as context for AI-powered code review, security scanning,
 
 ## Contributing
 
-The taxonomy is nearly complete with 2186 audits across 43 categories. Contributions welcome for:
+The taxonomy is complete with 1411 audits across 28 categories focused on DoD embedded systems. Contributions welcome for:
 - Improvements to existing audit signals and remediation guidance
 - Industry overlay definitions (Healthcare, Finance, Defense, etc.)
 - Tool integration references
