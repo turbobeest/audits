@@ -2,7 +2,7 @@
 """
 Generate AUDIT-INVENTORY.csv from audit YAML files.
 
-This script scans all YAML files in the audits/ directory and generates
+This script scans YAML files in the numbered root category directories and generates
 a comprehensive CSV inventory. It extracts metadata from each audit file
 and populates the inventory with all relevant fields.
 
@@ -10,7 +10,6 @@ SDLC phases: If an audit YAML has an `sdlc_phases` section, those values
 are used. Otherwise, defaults are applied based on the audit's scope.
 """
 
-import os
 import sys
 import csv
 import yaml
@@ -20,7 +19,7 @@ from typing import Any
 # Determine base directory (script can run from anywhere)
 SCRIPT_DIR = Path(__file__).parent.resolve()
 BASE_DIR = SCRIPT_DIR.parent
-AUDITS_DIR = BASE_DIR / "audits"
+AUDITS_DIR = BASE_DIR
 CSV_PATH = BASE_DIR / "AUDIT-INVENTORY.csv"
 
 # CSV column headers
@@ -168,9 +167,9 @@ def load_existing_csv() -> dict[str, dict[str, str]]:
         with open(CSV_PATH, 'r', encoding='utf-8') as f:
             reader = csv.DictReader(f)
             for row in reader:
-                audit_id = row.get('audit_id', '')
-                if audit_id:
-                    existing[audit_id] = row
+                file_path = row.get('file_path', '').removeprefix('audits/')
+                if file_path:
+                    existing[file_path] = row
     return existing
 
 
@@ -226,7 +225,7 @@ def parse_yaml_file(yaml_path: Path, existing_csv: dict[str, dict[str, str]]) ->
         audit_id = audit.get('id', '')
 
         # Get existing row for SDLC phase lookup
-        existing_row = existing_csv.get(audit_id)
+        existing_row = existing_csv.get(rel_path)
 
         # Get scope for SDLC defaults
         scope = execution.get('scope', 'codebase')
@@ -248,9 +247,9 @@ def parse_yaml_file(yaml_path: Path, existing_csv: dict[str, dict[str, str]]) ->
             "severity": execution.get('severity', ''),
             "estimated_duration": audit.get('estimated_duration', ''),
             "requires_runtime": str(audit.get('requires_runtime', False)).lower(),
-            "requires_physical_access": str(audit.get('requires_physical_access', False)).lower(),
-            "requires_human_evaluation": str(audit.get('requires_human_evaluation', False)).lower(),
-            "requires_interviews": str(execution.get('requires_interviews', False)).lower(),
+            "requires_physical_access": str(execution.get('requires_physical_access', False) or audit.get('requires_physical_access', False)).lower(),
+            "requires_human_evaluation": str(execution.get('requires_human_evaluation', False) or audit.get('requires_human_evaluation', False)).lower(),
+            "requires_interviews": str(execution.get('requires_interviews', False) or audit.get('requires_interviews', False)).lower(),
         }
 
         # Add SDLC phases
@@ -278,12 +277,24 @@ def generate_inventory() -> int:
     rows = []
     errors = 0
 
-    for yaml_file in sorted(AUDITS_DIR.rglob("*.yaml")):
+    yaml_files = sorted(
+        path
+        for category in AUDITS_DIR.glob("[0-9][0-9]-*")
+        if category.is_dir()
+        for path in category.rglob("*.yaml")
+    )
+    for yaml_file in yaml_files:
         row = parse_yaml_file(yaml_file, existing_csv)
         if row:
             rows.append(row)
         else:
             errors += 1
+
+    if errors or not rows:
+        raise ValueError(
+            f"Inventory not written: {len(rows)} audits parsed, {errors} errors. "
+            "Existing inventory preserved."
+        )
 
     # Sort by category_number, then by audit_id for consistent ordering
     rows.sort(key=lambda r: (r['category_number'], r['audit_id']))
@@ -307,7 +318,11 @@ def main():
         print(f"Error: Audits directory not found: {AUDITS_DIR}", file=sys.stderr)
         sys.exit(1)
 
-    count = generate_inventory()
+    try:
+        count = generate_inventory()
+    except ValueError as error:
+        print(f"Error: {error}", file=sys.stderr)
+        sys.exit(1)
     print(f"\nInventory generation complete: {count} audits")
 
 

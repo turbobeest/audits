@@ -1,4 +1,22 @@
-# Audit Repository Refactoring: DoD Embedded Systems Focus
+# Audit Repository Scope History
+
+## 2026-09-05 — Full collection restored
+
+The repository again contains **2,186 audit definitions across all 43 categories**.
+The 775 removed definitions were restored from commit
+`5fbaa0750d13697a01da8c9bd4be61d731bfae18`, preserving the 1,411 retained files,
+the flattened root layout, and the later model-neutrality documentation.
+
+The inventory, menu, category summary, and browser data use the full collection.
+Select domain-specific subsets for individual projects rather than removing
+unrelated categories from the shared source. Four duplicate audit IDs inherited
+from the historical collection remain; file paths distinguish those definitions.
+Resolving their public identifiers is a separate compatibility change.
+
+## 2026-06-03 — Historical embedded-only downselection
+
+The following records the earlier narrowing and is superseded by the restoration
+above. Its intermediate counts and recovery paths describe that historical state.
 
 **Date:** 2026-06-03  
 **Rationale:** Downselect the broad 43-category software audit taxonomy to focus

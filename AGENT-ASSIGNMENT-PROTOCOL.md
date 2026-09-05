@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document defines the protocol for intelligently assigning agents from the agents repository (`~/walnut-drive/dev/agents`) to each of the 2,189 audits in this repository, enabling multi-agent collaboration and parallel execution across ollama servers.
+This document defines the protocol for intelligently assigning agents from the agents repository (`~/walnut-drive/dev/agents`) to each of the 2,186 audit definitions in this repository, enabling multi-agent collaboration and parallel execution across ollama servers.
 
 **Status**: Draft - Pending Multi-Dimensional Audit Review
 
@@ -243,7 +243,7 @@ distribution_strategy:
 | File | Change |
 |------|--------|
 | `schema/AUDIT-TEMPLATE-BLANK.yaml` | Add Section 16: Agent Assignment |
-| All 2,189 audit YAML files | Add agent_assignment section |
+| All 2,186 audit YAML files | Add agent_assignment section |
 
 ### Reference Files
 

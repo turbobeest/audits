@@ -34,17 +34,23 @@ Thank you for your interest in contributing to the Software Stack Audit Taxonomy
 ### File Naming Convention
 
 ```
-audits/{nn}-{category-slug}/{subcategory-slug}/{audit-slug}.yaml
+{nn}-{category-slug}/{subcategory-slug}/{audit-slug}.yaml
 ```
 
-Example: `audits/01-security-trust/authentication/session-management.yaml`
+Example: `01-security-trust/authentication/session-management.yaml`
 
 ## Pull Request Process
 
 1. Fork the repository
 2. Create a feature branch: `git checkout -b feature/add-xyz-audit`
 3. Make your changes
-4. Run validation: `./validation/validate-all.sh`
+4. Validate and regenerate the catalog (Python 3.11+ with PyYAML):
+   ```bash
+   python3 -m unittest discover -s scripts -p 'test_*.py'
+   python3 scripts/generate-inventory.py
+   ./build-menu.sh
+   cd audit-browser && npm ci && npm run build:static
+   ```
 5. Commit with clear message: `Add XYZ audit to security-trust.authentication`
 6. Push and create a Pull Request
 
