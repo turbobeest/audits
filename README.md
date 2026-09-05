@@ -9,7 +9,7 @@ A comprehensive, multi-dimensional taxonomy of software stack audits designed as
 
 ## What This Is
 
-This repository contains **1411 structured audit definitions** covering every meaningful dimension of software quality: security, performance, reliability, accessibility, compliance, ethics, and more.
+This repository contains **2,186 structured audit definitions across 43 categories** covering security, performance, reliability, accessibility, compliance, ethics, embedded systems, and more.
 
 **[Browse the Audit Catalog](https://turbobeest.github.io/audits/)** - Interactive web UI for exploring and filtering audits.
 
@@ -22,30 +22,25 @@ Each audit is a YAML file that defines:
 
 ## Purpose
 
-This repository provides a comprehensive audit taxonomy specifically tailored
-for **DoD embedded software infrastructure**. It covers 28 categories spanning:
+This repository provides a broad audit taxonomy for software and hardware-bearing
+products. Teams select the audits relevant to their requirements, stack, risks,
+and available evidence. Coverage includes web and cloud systems, user experience,
+organizational processes, economics, ML/AI, and embedded and physical systems.
 
-- Safety-critical real-time systems (avionics, weapons systems)
-- Command & control infrastructure (C4ISR, tactical communications)
-- Vehicle/platform embedded systems (UxS, naval/ground vehicles)
-- Sensors, signal processing, and data acquisition
-- Embedded security, cryptography, and compliance
-
-Each audit is designed to support defense-specific standards including
-MIL-STD-882E, DO-178C/254, FIPS 140-2/3, Common Criteria, and functional
-safety standards (IEC 61508, ISO 26262).
+The complete collection was restored from the pre-downselection history on
+2026-09-05. The numbered categories remain at the repository root. Embedded and
+defense-specific work can select the relevant subset without removing other
+domains from the shared collection. See [REFACTORING.md](REFACTORING.md).
 
 ### For AI Agents
-The taxonomy provides structured knowledge that enables AI agents to perform
-sophisticated, context-aware audits of DoD embedded systems. Each audit includes:
-- Discovery patterns for embedded architectures
-- Defense-specific compliance mappings
-- Remediation guidance for safety-critical systems
+The taxonomy provides structured methods for context-aware audit work, including
+discovery patterns, prerequisites, severity signals, remediation guidance, and
+closeout checks. Actual execution must account for the project's requirements,
+available tools, and any runtime or physical-access needs.
 
 ### For Human Auditors
 An exhaustive reference catalog of audit concerns organized hierarchically,
-allowing teams to cherry-pick relevant audits for their specific embedded
-platform and compliance requirements.
+allowing teams to select relevant audits for their product and requirements.
 
 ## Taxonomy Structure
 
@@ -69,21 +64,21 @@ audits/
 
 | Cluster | Categories | Focus | Audits |
 |---------|------------|-------|--------|
-| **Core Technical** | 1-12 | Security, performance, reliability, architecture, data, APIs | ~756 |
-| **Infrastructure** | 13-16 | IaC, usability, accessibility, SEO | ~205 |
-| **Human & Experience** | 17-23 | Organizational, ethics, gamification, emotional design | ~272 |
-| **Process & Governance** | 24-30 | Compliance, operations, documentation, risk | ~327 |
-| **Economics & Dependencies** | 31-33 | Cost, supply chain, legacy migration | ~152 |
-| **Specialized Domains** | 34-43 | ML/AI, embedded, blockchain, quantum, metaverse | ~477 |
+| **Core Technical** | 1-12 | Security, performance, reliability, architecture, data, APIs | 756 |
+| **Infrastructure** | 13-16 | IaC, usability, accessibility, SEO | 205 |
+| **Human & Experience** | 17-23 | Organizational, ethics, gamification, emotional design | 288 |
+| **Process & Governance** | 24-30 | Compliance, operations, documentation, risk | 331 |
+| **Economics & Dependencies** | 31-33 | Cost, supply chain, legacy migration | 152 |
+| **Specialized Domains** | 34-43 | ML/AI, embedded, blockchain, quantum, metaverse | 454 |
 
 ## Current Status
 
 | Metric | Value |
 |--------|-------|
-| Total Audits | 1411 |
-| Categories Complete | 28 (DoD embedded focus) |
-| Target | DoD embedded systems coverage |
-| Completion | 100% (DoD scope) |
+| Total Audit Definitions | 2,186 |
+| Categories | 43 (01–43) |
+| Scope | Broad software, product, process, and embedded coverage |
+| Layout | Numbered category directories at repository root |
 
 ## Audit File Format
 
@@ -173,10 +168,10 @@ Domain-specific requirements extend the core taxonomy:
 
 ```
 .
-├── audits/                  # The audit taxonomy (1411 YAML files across 28 categories)
-│   ├── 01-security-trust/
-│   ├── 02-performance-efficiency/
-│   └── ... (28 categories total)
+├── 01-security-trust/        # Audit YAML definitions
+├── 02-performance-efficiency/
+├── ...                      # 43 numbered categories total
+├── 43-metaverse-immersive/
 ├── audit-browser/           # SvelteKit web UI for browsing audits
 │   ├── src/
 │   └── static/data/
@@ -191,15 +186,15 @@ Domain-specific requirements extend the core taxonomy:
 ## Usage
 
 ### Browse Audits
-Explore the `audits/` directory by category and subcategory.
+Explore the numbered directories at the repository root by category and subcategory.
 
 ### Find Relevant Audits
 ```bash
 # Find all authentication-related audits
-find audits -name "*.yaml" -path "*auth*"
+find [0-9][0-9]-* -name "*.yaml" -path "*auth*"
 
 # Search for GDPR-related content
-grep -r "GDPR" audits/ --include="*.yaml"
+grep -r "GDPR" [0-9][0-9]-*/ --include="*.yaml"
 ```
 
 ### Integrate with AI Agents
@@ -207,7 +202,7 @@ Load audit definitions as context for AI-powered code review, security scanning,
 
 ## Contributing
 
-The taxonomy is complete with 1411 audits across 28 categories focused on DoD embedded systems. Contributions welcome for:
+The collection contains 2,186 audit definitions across 43 categories. Contributions welcome for:
 - Improvements to existing audit signals and remediation guidance
 - Industry overlay definitions (Healthcare, Finance, Defense, etc.)
 - Tool integration references

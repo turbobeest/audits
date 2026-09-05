@@ -5,7 +5,8 @@
       branches: [main]
       paths:
         - 'audit-browser/**'
-        - 'audits/**'
+        - '[0-9][0-9]-*/**'
+        - 'scripts/generate-inventory.py'
         - 'AUDIT-INVENTORY.csv'
         - '.github/workflows/deploy-pages.yml'
     workflow_dispatch:
@@ -36,6 +37,17 @@
         - name: Install dependencies
           working-directory: audit-browser
           run: npm ci
+
+        - name: Setup Python
+          uses: actions/setup-python@v5
+          with:
+            python-version: '3.11'
+
+        - name: Generate current inventory
+          run: |
+            pip install pyyaml
+            python scripts/generate-inventory.py
+            python -m unittest discover -s scripts -p 'test_*.py'
 
         - name: Build static site
           working-directory: audit-browser

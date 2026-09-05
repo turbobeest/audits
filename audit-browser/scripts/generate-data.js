@@ -154,7 +154,7 @@ function getStats(inventory) {
       semiAutomated: inventory.filter(a => a.semi_automated).length,
       humanRequired: inventory.filter(a => a.human_required).length
     },
-    categories: new Set(inventory.map(a => a.category)).size
+    categories: new Set(inventory.map(a => a.category_number)).size
   };
 }
 
